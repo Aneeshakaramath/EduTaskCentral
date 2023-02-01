@@ -17,6 +17,32 @@ const getAllTask = async (req, res, next) => {
     }
 };
 
+const getTaskAssignedByMe = async (req, res, next) => {
+    try {
+        let assignedByCode = '63d9254132ebc97e89d13152';
+        const task = await Task.find({ assignedBy: assignedByCode }).populate('assignedBy').populate('assignedTo');
+        res.json(task);
+    } catch (err) {
+        console.log(err);
+        return next(
+            new HttpError('Something went wrong, could not find task',500)
+        );
+    }
+};
+
+const getTaskAssignedToMe = async (req, res, next) => {
+    try {
+        let assignedToCode = '63d925b632ebc97e89d13159';
+        const task = await Task.find({ assignedTo: assignedToCode }).populate('assignedBy').populate('assignedTo');
+        res.json(task);
+    } catch (err) {
+        console.log(err);
+        return next(
+            new HttpError('Something went wrong, could not find task',500)
+        );
+    }
+};
+
 const addTask = async (req, res, next) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -54,6 +80,39 @@ const addTask = async (req, res, next) => {
     }
 };
 
+const updateTask = async (req, res, next) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return next(
+            new HttpError('Invalid inputs passed, please check your data.', 422)
+        );
+    }
+    try {
+        const taskById = await Task.findById(req.body.taskId);
+        if(taskById == null) {
+            return next(
+                new HttpError('task id is invalid', 400)
+            );
+        }
+        if (req.body.childTaskList != null && await isValidTaskList(req.body.childTaskList)) {
+            taskById.childTaskList = req.body.childTaskList;
+        } 
+        else {
+            console.log("Child task list is invalid");
+        }
+        if (req.body.taskStatus != null) {
+            taskById.taskStatus = req.body.taskStatus
+        }
+        const updatedTask = await taskById.save();
+        res.json(updatedTask);
+    } catch (err) {
+        console.log(err.message);
+        return next(
+            new HttpError('task couldnt be updated', 400)
+        );
+    }
+};
+
 async function isTaskValid(task) {
     const isTaskTypeValid = await isValidTaskType(task.taskType);
     const isAssignedByUserValid = await isValidUser(task.assignedBy);
@@ -62,5 +121,9 @@ async function isTaskValid(task) {
     console.log([isTaskTypeValid, isAssignedByUserValid, isAssignedToUserValid, isChildTaskValid]);
     return isTaskTypeValid && isAssignedByUserValid && isAssignedToUserValid && isChildTaskValid;
 }
+
 exports.getAllTask = getAllTask;
 exports.addTask = addTask;
+exports.getTaskAssignedByMe = getTaskAssignedByMe;
+exports.getTaskAssignedToMe = getTaskAssignedToMe;
+exports.updateTask = updateTask;

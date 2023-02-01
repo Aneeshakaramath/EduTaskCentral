@@ -6,6 +6,17 @@ const router = express.Router();
 
 router.get('/', taskController.getAllTask);
 
+router.get('/assignedByMe', taskController.getTaskAssignedByMe);
+
+router.get('/assignedToMe', taskController.getTaskAssignedToMe);
+
+router.post('/update', [
+    check('taskId')
+        .not()
+        .isEmpty(),
+    ],
+    taskController.updateTask);
+
 router.post('/', [
     check('taskType')
         .not()
