@@ -30,8 +30,9 @@ const addUserType = async (req, res, next) => {
         const newUserType = await userType.save();
         res.status(201).json(newUserType);
     } catch (err) {
+        console.log(err.message);
         return next(
-            new HttpError(err.message, 400)
+            new HttpError('user couldnt be created', 400)
         );
     }
 }

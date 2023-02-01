@@ -27,8 +27,8 @@ const addUser = async (req, res, next) => {
         password: req.body.password,
         usertype: req.body.usertype
     });
-
-    if(await isUserTypeValid(req.body.usertype)) {
+    
+    if(await isUserTypeValid(user.usertype)) {
         try {
             const newUser = await user.save();
             res.status(201).json(newUser);

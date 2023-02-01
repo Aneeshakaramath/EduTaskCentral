@@ -30,8 +30,9 @@ const addTaskType = async (req, res, next) => {
         const newTaskType = await taskType.save();
         res.status(201).json(newTaskType);
     } catch (err) {
+        console.log(err.message);
         return next(
-            new HttpError(err.message, 400)
+            new HttpError('task couldnt be created', 400)
         );
     }
 }

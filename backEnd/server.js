@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 const userTypeRouter = require('./routers/userType');
 const userRouter = require('./routers/user');
 const taskTypeRouter = require('./routers/taskType');
+const taskRouter = require('./routers/task');
 const errroHandlingMiddleware = require('./middleware/errorHandler');
 const app = express();
 
@@ -30,6 +31,7 @@ app.use((req, res, next) => {
 app.use('/api/userType', userTypeRouter);
 app.use('/api/user', userRouter);
 app.use('/api/taskType', taskTypeRouter);
+app.use('/api/task', taskRouter);
 
 app.use(errroHandlingMiddleware.unknownRouteHandler);
 app.use(errroHandlingMiddleware.errorHandler);
