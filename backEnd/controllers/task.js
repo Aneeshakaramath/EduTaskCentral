@@ -19,7 +19,7 @@ const getAllTask = async (req, res, next) => {
 
 const getTaskAssignedByMe = async (req, res, next) => {
     try {
-        let assignedByCode = '63d9254132ebc97e89d13152';
+        let assignedByCode = req.session._id;
         const task = await Task.find({ assignedBy: assignedByCode }).populate('assignedBy').populate('assignedTo');
         res.json(task);
     } catch (err) {
@@ -32,7 +32,7 @@ const getTaskAssignedByMe = async (req, res, next) => {
 
 const getTaskAssignedToMe = async (req, res, next) => {
     try {
-        let assignedToCode = '63d925b632ebc97e89d13159';
+        let assignedToCode = req.session._id;
         const task = await Task.find({ assignedTo: assignedToCode }).populate('assignedBy').populate('assignedTo');
         res.json(task);
     } catch (err) {
