@@ -7,7 +7,10 @@ const { isValidTaskList } = require('../Utils/isValidTask');
 
 const getAllTask = async (req, res, next) => {
     try {
-        const task = await Task.find().populate('assignedBy').populate('assignedTo');
+        const task = await Task.find()
+                            .populate('assignedBy')
+                            .populate('assignedTo')
+                            .populate({path: 'childTaskList',match: { _id: { $ne: null }}});
         res.json(task);
     } catch (err) {
         console.log(err);
@@ -20,7 +23,10 @@ const getAllTask = async (req, res, next) => {
 const getTaskAssignedByMe = async (req, res, next) => {
     try {
         let assignedByCode = req.session._id;
-        const task = await Task.find({ assignedBy: assignedByCode }).populate('assignedBy').populate('assignedTo');
+        const task = await Task.find({ assignedBy: assignedByCode })
+                                .populate('assignedBy')
+                                .populate('assignedTo')
+                                .populate({path: 'childTaskList',match: { _id: { $ne: null }}});
         res.json(task);
     } catch (err) {
         console.log(err);
@@ -33,7 +39,10 @@ const getTaskAssignedByMe = async (req, res, next) => {
 const getTaskAssignedToMe = async (req, res, next) => {
     try {
         let assignedToCode = req.session._id;
-        const task = await Task.find({ assignedTo: assignedToCode }).populate('assignedBy').populate('assignedTo');
+        const task = await Task.find({ assignedTo: assignedToCode })
+                            .populate('assignedBy')
+                            .populate('assignedTo')
+                            .populate({path: 'childTaskList',match: { _id: { $ne: null }}});
         res.json(task);
     } catch (err) {
         console.log(err);
@@ -95,7 +104,10 @@ const updateTask = async (req, res, next) => {
             );
         }
         if (req.body.childTaskList != null && await isValidTaskList(req.body.childTaskList)) {
-            taskById.childTaskList = req.body.childTaskList;
+            let  concatChildTaskList = [...req.body.childTaskList, ...taskById.childTaskList]; // merging two list
+            let concatChildTaskListConvertedToString = concatChildTaskList.map((element)=>element.toString());
+            let uniqueChildTaskList = [...new Set(concatChildTaskListConvertedToString)]; // removing duplicates
+            taskById.childTaskList = uniqueChildTaskList;
         } 
         else {
             console.log("Child task list is invalid");
