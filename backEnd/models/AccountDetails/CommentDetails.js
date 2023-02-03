@@ -1,7 +1,9 @@
 const CommentDetails = class {
-    constructor(commentedBy, description) {
-      this.commentedBy = commentedBy;
+    constructor(commentedByName, commentedByRollNumber, description, time) {
+      this.commentedByName = commentedByName;
+      this.commentedByRollNumber = commentedByRollNumber;
       this.description = description;
+      this.time = time;
     }
 };
 

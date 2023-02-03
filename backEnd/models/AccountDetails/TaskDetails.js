@@ -1,6 +1,7 @@
 const TaskDetails = class {
-    constructor(name, numberOfEvents, description, startDate, endDate,
+    constructor(id, name, numberOfEvents, description, startDate, endDate,
                 childTaskList, assignedBy, assignedTo, taskStatus, commentDetails) {
+      this.id = id;
       this.name = name;
       this.numberOfEvents = numberOfEvents;
       this.description = description;

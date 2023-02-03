@@ -19,7 +19,6 @@ const getAllComments = async (req, res, next) => {
 }
 
 const getCommentsByTaskId = async (req, res, next) => {
-    console.log(req.params.taskId);
     try {
         let taskId = req.params.taskId;
         const comment = await Comment.find({ taskId: taskId })
