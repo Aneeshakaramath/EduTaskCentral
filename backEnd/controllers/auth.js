@@ -22,7 +22,7 @@ const authorizeUser = async (req, res, next) => {
             console.log(`Authenticated the user ${user[0].username}`);
             const result = {
                 isAuthenticated: true,
-                messaged: "Authentication Sucess"
+                message: "Authentication Success"
             };
             res.send(result);
         }
