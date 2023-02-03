@@ -11,6 +11,7 @@ const userRouter = require('./routers/user');
 const taskTypeRouter = require('./routers/taskType');
 const taskRouter = require('./routers/task');
 const commentsRouter = require('./routers/comments');
+const accountDetailsRouter = require('./routers/accountDetails');
 
 const errroHandlingMiddleware = require('./middleware/errorHandler');
 const { isAuthorized } = require('./middleware/isAuthorized');
@@ -50,6 +51,7 @@ app.use('/api/userType', isAuthorized, userTypeRouter);
 app.use('/api/taskType', isAuthorized, taskTypeRouter);
 app.use('/api/task', isAuthorized, taskRouter);
 app.use('/api/comment', isAuthorized, commentsRouter);
+app.use('/api/getAccountDetails', isAuthorized, accountDetailsRouter);
 
 app.use(errroHandlingMiddleware.unknownRouteHandler);
 app.use(errroHandlingMiddleware.errorHandler);
