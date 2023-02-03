@@ -30,7 +30,7 @@
                     "items": []
                   },
                   "bodyType": "Text",
-                  "textBody": "{\n  \"username\": \"hod\",\n  \"password\" :\"hod123\"\n}"
+                  "textBody": "{\n  \"username\": \"vc\",\n  \"password\" :\"vc123\"\n}"
                 },
                 "uri": {
                   "query": {
@@ -84,6 +84,119 @@
                 },
                 "id": "4aa6526f-2f0a-4a7f-a433-b76edaf3259d",
                 "name": "logout",
+                "headers": []
+              }
+            }
+          ]
+        },
+        {
+          "entity": {
+            "type": "Service",
+            "id": "7063e881-b31a-431e-afc9-de142732c219",
+            "name": "Comments"
+          },
+          "children": [
+            {
+              "entity": {
+                "type": "Request",
+                "method": {
+                  "requestBody": true,
+                  "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+                  "name": "POST"
+                },
+                "body": {
+                  "formBody": {
+                    "overrideContentType": true,
+                    "encoding": "application/x-www-form-urlencoded",
+                    "items": []
+                  },
+                  "bodyType": "Text",
+                  "textBody": "{\n  \"taskId\" : \"63da78d5cd6762407af6c82c\",\n  \"description\" : \"I will start the work in 2 days\",\n  \"commentedBy\" : \"63d925b632ebc97e89d13159\"\n}"
+                },
+                "uri": {
+                  "query": {
+                    "delimiter": "&",
+                    "items": []
+                  },
+                  "scheme": {
+                    "name": "http",
+                    "version": "V11"
+                  },
+                  "host": "localhost:5000",
+                  "path": "/api/comment"
+                },
+                "id": "3a030b7f-1fcb-42fe-bb89-763e23326bd5",
+                "name": "add Comment",
+                "headers": [
+                  {
+                    "enabled": true,
+                    "name": "Content-Type",
+                    "value": "application/json"
+                  }
+                ]
+              }
+            },
+            {
+              "entity": {
+                "type": "Request",
+                "method": {
+                  "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+                  "name": "GET"
+                },
+                "body": {
+                  "formBody": {
+                    "overrideContentType": true,
+                    "encoding": "application/x-www-form-urlencoded",
+                    "items": []
+                  },
+                  "bodyType": "Text"
+                },
+                "uri": {
+                  "query": {
+                    "delimiter": "&",
+                    "items": []
+                  },
+                  "scheme": {
+                    "name": "http",
+                    "version": "V11"
+                  },
+                  "host": "localhost:5000",
+                  "path": "/api/comment"
+                },
+                "id": "c90e1a88-c746-4726-9261-ee67e2504265",
+                "name": "get All",
+                "headers": []
+              }
+            },
+            {
+              "entity": {
+                "type": "Request",
+                "method": {
+                  "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+                  "name": "GET"
+                },
+                "body": {
+                  "formBody": {
+                    "overrideContentType": true,
+                    "encoding": "application/x-www-form-urlencoded",
+                    "items": []
+                  },
+                  "bodyType": "Text"
+                },
+                "uri": {
+                  "query": {
+                    "delimiter": "&",
+                    "items": []
+                  },
+                  "scheme": {
+                    "name": "http",
+                    "version": "V11"
+                  },
+                  "host": "localhost:5000",
+                  "path": "/api/comment/63da78d5cd6762407af6c82c"
+                },
+                "id": "089bff46-3194-4a2f-91f1-b2f8be95a56d",
+                "name": "get By TaskId",
                 "headers": []
               }
             }
@@ -377,7 +490,7 @@
                     "items": []
                   },
                   "bodyType": "Text",
-                  "textBody": "{\n  \"name\" : \"dean\",\n  \"username\" : \"dean2\",\n  \"password\" : \"dean123\",\n  \"usertype\" : \"u15\",\n  \"rollNumber\" : \"006\"\n}"
+                  "textBody": "{\n  \"name\" : \"dean\",\n  \"username\" : \"dean2\",\n  \"password\" : \"dean123\",\n  \"usertype\" : \"u05\",\n  \"rollNumber\" : \"001\"\n}"
                 },
                 "uri": {
                   "query": {
@@ -512,6 +625,47 @@
                 },
                 "id": "55a78c16-9124-49af-aff8-9334f1ea4e46",
                 "name": "Get All",
+                "headers": []
+              }
+            }
+          ]
+        },
+        {
+          "entity": {
+            "type": "Service",
+            "id": "a6781f26-0241-488d-9c6c-0c661b91e325",
+            "name": "UserDetails"
+          },
+          "children": [
+            {
+              "entity": {
+                "type": "Request",
+                "method": {
+                  "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+                  "name": "GET"
+                },
+                "body": {
+                  "formBody": {
+                    "overrideContentType": true,
+                    "encoding": "application/x-www-form-urlencoded",
+                    "items": []
+                  },
+                  "bodyType": "Text"
+                },
+                "uri": {
+                  "query": {
+                    "delimiter": "&",
+                    "items": []
+                  },
+                  "scheme": {
+                    "name": "http",
+                    "version": "V11"
+                  },
+                  "host": "localhost:5000",
+                  "path": "/api/getAccountDetails"
+                },
+                "id": "8e3615fa-3a6c-49f1-94a5-3aaf9bd901a9",
+                "name": "userDetails",
                 "headers": []
               }
             }
