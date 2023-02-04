@@ -30,7 +30,7 @@
                     "items": []
                   },
                   "bodyType": "Text",
-                  "textBody": "{\n  \"username\": \"vc\",\n  \"password\" :\"vc123\"\n}"
+                  "textBody": "{\n  \"username\": \"dean\",\n  \"password\" :\"dean123\"\n}"
                 },
                 "uri": {
                   "query": {
@@ -205,6 +205,127 @@
         {
           "entity": {
             "type": "Service",
+            "id": "2cc05731-7fa7-4d92-b0f9-e381c7be4915",
+            "name": "Group"
+          },
+          "children": [
+            {
+              "entity": {
+                "type": "Request",
+                "method": {
+                  "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+                  "name": "GET"
+                },
+                "body": {
+                  "formBody": {
+                    "overrideContentType": true,
+                    "encoding": "application/x-www-form-urlencoded",
+                    "items": []
+                  },
+                  "bodyType": "Text"
+                },
+                "uri": {
+                  "query": {
+                    "delimiter": "&",
+                    "items": []
+                  },
+                  "scheme": {
+                    "name": "http",
+                    "version": "V11"
+                  },
+                  "host": "localhost:5000",
+                  "path": "/api/group"
+                },
+                "id": "175d0805-954a-4e02-afb0-2e204c163e0c",
+                "name": "Get All",
+                "headers": []
+              }
+            },
+            {
+              "entity": {
+                "type": "Request",
+                "method": {
+                  "requestBody": true,
+                  "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+                  "name": "POST"
+                },
+                "body": {
+                  "formBody": {
+                    "overrideContentType": true,
+                    "encoding": "application/x-www-form-urlencoded",
+                    "items": []
+                  },
+                  "bodyType": "Text",
+                  "textBody": "{\n  \"groupId\" : \"63ddb5b12c6a7c5733d508e5\",\n  \"userId\" : [\"63d9261832ebc97e89d13160\", \"63ddab63d9aac1685b65757b\", \"63ddab74d9aac1685b657581\", \"63ddab7ed9aac1685b657584\", \"63ddab8ad9aac1685b657587\"]\n}"
+                },
+                "uri": {
+                  "query": {
+                    "delimiter": "&",
+                    "items": []
+                  },
+                  "scheme": {
+                    "name": "http",
+                    "version": "V11"
+                  },
+                  "host": "localhost:5000",
+                  "path": "/api/group/addUser"
+                },
+                "id": "e278ab66-e4d4-4f38-84a2-20de913682c7",
+                "name": "add user/users to group",
+                "headers": [
+                  {
+                    "enabled": true,
+                    "name": "Content-Type",
+                    "value": "application/json"
+                  }
+                ]
+              }
+            },
+            {
+              "entity": {
+                "type": "Request",
+                "method": {
+                  "requestBody": true,
+                  "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+                  "name": "POST"
+                },
+                "body": {
+                  "formBody": {
+                    "overrideContentType": true,
+                    "encoding": "application/x-www-form-urlencoded",
+                    "items": []
+                  },
+                  "bodyType": "Text",
+                  "textBody": "{\n  \"groupName\" : \"Test Group\",\n  \"userId\": [\"63d925b632ebc97e89d13159\"]\n}"
+                },
+                "uri": {
+                  "query": {
+                    "delimiter": "&",
+                    "items": []
+                  },
+                  "scheme": {
+                    "name": "http",
+                    "version": "V11"
+                  },
+                  "host": "localhost:5000",
+                  "path": "/api/group"
+                },
+                "id": "bdd09ed2-2e9d-4e65-979b-736aeec1e962",
+                "name": "create group",
+                "headers": [
+                  {
+                    "enabled": true,
+                    "name": "Content-Type",
+                    "value": "application/json"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "entity": {
+            "type": "Service",
             "id": "be939971-0753-459d-a406-8a34972df31e",
             "name": "Task"
           },
@@ -236,10 +357,50 @@
                     "version": "V11"
                   },
                   "host": "localhost:5000",
-                  "path": "/api/task"
+                  "path": "/api/task/group/g01"
                 },
                 "id": "ad0d5ef8-f6bf-4adf-9060-eaea8ef7d1dd",
                 "name": "Add Task",
+                "headers": [
+                  {
+                    "enabled": true,
+                    "name": "Content-Type",
+                    "value": "application/json"
+                  }
+                ]
+              }
+            },
+            {
+              "entity": {
+                "type": "Request",
+                "method": {
+                  "requestBody": true,
+                  "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+                  "name": "POST"
+                },
+                "body": {
+                  "formBody": {
+                    "overrideContentType": true,
+                    "encoding": "application/x-www-form-urlencoded",
+                    "items": []
+                  },
+                  "bodyType": "Text",
+                  "textBody": "{\n  \"taskType\" : \"t04\",\n  \"numberOfEvents\" : \"1\",\n  \"description\" : \"Set question papers for the upcoming semester\",\n  \"childTaskList\" : [],\n  \"startDate\" : \"03-03-2023\",\n  \"endDate\" : \"04-04-2023\",\n  \"taskStatus\" : \"TO DO\",\n  \"groupId\": \"63ddb5b12c6a7c5733d508e5\"\n}"
+                },
+                "uri": {
+                  "query": {
+                    "delimiter": "&",
+                    "items": []
+                  },
+                  "scheme": {
+                    "name": "http",
+                    "version": "V11"
+                  },
+                  "host": "localhost:5000",
+                  "path": "/api/task/groupId"
+                },
+                "id": "80a008ed-e37b-484a-bade-7da059983a4b",
+                "name": "Add Task To Group",
                 "headers": [
                   {
                     "enabled": true,
@@ -490,7 +651,7 @@
                     "items": []
                   },
                   "bodyType": "Text",
-                  "textBody": "{\n  \"name\" : \"dean\",\n  \"username\" : \"dean2\",\n  \"password\" : \"dean123\",\n  \"usertype\" : \"u05\",\n  \"rollNumber\" : \"001\"\n}"
+                  "textBody": "{\n  \"name\" : \"faculty4\",\n  \"username\" : \"faculty4\",\n  \"password\" : \"faculty123\",\n  \"usertype\" : \"u04\",\n  \"rollNumber\" : \"009\"\n}"
                 },
                 "uri": {
                   "query": {
