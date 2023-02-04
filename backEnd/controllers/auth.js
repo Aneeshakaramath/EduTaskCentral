@@ -43,7 +43,7 @@ const logoutUser = async (req, res, next) => {
     req.session.destroy();
     const result = {
         isLogoutSuccessful: true,
-        messaged: "Logout Sucess"
+        message: "Logout Success"
     };
     res.send(result);
 };

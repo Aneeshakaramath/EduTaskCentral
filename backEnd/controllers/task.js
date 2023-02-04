@@ -1,9 +1,11 @@
 const { validationResult } = require('express-validator');
 const HttpError = require('../models/HttpError');
 const Task = require('../models/Task');
+const Group = require('../models/Group');
 const { isValidTaskType } = require('../Utils/isValidTaskType');
 const { isValidUser } = require('../Utils/isValidUser');
 const { isValidTaskList } = require('../Utils/isValidTask');
+const { isValidGroupId } = require('../Utils/isValidGroupId');
 
 const getAllTask = async (req, res, next) => {
     try {
@@ -89,6 +91,64 @@ const addTask = async (req, res, next) => {
     }
 };
 
+const addTaskToGroupId = async (req, res, next) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return next(
+            new HttpError('Invalid inputs passed, please check your data.', 422)
+        );
+    }
+    let groupId = req.body.groupId;
+    if(await isValidGroupId(req.body.groupId)) {
+        try {
+            const group = await Group.find({ _id: groupId });
+            let count = 0;
+            if(group[0].userId.length > 0) {
+                group[0].userId.forEach(async element => {
+                    const task = new Task({
+                        taskType: req.body.taskType,
+                        numberOfEvents: req.body.numberOfEvents,
+                        description: req.body.description,
+                        startDate: req.body.startDate,
+                        endDate: req.body.endDate,
+                        childTaskList: req.body.childTaskList,
+                        assignedBy: req.session._id,
+                        assignedTo: element.toString(),
+                        taskStatus: req.body.taskStatus
+                    });
+                    count++
+                    if(await isTaskValid(task)) {
+                        await task.save();
+                    } else {
+                        return next(
+                            new HttpError('task couldnt be created for the group', 400)
+                        );
+                    }
+                });
+                const result = {
+                    code: 200,
+                    message: `${count} task created successfully`
+                };
+                res.send(result);
+            }
+            else {
+                console.log(" no user id found in group, 0 task created");
+                return next(new HttpError('No user Id found in the group, 0 task created', 422));
+            }
+        } catch(err) {
+            console.log(err);
+            return next(
+                new HttpError('task couldnt be created for the group', 400)
+            );
+        }
+        
+    } else {
+        return next(
+            new HttpError('Invalid inputs passed', 422)
+        );
+    }
+};
+
 const updateTask = async (req, res, next) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -139,3 +199,4 @@ exports.addTask = addTask;
 exports.getTaskAssignedByMe = getTaskAssignedByMe;
 exports.getTaskAssignedToMe = getTaskAssignedToMe;
 exports.updateTask = updateTask;
+exports.addTaskToGroupId = addTaskToGroupId;

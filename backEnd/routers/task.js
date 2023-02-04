@@ -30,6 +30,18 @@ router.post('/', [
     check('assignedTo')
         .not()
         .isEmpty(),],
-        taskController.addTask);
+    taskController.addTask);
+
+router.post('/groupId', [
+    check('taskType')
+        .not()
+        .isEmpty(),
+    check('numberOfEvents')
+        .not()
+        .isEmpty(),
+    check('groupId')
+        .not()
+        .isEmpty(),],
+    taskController.addTaskToGroupId);
 
 module.exports = router;
