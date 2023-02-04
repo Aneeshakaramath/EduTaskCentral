@@ -8,8 +8,8 @@ const { isValidTaskList } = require('../Utils/isValidTask');
 const getAllTask = async (req, res, next) => {
     try {
         const task = await Task.find()
-                            .populate('assignedBy')
-                            .populate('assignedTo')
+                            .populate('assignedBy', '-password')
+                            .populate('assignedTo', '-password')
                             .populate({path: 'childTaskList',match: { _id: { $ne: null }}});
         res.json(task);
     } catch (err) {
@@ -24,8 +24,8 @@ const getTaskAssignedByMe = async (req, res, next) => {
     try {
         let assignedByCode = req.session._id;
         const task = await Task.find({ assignedBy: assignedByCode })
-                                .populate('assignedBy')
-                                .populate('assignedTo')
+                                .populate('assignedBy', '-password')
+                                .populate('assignedTo', '-password')
                                 .populate({path: 'childTaskList',match: { _id: { $ne: null }}});
         res.json(task);
     } catch (err) {
@@ -40,8 +40,8 @@ const getTaskAssignedToMe = async (req, res, next) => {
     try {
         let assignedToCode = req.session._id;
         const task = await Task.find({ assignedTo: assignedToCode })
-                            .populate('assignedBy')
-                            .populate('assignedTo')
+                            .populate('assignedBy', '-password')
+                            .populate('assignedTo', '-password')
                             .populate({path: 'childTaskList',match: { _id: { $ne: null }}});
         res.json(task);
     } catch (err) {

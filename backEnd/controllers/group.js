@@ -6,7 +6,7 @@ const { isValidUserIdList } = require('../Utils/isValidUser');
 const getAllGroup = async (req, res, next) => {
     try {
         const group = await Group.find()
-                                    .populate({path: 'userId',match: { _id: { $ne: null }}});
+                                    .populate({path: 'userId',match: { _id: { $ne: null }}, select: 'name rollNumber usertype'});
         res.json(group);
     } catch (err) {
         console.log(err);

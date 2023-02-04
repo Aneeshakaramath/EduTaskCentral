@@ -8,7 +8,7 @@ const getAllComments = async (req, res, next) => {
     try {
         const comment = await Comment.find()
                             .populate('taskId')
-                            .populate('commentedBy');
+                            .populate('commentedBy', '-password');
         res.json(comment);
     } catch (err) {
         console.log(err);
@@ -23,7 +23,7 @@ const getCommentsByTaskId = async (req, res, next) => {
         let taskId = req.params.taskId;
         const comment = await Comment.find({ taskId: taskId })
                                 .populate('taskId')
-                                .populate('commentedBy')
+                                .populate('commentedBy', '-password')
                                 .sort('TimeEntered');
         res.json(comment);
     } catch (err) {
