@@ -7,7 +7,7 @@ const { formatDate } = require('../Utils/UtilMethods');
 
 const build = function (currentUser,assignedByUser, assignedToUser, commentsForAllTask, taskType) {
 
-    let userDetail = new UserDetails(currentUser.name, currentUser.rollNumber, currentUser.username, currentUser.usertype);
+    let userDetail = new UserDetails(currentUser.id, currentUser.name, currentUser.rollNumber, currentUser.username, currentUser.usertype);
     let accessDetail = new AccessDetails(true);
     let taskAssignedToMe = getTaskDetails(assignedToUser, commentsForAllTask, taskType);
     let taskAssignedByMe = getTaskDetails(assignedByUser, commentsForAllTask, taskType);
