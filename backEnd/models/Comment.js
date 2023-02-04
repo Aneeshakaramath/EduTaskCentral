@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const taskSchema = new mongoose.Schema({
+const commentSchema = new mongoose.Schema({
     taskId: {
         type: mongoose.Types.ObjectId,
         ref: 'Task' ,
@@ -21,4 +21,4 @@ const taskSchema = new mongoose.Schema({
     },
 });
 
-module.exports = mongoose.model('Comment', taskSchema)
+module.exports = mongoose.model('Comment', commentSchema)
