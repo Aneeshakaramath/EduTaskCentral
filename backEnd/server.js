@@ -48,7 +48,7 @@ app.use((req, res, next) => {
 
 app.use('/api/auth', authRouter);
 app.use('/api/user', userRouter);
-app.use('/api/userType', isAuthorized, userTypeRouter);
+app.use('/api/userType',isAuthorized, userTypeRouter);
 app.use('/api/taskType', isAuthorized, taskTypeRouter);
 app.use('/api/task', isAuthorized, taskRouter);
 app.use('/api/comment', isAuthorized, commentsRouter);
