@@ -10,3 +10,6 @@ npm install
 
 # start the app
 npm run start
+
+# To stop the app
+Ctrl+c
