@@ -19,8 +19,10 @@ const { isAuthorized } = require('./middleware/isAuthorized');
 
 const oneDay = 1000 * 60 * 60 * 24;
 
+// initialize express object
 const app = express();
 
+// connect to mongo db
 mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true })
 const db = mongoose.connection
 db.on('error', (error) => console.error(error))
@@ -34,8 +36,13 @@ app.use(sessions({
     resave: false
 }));
 
-app.use(express.json())
+// express middle ware to parse incoming request into json payload
+app.use(express.json());
+
+// cors middle ware to accept cross origin request
 app.use(cors());
+
+// set headers for all the incoming request
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader(
@@ -46,6 +53,10 @@ app.use((req, res, next) => {
     next();
 });
 
+/* 
+*   setting routers for the request path
+*   Here isAuthorized is a middleware to check whether the user has logged in
+*/
 app.use('/api/auth', authRouter);
 app.use('/api/user', userRouter);
 app.use('/api/userType',isAuthorized, userTypeRouter);
@@ -55,7 +66,11 @@ app.use('/api/comment', isAuthorized, commentsRouter);
 app.use('/api/getAccountDetails', isAuthorized, accountDetailsRouter);
 app.use('/api/group', isAuthorized, groupRouter);
 
+/*
+*   Set handle unknown routes and errorhandling middleware
+*/
 app.use(errroHandlingMiddleware.unknownRouteHandler);
 app.use(errroHandlingMiddleware.errorHandler);
 
+// start the server in specified port
 app.listen(process.env.PORT || 3000 , () => console.log('Server Started'))
