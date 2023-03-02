@@ -13,3 +13,9 @@ npm run start
 
 # To stop the app
 Ctrl+c
+
+
+# To run front End
+cd Front-End
+npm install
+npm run dev

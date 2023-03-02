@@ -41,7 +41,7 @@ function getTaskName(code, taskTypeList) {
 }
 
 function getUser(user) {
-    let userDetail = new UserDetails(user.name, user.rollNumber, user.username, user.usertype);
+    let userDetail = new UserDetails(user.id, user.name, user.rollNumber, user.username, user.usertype);
     return userDetail;
 }
 
