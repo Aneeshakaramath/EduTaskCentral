@@ -19,7 +19,6 @@ const router = useRouter();
 
 onBeforeMount(async()=> {
   if(store.isLoggedIn) {
-    router.push('/dashboard');
     const response = store.fetchUserData();
     store.setUserData(response);
   } else {
