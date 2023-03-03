@@ -1,6 +1,6 @@
 <template>
   <div class="login-form">
-    <form @submit.prevent="Submit">
+    <form @submit.prevent="Submit" v-if="!store.apiCallBeingMade">
       <!-- username input -->
       <div class="form-group">
         <input type="text" id="form1Example1" placeholder="Username" class="form-control" v-model="username"/>
@@ -23,6 +23,9 @@
       <!-- Submit button -->
       <button type="submit" class="btn btn-default button-sign-in">Sign in</button>
     </form>
+    <div class="spinner-border" v-if="store.apiCallBeingMade" role="status">
+      <span class="visually-hidden" ></span>
+  </div>
   </div>
 </template>
 
