@@ -28,7 +28,7 @@
 
 <script setup lang="ts">
 import { useUserStore } from '@/stores/User';
-import { ref } from 'vue'
+import { onBeforeMount, ref } from 'vue'
 import { useRouter } from 'vue-router';
 
 const store = useUserStore();
@@ -38,17 +38,26 @@ const username = ref('');
 const password = ref('');
 const showPassword = ref(false);
 
+onBeforeMount(async()=> {
+  if(store.isLoggedIn) {
+    router.push('/dashboard');
+  } 
+});
+
 async function Submit() {
   const userDetails : any = {
         "username" : username.value,
         "password" : password.value,
   }; 
-  const response = await store.Login(userDetails);
+  const response = await store.login(userDetails);
   console.log(response);
   if(response.isAuthenticated) {
     store.setIsLoggedIn(true);
+    router.push('/dashboard');
+  } else {
+    store.$reset();
+    router.push('/login');
   }
-  // router.push('/signup');
 }
 
 function showPasswordFlipped() {

@@ -1,20 +1,25 @@
-<script setup lang="ts">
-import { RouterLink, RouterView } from "vue-router";
-</script>
-
 <template>
-  <header>
+  <header v-if="isNavbarVisible">
     <div class="wrapper">
       <nav>
         <RouterLink to="/login">Login</RouterLink>
-        <RouterLink to="/logout">Logout</RouterLink>
         <RouterLink to="/signup">Sign Up</RouterLink>
       </nav>
     </div>
   </header>
   <RouterView />
 </template>
+<script setup lang="ts">
+import { RouterLink, RouterView, useRoute } from "vue-router";
+import { useUserStore } from '@/stores/User';
+import { computed } from "@vue/reactivity";
 
+const route = useRoute();
+
+const isNavbarVisible = computed(() => {
+  return route.name != 'dashboard' && route.name != 'logout';
+})
+</script>
 <style scoped>
 header {
   line-height: 1.5;

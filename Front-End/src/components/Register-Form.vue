@@ -72,8 +72,12 @@ const rollNumber = ref('');
 const passwordMatch = ref(true);
 
 onBeforeMount(async()=> {
-  const response = await store.fetchUserType();
-  store.setUserType(response);
+  if(store.isLoggedIn) {
+    router.push('/dashboard');
+  } else {
+    const response = await store.fetchUserType();
+    store.setUserType(response);
+  }
 });
 
 async function Submit() {
@@ -85,7 +89,7 @@ async function Submit() {
         "usertype" : userType.value,
         "rollNumber" : rollNumber.value
     };
-    const response = await store.SignUp(userDetails);
+    const response = await store.signUp(userDetails);
     router.push('/login');
   };
 }

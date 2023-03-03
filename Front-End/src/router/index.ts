@@ -1,6 +1,8 @@
 import { createRouter, createWebHistory } from "vue-router";
 import LoginForm from "../components/Login-Form.vue";
 import RegisterForm from "../components/Register-Form.vue";
+import Logout from "../components/Logout.vue";
+import Dashboard from "../components/Dashboard.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -15,7 +17,8 @@ const router = createRouter({
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import("../components/Logout.vue"),
+      // component: () => import("../components/Logout.vue"),
+      component: Logout
     },
     {
       path: "/login",
@@ -26,6 +29,11 @@ const router = createRouter({
       path: "/signup",
       name: "signup",
       component: RegisterForm,
+    },
+    {
+      path: "/dashboard",
+      name: "dashboard",
+      component: Dashboard,
     },
   ],
 });
