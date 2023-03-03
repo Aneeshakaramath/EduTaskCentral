@@ -1,28 +1,30 @@
 <template>
   <div class="login-form">
-    <form @submit.prevent="Submit" v-if="!store.apiCallBeingMade">
-      <!-- username input -->
-      <div class="form-group">
-        <input type="text" id="form1Example1" placeholder="Username" class="form-control" v-model="username"/>
-        <label class="form-label" for="form1Example1">Username</label>
-      </div>
+    <div class="login-form-container">
+      <form @submit.prevent="Submit" v-if="!store.apiCallBeingMade">
+        <!-- username input -->
+        <div class="form-group">
+          <input type="text" id="form1Example1" placeholder="Username" class="form-control" v-model="username"/>
+          <label class="form-label" for="form1Example1">Username</label>
+        </div>
 
-      <!-- Password input -->
-      <div class="form-group">
-        <input type="password" id="form1Example2" placeholder="password" class="form-control" v-model="password"/>
-        <label class="form-label" for="form1Example2">Password</label>
-      </div>
-     
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" v-model="showPassword" @change="showPasswordFlipped">
-        <label class="form-check-label" for="flexCheckDefault">
-          Show Password
-        </label>
-      </div>
+        <!-- Password input -->
+        <div class="form-group">
+          <input type="password" id="form1Example2" placeholder="password" class="form-control" v-model="password"/>
+          <label class="form-label" for="form1Example2">Password</label>
+        </div>
+      
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" v-model="showPassword" @change="showPasswordFlipped">
+          <label class="form-check-label" for="flexCheckDefault">
+            Show Password
+          </label>
+        </div>
 
-      <!-- Submit button -->
-      <button type="submit" class="btn btn-default button-sign-in">Sign in</button>
-    </form>
+        <!-- Submit button -->
+        <button type="submit" class="btn btn-default button-sign-in">Sign in</button>
+      </form>
+    </div>
     <div class="spinner-border" v-if="store.apiCallBeingMade" role="status">
       <span class="visually-hidden" ></span>
   </div>
@@ -89,5 +91,13 @@ function showPasswordFlipped() {
   margin-top: 20px;
   text-align: center;
   width: 100%;
+  background-color: #166df7;
+  color: white;
+} 
+
+.login-form-container {
+  background-color: white;
+  padding: 50px;
+  border-radius: 20px;
 }
 </style>

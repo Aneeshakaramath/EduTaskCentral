@@ -20,11 +20,13 @@ const store = useUserStore();
   display: flex;
   flex-flow: row-reverse;
   align-content: flex-end;
+  margin-right: 30px;
+  margin-top: 10px;
 }
 
 .flex-container-nav > * {
   text-align: center;
-  line-height: 75px;
+  /*line-height: 75px;*/
   font-size: 30px;
 }
 

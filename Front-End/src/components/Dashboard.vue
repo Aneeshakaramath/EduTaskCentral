@@ -5,7 +5,7 @@
     </div>
     <div class="columns">
       <NavBar></NavBar>
-      <SidePanel></SidePanel>
+      <StatusDetails></StatusDetails>
     </div>
     <!--<RouterLink to="/logout">Logout</RouterLink>
     <h1>Logged In Successfully</h1>
@@ -22,18 +22,19 @@ import { RouterLink, useRouter } from "vue-router";
 import { useUserStore } from '@/stores/User';
 import { onBeforeMount } from "vue";
 import SidePanel from './dashboard/SidePanel.vue';
+import StatusDetails from './dashboard/StatusDetails.vue'
 import NavBar from './dashboard/NavBar.vue';
 
 const store = useUserStore();
 const router = useRouter();
 
 onBeforeMount(async()=> {
-  if(store.isLoggedIn) {
+  /*if(store.isLoggedIn) {
     const response = await store.fetchUserData();
     store.setUserData(response);
   } else {
     router.push('/login');
-  }
+  }*/
 });
 
 </script>
@@ -53,11 +54,11 @@ onBeforeMount(async()=> {
 
 .columns{
   flex: 1;
-  padding: 10px;
   background-color: white;
+  border-radius: 10px;
 }
 .columns:nth-of-type(even){
-  flex: 2; 
+  flex: 3; 
 }
 
 </style>

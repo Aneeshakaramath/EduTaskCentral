@@ -1,52 +1,54 @@
 <template>
   <div class="sign-up-form">
-    <form @submit.prevent="Submit" v-if="!store.apiCallBeingMade">
-      <!-- name input -->
-      <div class="mb-3">
-        <label class="form-label" for="name">Name</label>
-        <input type="text" id="name" placeholder="Name" class="form-control" v-model="name"/>
-      </div>
+    <div class="sign-up-form-container">
+      <form @submit.prevent="Submit" v-if="!store.apiCallBeingMade">
+        <!-- name input -->
+        <div class="mb-3">
+          <label class="form-label" for="name">Name</label>
+          <input type="text" id="name" placeholder="Name" class="form-control" v-model="name"/>
+        </div>
 
-      <!-- username input -->
-      <div class="mb-3">
-        <label class="form-label" for="form1Example1">Username</label>
-        <input type="text" id="form1Example1" placeholder="Username" class="form-control" v-model="username"/>
-      </div>
+        <!-- username input -->
+        <div class="mb-3">
+          <label class="form-label" for="form1Example1">Username</label>
+          <input type="text" id="form1Example1" placeholder="Username" class="form-control" v-model="username"/>
+        </div>
 
-      <!-- Password input -->
-      <div class="mb-3">
-        <label class="form-label" for="form1Example2">Password</label>
-        <input type="password" id="form1Example2" placeholder="password" class="form-control" v-model="password"/>
-      </div>
-      
-      <!-- Confirm Password input -->
-      <div class="mb-3">
-        <label class="form-label" for="form1Example2">Re-Enter password</label>
-        <input @blur="validatePassword" type="password" id="form1Example2" placeholder="password" class="form-control" v-model="reenterPassword"/>
-      </div>
+        <!-- Password input -->
+        <div class="mb-3">
+          <label class="form-label" for="form1Example2">Password</label>
+          <input type="password" id="form1Example2" placeholder="password" class="form-control" v-model="password"/>
+        </div>
+        
+        <!-- Confirm Password input -->
+        <div class="mb-3">
+          <label class="form-label" for="form1Example2">Re-Enter password</label>
+          <input @blur="validatePassword" type="password" id="form1Example2" placeholder="password" class="form-control" v-model="reenterPassword"/>
+        </div>
 
-      <div class="alert alert-danger" v-if="!passwordMatch">
-        <strong>password Doens't Match</strong>
-      </div>
-      <!-- User Type -->
-      <div class="mb-3">
-        <label class="form-label" for="userTypeId">Select the User Type</label>
-        <select class="form-select userType" id="userTypeId" v-model="userType">
-            <option v-for="user in userTypes" :value=user.code>
-              {{ user.name.toUpperCase() }}
-            </option>
-        </select>
-      </div>
-      
-      <!-- register number -->
-      <div class="mb-3">
-        <label class="form-label" for="rollNumber">Roll Number</label>
-        <input type="text" id="rollNumber" placeholder="rollNumber" class="form-control" v-model="rollNumber"/>
-      </div>
+        <div class="alert alert-danger" v-if="!passwordMatch">
+          <strong>password Doens't Match</strong>
+        </div>
+        <!-- User Type -->
+        <div class="mb-3">
+          <label class="form-label" for="userTypeId">Select the User Type</label>
+          <select class="form-select userType" id="userTypeId" v-model="userType">
+              <option v-for="user in userTypes" :value=user.code>
+                {{ user.name.toUpperCase() }}
+              </option>
+          </select>
+        </div>
+        
+        <!-- register number -->
+        <div class="mb-3">
+          <label class="form-label" for="rollNumber">Roll Number</label>
+          <input type="text" id="rollNumber" placeholder="rollNumber" class="form-control" v-model="rollNumber"/>
+        </div>
 
-      <!-- Submit button -->
-      <button type="submit" class="btn btn-default button-sign-up">Sign in</button>
-    </form>
+        <!-- Submit button -->
+        <button type="submit" class="btn btn-default button-sign-up">Sign up</button>
+      </form>
+    </div>
     <div class="spinner-border" v-if="store.apiCallBeingMade" role="status">
       <span class="visually-hidden" ></span>
     </div>
@@ -117,10 +119,18 @@ const userTypes = computed(() => {
   margin-top: 30px;
   text-align: center;
   width: 100%;
+  background-color: #166df7;
+  color: white;
 }
 
 .userType{
   margin: 15px;
+}
+
+.sign-up-form-container {
+  background-color: white;
+  padding: 50px;
+  border-radius: 20px;
 }
 
 </style>
