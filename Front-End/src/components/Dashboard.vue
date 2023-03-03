@@ -1,9 +1,16 @@
 <template>
-  <div class="dashboard" v-if="!store.apiCallBeingMade">
-    <RouterLink to="/logout">Logout</RouterLink>
+  <div class="dashboard flexcontainer" v-if="!store.apiCallBeingMade">
+    <div class="columns">
+      <SidePanel></SidePanel>
+    </div>
+    <div class="columns">
+      <NavBar></NavBar>
+      <SidePanel></SidePanel>
+    </div>
+    <!--<RouterLink to="/logout">Logout</RouterLink>
     <h1>Logged In Successfully</h1>
     <p> {{ store.userData }}</p>
-    <p> Welcome {{ store?.userData?.userDetails?.name }}</p>
+    <p> Welcome {{ store?.userData?.userDetails?.name }}</p>-->
   </div>
   <div class="spinner-border" v-if="store.apiCallBeingMade" role="status">
       <span class="visually-hidden" ></span>
@@ -14,25 +21,43 @@
 import { RouterLink, useRouter } from "vue-router";
 import { useUserStore } from '@/stores/User';
 import { onBeforeMount } from "vue";
+import SidePanel from './dashboard/SidePanel.vue';
+import NavBar from './dashboard/NavBar.vue';
 
 const store = useUserStore();
 const router = useRouter();
 
 onBeforeMount(async()=> {
-  if(store.isLoggedIn) {
+  /*if(store.isLoggedIn) {
     const response = await store.fetchUserData();
     store.setUserData(response);
   } else {
     router.push('/login');
-  }
+  }*/
 });
 
 </script>
 
 <style scoped>
 
-.log-out {
+.dashboard {
   margin: 30px;
+  height: 100%;
+}
+
+.flexcontainer {
+  display: flex;
+  min-height: 200px;
+  font-size:15px;
+}
+
+.columns{
+  flex: 1;
+  padding: 10px;
+  background-color: white;
+}
+.columns:nth-of-type(even){
+  flex: 2; 
 }
 
 </style>
