@@ -22,6 +22,8 @@ const oneDay = 1000 * 60 * 60 * 24;
 // initialize express object
 const app = express();
 
+app.use(express.static("public"));
+
 // connect to mongo db
 mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true })
 const db = mongoose.connection
@@ -59,7 +61,7 @@ app.use((req, res, next) => {
 */
 app.use('/api/auth', authRouter);
 app.use('/api/user', userRouter);
-app.use('/api/userType',isAuthorized, userTypeRouter);
+app.use('/api/userType',userTypeRouter);
 app.use('/api/taskType', isAuthorized, taskTypeRouter);
 app.use('/api/task', isAuthorized, taskRouter);
 app.use('/api/comment', isAuthorized, commentsRouter);

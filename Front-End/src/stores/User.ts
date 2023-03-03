@@ -1,43 +1,46 @@
 import { ref, computed } from "vue";
 import { defineStore } from "pinia";
+import fetchUserType from "./actions/fetchUserType";
+import signUpUser from "./actions/signUpUser";
+import authenticateUser from "./actions/authenticateUser";
 
 export const useUserStore = defineStore("user", {
   state: () => ({ 
-    userType: [
-      {
-      "code": "u01",
-      "name": "admin",
-      },
-      {
-      "code": "u02",
-      "name": "vc",
-      },
-      {
-      "code": "u03",
-      "name": "hod",
-      },
-      {
-      "code": "u04",
-      "name": "faculty",
-      },
-      {
-      "code": "u05",
-      "name": "dean",
-      }
-    ],
-    isUserTypeFetched: false,
+    userType: [],
+    apiCallBeingMade: false,
+    isLoggedIn: false,
+    isErrorOccured: false
   }),
   getters: {
     getUserType: (state) => state.userType,
   },
   actions: {
-    fetchUserType() {
-      const response = this.userType;
-      this.setUserType(response);
-      this.isUserTypeFetched = true;
+    async fetchUserType() {
+      this.apiCallBeingMade = true;
+      const response = await fetchUserType();
+      this.apiCallBeingMade = false;
+      return response;
     },
     setUserType(payload) {
       this.userType = payload;
+    },
+    async SignUp(userDetails) {
+      this.apiCallBeingMade = true;
+      const response = await signUpUser(userDetails);
+      this.apiCallBeingMade = false;
+      return response;
+    },
+    async Login(userDetails) {
+      this.apiCallBeingMade = true;
+      const response = await authenticateUser(userDetails);
+      console.log(response);
+      this.apiCallBeingMade = false;
+      return response;
+    },
+    async setIsLoggedIn(payload) {
+      this.isLoggedIn = payload;
     }
   },
 })
+
+

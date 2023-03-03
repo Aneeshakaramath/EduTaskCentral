@@ -15,7 +15,7 @@ const authorizeUser = async (req, res, next) => {
         const user = await User.find({ username: req.body.username });
 
         // check if the user is available else send error response
-        if(user == null) {
+        if(user == null || user[0] == null) {
             return next(
                 new HttpError('Username is invalid or not found', 400)
             );
