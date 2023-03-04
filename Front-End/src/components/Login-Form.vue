@@ -1,7 +1,7 @@
 <template>
   <div class="login-form">
-    <div class="login-form-container">
-      <form @submit.prevent="Submit" v-if="!store.apiCallBeingMade">
+    <div class="login-form-container" v-if="!store.apiCallBeingMade">
+      <form @submit.prevent="Submit">
         <!-- username input -->
         <div class="form-group">
           <input type="text" id="form1Example1" placeholder="Username" class="form-control" v-model="username"/>

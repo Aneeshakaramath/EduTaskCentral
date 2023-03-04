@@ -1,7 +1,7 @@
 <template>
   <div class="sign-up-form">
-    <div class="sign-up-form-container">
-      <form @submit.prevent="Submit" v-if="!store.apiCallBeingMade">
+    <div class="sign-up-form-container" v-if="!store.apiCallBeingMade">
+      <form @submit.prevent="Submit">
         <!-- name input -->
         <div class="mb-3">
           <label class="form-label" for="name">Name</label>
