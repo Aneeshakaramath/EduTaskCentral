@@ -100,4 +100,12 @@ function showPasswordFlipped() {
   padding: 50px;
   border-radius: 20px;
 }
+
+.form-label {
+ color: lightgray;
+}
+
+.form-check-label {
+  color: lightgray;
+}
 </style>

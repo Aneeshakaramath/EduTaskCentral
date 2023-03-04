@@ -4,11 +4,14 @@ import signUpUser from "./actions/signUpUser";
 import authenticateUser from "./actions/authenticateUser";
 import logout from "./actions/logout";
 import fetchUserData from "./actions/fetchUserData";
+import fetchGroupDetails from "./actions/fetchGroupDetails";
 
 export const useUserStore = defineStore("user", {
   state: () => ({ 
     userType: [],
     apiCallBeingMade: false,
+    groupDetails: [],
+    isGetGroupCallInProgress: false,
     isLoggedIn: false,
     isErrorOccured: false,
     userData: null,
@@ -60,6 +63,16 @@ export const useUserStore = defineStore("user", {
     },
     setUserData(payload) {
       this.userData = payload;
+    },
+    setGroupDetails(payload) {
+      this.groupDetails = payload;
+    },
+    async fetchGroupDetails() {
+      this.isGetGroupCallInProgress = true;
+      const response = await fetchGroupDetails();
+      console.log(response);
+      this.isGetGroupCallInProgress = false;
+      return response;
     }
   },
 })

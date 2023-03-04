@@ -133,4 +133,7 @@ const userTypes = computed(() => {
   border-radius: 20px;
 }
 
+.form-label {
+  color: lightgray;
+}
 </style>

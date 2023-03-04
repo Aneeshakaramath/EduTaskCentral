@@ -8,7 +8,6 @@
             </tr>
         </thead>
         <tbody>
-
             <tr v-for="task in taskList">
                 <th scope="row"> {{ task.description }} </th>
                 <td>{{ task.assignedBy.name }}</td>

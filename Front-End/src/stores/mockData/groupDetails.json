@@ -1,0 +1,78 @@
+[
+    {
+      "_id": "63de4baadb83b00048697c4f",
+      "groupName": "admin",
+      "userId": [
+        {
+          "_id": "63de4a0eff44d7cfb3afe61d",
+          "name": "admin1",
+          "rollNumber": "001",
+          "usertype": "u01"
+        }
+      ],
+      "__v": 0
+    },
+    {
+      "_id": "63de4bbfdb83b00048697c54",
+      "groupName": "dean",
+      "userId": [
+        {
+          "_id": "63de4ac4db83b00048697c31",
+          "name": "dean2",
+          "rollNumber": "004",
+          "usertype": "u03"
+        },
+        {
+          "_id": "63de4ab8db83b00048697c2e",
+          "name": "dean1",
+          "rollNumber": "003",
+          "usertype": "u03"
+        }
+      ],
+      "__v": 1
+    },
+    {
+      "_id": "63de4c32db83b00048697c5e",
+      "groupName": "hod Group",
+      "userId": [
+        {
+          "_id": "63de4ad4db83b00048697c34",
+          "name": "hod1",
+          "rollNumber": "005",
+          "usertype": "u04"
+        },
+        {
+          "_id": "63de4ae2db83b00048697c37",
+          "name": "hod2",
+          "rollNumber": "006",
+          "usertype": "u04"
+        }
+      ],
+      "__v": 0
+    },
+    {
+      "_id": "63de4c77db83b00048697c64",
+      "groupName": "faculty Group",
+      "userId": [
+        {
+          "_id": "63de4ae2db83b00048697c37",
+          "name": "hod2",
+          "rollNumber": "006",
+          "usertype": "u04"
+        },
+        {
+          "_id": "63de4b0fdb83b00048697c3e",
+          "name": "faculty2",
+          "rollNumber": "008",
+          "usertype": "u05"
+        },
+        {
+          "_id": "63de4b19db83b00048697c41",
+          "name": "faculty3",
+          "rollNumber": "009",
+          "usertype": "u05"
+        }
+      ],
+      "__v": 0
+    }
+  ]

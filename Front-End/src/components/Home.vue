@@ -48,7 +48,6 @@ onBeforeMount(async()=> {
 .columns{
   flex: 1;
   background-color: white;
-  border-radius: 10px;
 }
 .columns:nth-of-type(even){
   flex: 3; 
