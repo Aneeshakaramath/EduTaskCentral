@@ -34,6 +34,8 @@ const store = useUserStore();
 
 .hello-message {
   margin-right: 20px;
+  color: black;
+  font-weight: 900;
 }
 
 .user_icon > img {

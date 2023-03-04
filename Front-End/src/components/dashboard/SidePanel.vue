@@ -7,7 +7,7 @@
         <RouterLink to="#"><button type="button" class="btn btn-link">Question Paper Setting</button></RouterLink>
         <RouterLink to="#"><button type="button" class="btn btn-link">Meetings</button></RouterLink>
         <RouterLink to="#"><button type="button" class="btn btn-link">Events</button></RouterLink>
-        <RouterLink to="#"><button type="button" class="btn btn-link">Tasks</button></RouterLink>
+        <RouterLink to="task"><button type="button" class="btn btn-link">Tasks</button></RouterLink>
     </div>
   </div>
 </template>

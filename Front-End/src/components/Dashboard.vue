@@ -5,7 +5,14 @@
     </div>
     <div class="columns">
       <NavBar></NavBar>
-      <StatusDetails></StatusDetails>
+      <div class="row">
+        <div class="col-sm-8">
+          <StatusDetails></StatusDetails>
+        </div>
+        <div class="col-sm-4">
+          
+        </div>
+      </div>
     </div>
     <!--<RouterLink to="/logout">Logout</RouterLink>
     <h1>Logged In Successfully</h1>
@@ -47,7 +54,6 @@ onBeforeMount(async()=> {
 
 .flexcontainer {
   display: flex;
-  min-height: 200px;
   font-size:15px;
 }
 

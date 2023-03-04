@@ -3,7 +3,7 @@
     <h1 class="welcome-message">Welcome back, {{ store?.userData?.userDetails?.name }}! </h1>
     <div class="task-status-container">
       <h2 class="task-status-label">Task Status</h2>
-      <TaskStatus taskStatus="To Do" fontcolor="grey" ></TaskStatus>
+      <TaskStatus taskStatus="To Do" fontcolor="grey"></TaskStatus>
       <TaskStatus  taskStatus="In progress" fontcolor="orange"></TaskStatus>
       <TaskStatus taskStatus="Done" fontcolor="green"></TaskStatus>
     </div>

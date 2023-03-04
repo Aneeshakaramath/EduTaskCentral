@@ -4,23 +4,7 @@
         <span class="count-task" v-if="taskListForCurrentStatus.length > 0"> {{ taskListForCurrentStatus.length }} TASK </span>
         <div>
             <div class="table-container" v-if="taskListForCurrentStatus.length > 0">
-                <table class="table">
-                    <thead>
-                        <tr class="table-header">
-                            <th scope="col">Task Name</th>
-                            <th scope="col">Created By</th>
-                            <th scope="col">End Date</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        
-                        <tr v-for="task in getMaxThreeStatus">
-                            <th scope="row"> {{task.description}} </th>
-                            <td>{{task.assignedBy.name}}</td>
-                            <td>{{task.endDate}}</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <TaskTable :task-list="getMaxThreeStatus"></TaskTable>
             </div>
             <div class="no-task-available-message" v-else>
                 No Task Available to Display
@@ -32,10 +16,12 @@
 <script setup lang="ts">
 import { useUserStore } from '@/stores/User';
 import { computed } from '@vue/reactivity';
+import TaskTable from './TaskTable.vue';
 
 const props = defineProps<{
     taskStatus: string,
-    fontcolor: string
+    fontcolor: string,
+    showAll: boolean
 }>()
 
 const store = useUserStore();
@@ -58,6 +44,11 @@ const getMaxThreeStatus = computed(()=> {
         return task!=null && task.taskStatus == props.taskStatus?.toUpperCase();
         })
     }
+
+    if(props.showAll) {
+      return filteredArray;
+    }
+    
     if(filteredArray.length <=3) {
         return filteredArray;
     } 
@@ -98,11 +89,6 @@ const getMaxThreeStatus = computed(()=> {
 
   .table-container {
     text-align: center;
-  }
-
-  .table-header {
-    font-size: 12px;
-    color: grey;
   }
 
 </style>
