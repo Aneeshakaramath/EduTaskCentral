@@ -14,7 +14,8 @@
                 </div>
             </div>
         </div>
-        <div id="chart" class="donut-chart">
+        <button type="button" class="btn btn-secondary" @click="showChartValues">show/hide Chart</button>
+        <div id="chart" class="donut-chart" v-if="showChart">
             <apexchart type="donut" width="380" :options="chartOptions" :series="series"></apexchart>
         </div>
     </div>
@@ -33,6 +34,7 @@ const props = defineProps<{
 const store = useUserStore();
 const route = useRoute();
 
+let showChart = ref(false);
 let taskStatusList = [
     {
         status: 'TO DO',
@@ -51,19 +53,13 @@ let taskStatusList = [
     }
 ];
 
-let series = [0,0,0];
-
-watch(()=> route.name, () => {
-    console.log("getting called ********8")
-    series = [taskStatusList[0].taskList.length, taskStatusList[1].taskList.length, taskStatusList[2].taskList.length];
-});
-
+let series = ref([]);
 
 watch(()=>props.taskListType, (newValue, oldValue)=> {
     for (let i = 0; i < taskStatusList.length; i++) {
         taskStatusList[i].taskList = getTaskList(taskStatusList[i].status);
     }
-    series = [taskStatusList[0].taskList.length, taskStatusList[1].taskList.length, taskStatusList[2].taskList.length];
+    series.value = [taskStatusList[0].taskList.length, taskStatusList[1].taskList.length, taskStatusList[2].taskList.length];
 });
 
 function getTaskList(taskStatus: string) {
@@ -123,7 +119,12 @@ const chartOptions = computed(() => {
               }
             }]
           }
-})
+});
+
+function showChartValues() {
+    series.value = [taskStatusList[0].taskList.length, taskStatusList[1].taskList.length, taskStatusList[2].taskList.length];
+    showChart.value = !showChart.value;
+}
 </script>
   
 <style scoped>
@@ -158,6 +159,7 @@ const chartOptions = computed(() => {
   }
 
   .donut-chart {
+    margin: 30px;
     text-align: center;
   }
 </style>
