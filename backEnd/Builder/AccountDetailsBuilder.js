@@ -21,8 +21,8 @@ function getTaskDetails(taskList, commentsList, taskTypeList) {
     let taskDetails = [];
     
     taskList.forEach((task) => {
-        let taskDetail = new TaskDetails(task._id, getTaskName(task.taskType, taskTypeList), task.numberOfEvents, task.description, task.startDate,
-                                            task.endDate, task.childTaskList, getUser(task.assignedBy), getUser(task.assignedTo),
+        let taskDetail = new TaskDetails(task._id, getTaskName(task.taskType, taskTypeList), task.numberOfEvents, task.description, formatDate(task.startDate),
+                                            formatDate(task.endDate), task.childTaskList, getUser(task.assignedBy), getUser(task.assignedTo),
                                             task.taskStatus, getComments(task._id.toString(), commentsList));
         taskDetails.push(taskDetail);
     });

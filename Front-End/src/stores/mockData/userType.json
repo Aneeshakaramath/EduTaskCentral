@@ -1,0 +1,37 @@
+[
+    {
+    "_id": "64014eea067c1d45ba3db429",
+    "code": "uo1",
+    "name": "Admin",
+    "description": "Has all the access",
+    "__v": 0
+    },
+    {
+    "_id": "64014f09067c1d45ba3db42b",
+    "code": "u02",
+    "name": "Vice Chancellor",
+    "description": "VC of the college",
+    "__v": 0
+    },
+    {
+    "_id": "64014f17067c1d45ba3db42d",
+    "code": "u03",
+    "name": "Dean",
+    "description": "Dean of the college",
+    "__v": 0
+    },
+    {
+    "_id": "64014f32067c1d45ba3db431",
+    "code": "u04",
+    "name": "Head Of the department",
+    "description": "Hod of the departments",
+    "__v": 0
+    },
+    {
+    "_id": "64014f4c067c1d45ba3db434",
+    "code": "u05",
+    "name": "Faculty",
+    "description": "Faculy of various departments",
+    "__v": 0
+    }
+]

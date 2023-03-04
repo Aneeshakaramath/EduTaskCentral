@@ -2,6 +2,7 @@
   <div class="log-out" v-if="!store.apiCallBeingMade" >
     <h1>Logout Successful</h1>
     <p> You are now logged out</p>
+    <RouterLink to="/login">Login Again</RouterLink>
   </div>
   <div class="spinner-border" v-if="store.apiCallBeingMade" role="status">
       <span class="visually-hidden" ></span>

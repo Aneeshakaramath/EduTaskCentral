@@ -30,10 +30,10 @@ const router = useRouter();
 
 onBeforeMount(async()=> {
   if(store.isLoggedIn) {
-    const response = await store.fetchUserData();
-    store.setUserData(response);
+      const response = await store.fetchUserData();
+      store.setUserData(response);
   } else {
-    router.push('/login');
+      router.push('/login');
   }
 });
 
@@ -42,8 +42,7 @@ onBeforeMount(async()=> {
 <style scoped>
 
 .dashboard {
-  margin: 30px;
-  height: 100%;
+  padding: 20px;
 }
 
 .flexcontainer {

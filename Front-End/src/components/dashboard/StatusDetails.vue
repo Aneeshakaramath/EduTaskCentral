@@ -1,11 +1,11 @@
 <template>
   <div class="status-details-container">
-    <h1 class="welcome-message">Welcome {{ store?.userData?.userDetails?.name }} </h1>
+    <h1 class="welcome-message">Welcome back, {{ store?.userData?.userDetails?.name }}! </h1>
     <div class="task-status-container">
-      <h2>Task Status</h2>
-      <TaskStatus heading="To Do" fontcolor="grey"></TaskStatus>
-      <TaskStatus  heading="In progress" fontcolor="orange"></TaskStatus>
-      <TaskStatus heading="Done" fontcolor="green"></TaskStatus>
+      <h2 class="task-status-label">Task Status</h2>
+      <TaskStatus taskStatus="To Do" fontcolor="grey" ></TaskStatus>
+      <TaskStatus  taskStatus="In progress" fontcolor="orange"></TaskStatus>
+      <TaskStatus taskStatus="Done" fontcolor="green"></TaskStatus>
     </div>
   </div>
 </template>
@@ -23,11 +23,14 @@ const store = useUserStore();
   color: black
 }
 .welcome-message{
-
+  font-size: 20px;
 }
 .task-status-container {
   margin: 20px;
   padding: 10px;
   background-color: #FFF5EE;
+}
+.task-status-label {
+  font-size: 15px;
 }
 </style>

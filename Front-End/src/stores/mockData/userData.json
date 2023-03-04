@@ -1,0 +1,222 @@
+{
+    "userDetails": {
+      "id": "63df2b690b6c90138bd6bc7c",
+      "name": "hod1",
+      "rollNumber": "003",
+      "userName": "hod1",
+      "userType": "u04"
+    },
+    "accessDetails": {
+      "isAllowedToCreateTask": true
+    },
+    "taskAssignedToMe": [
+      {
+        "id": "63df2e4f0b6c90138bd6bc90",
+        "name": "Seminar",
+        "numberOfEvents": 3,
+        "description": "Conduct seminar on data structures",
+        "startDate": "2023-03-02",
+        "endDate": "2023-03-03",
+        "childTaskList": [],
+        "assignedBy": {
+          "id": "63df2ba40b6c90138bd6bc80",
+          "name": "dean1",
+          "rollNumber": "004",
+          "userName": "dean1",
+          "userType": "u03"
+        },
+        "assignedTo": {
+          "id": "63df2b690b6c90138bd6bc7c",
+          "name": "hod1",
+          "rollNumber": "003",
+          "userName": "hod1",
+          "userType": "u04"
+        },
+        "taskStatus": "IN PROGRESS",
+        "commentDetails": []
+      },
+      {
+        "id": "63df32d10b6c90138bd6bc9c",
+        "name": "Seminar",
+        "numberOfEvents": 3,
+        "description": "Conduct seminar on ChatGPT",
+        "startDate": "2023-03-02",
+        "endDate": "2023-03-03",
+        "childTaskList": [
+          {
+            "id": "63df33200b6c90138bd6bca4",
+            "taskType": "t01",
+            "numberOfEvents": 3,
+            "description": "Conduct seminar on ChatGPT",
+            "startDate": "2023-03-02T18:30:00.000Z",
+            "endDate": "2023-01-03T18:30:00.000Z",
+            "childTaskList": [],
+            "assignedBy": "63df2b690b6c90138bd6bc7c",
+            "assignedTo": "63df2c270b6c90138bd6bc87",
+            "taskStatus": "TO DO",
+            "_v": 0
+          }
+        ],
+        "assignedBy": {
+          "id": "63df2ba40b6c90138bd6bc80",
+          "name": "dean1",
+          "rollNumber": "004",
+          "userName": "dean1",
+          "userType": "u03"
+        },
+        "assignedTo": {
+          "id": "63df2b690b6c90138bd6bc7c",
+          "name": "hod1",
+          "rollNumber": "003",
+          "userName": "hod1",
+          "userType": "u04"
+        },
+        "taskStatus": "IN PROGRESS",
+        "commentDetails": []
+      },
+      {
+        "id": "63df32d10b6c90138bd6bc9c",
+        "name": "Seminar",
+        "numberOfEvents": 3,
+        "description": "Conduct seminar on ChatGPT",
+        "startDate": "2023-03-03",
+        "endDate": "2023-03-03",
+        "childTaskList": [
+          {
+            "id": "63df33200b6c90138bd6bca4",
+            "taskType": "t01",
+            "numberOfEvents": 3,
+            "description": "Conduct seminar on ChatGPT",
+            "startDate": "2023-03-02T18:30:00.000Z",
+            "endDate": "2023-01-03T18:30:00.000Z",
+            "childTaskList": [],
+            "assignedBy": "63df2b690b6c90138bd6bc7c",
+            "assignedTo": "63df2c270b6c90138bd6bc87",
+            "taskStatus": "TO DO",
+            "_v": 0
+          }
+        ],
+        "assignedBy": {
+          "id": "63df2ba40b6c90138bd6bc80",
+          "name": "dean1",
+          "rollNumber": "004",
+          "userName": "dean1",
+          "userType": "u03"
+        },
+        "assignedTo": {
+          "id": "63df2b690b6c90138bd6bc7c",
+          "name": "hod1",
+          "rollNumber": "003",
+          "userName": "hod1",
+          "userType": "u04"
+        },
+        "taskStatus": "IN PROGRESS",
+        "commentDetails": []
+      },
+      {
+        "id": "63df32d10b6c90138bd6bc9c",
+        "name": "Seminar",
+        "numberOfEvents": 3,
+        "description": "Conduct seminar on ChatGPT",
+        "startDate": "2023-03-03",
+        "endDate": "2023-03-03",
+        "childTaskList": [
+          {
+            "id": "63df33200b6c90138bd6bca4",
+            "taskType": "t01",
+            "numberOfEvents": 3,
+            "description": "Conduct seminar on ChatGPT",
+            "startDate": "2023-03-02T18:30:00.000Z",
+            "endDate": "2023-01-03T18:30:00.000Z",
+            "childTaskList": [],
+            "assignedBy": "63df2b690b6c90138bd6bc7c",
+            "assignedTo": "63df2c270b6c90138bd6bc87",
+            "taskStatus": "TO DO",
+            "_v": 0
+          }
+        ],
+        "assignedBy": {
+          "id": "63df2ba40b6c90138bd6bc80",
+          "name": "dean1",
+          "rollNumber": "004",
+          "userName": "dean1",
+          "userType": "u03"
+        },
+        "assignedTo": {
+          "id": "63df2b690b6c90138bd6bc7c",
+          "name": "hod1",
+          "rollNumber": "003",
+          "userName": "hod1",
+          "userType": "u04"
+        },
+        "taskStatus": "IN PROGRESS",
+        "commentDetails": []
+      },
+      {
+        "id": "63df32d10b6c90138bd6bc9c",
+        "name": "Seminar",
+        "numberOfEvents": 3,
+        "description": "Conduct seminar on ChatGPT",
+        "startDate": "2023-03-03",
+        "endDate": "2023-03-03",
+        "childTaskList": [
+          {
+            "id": "63df33200b6c90138bd6bca4",
+            "taskType": "t01",
+            "numberOfEvents": 3,
+            "description": "Conduct seminar on ChatGPT",
+            "startDate": "2023-03-02T18:30:00.000Z",
+            "endDate": "2023-01-03T18:30:00.000Z",
+            "childTaskList": [],
+            "assignedBy": "63df2b690b6c90138bd6bc7c",
+            "assignedTo": "63df2c270b6c90138bd6bc87",
+            "taskStatus": "TO DO",
+            "_v": 0
+          }
+        ],
+        "assignedBy": {
+          "id": "63df2ba40b6c90138bd6bc80",
+          "name": "dean1",
+          "rollNumber": "004",
+          "userName": "dean1",
+          "userType": "u03"
+        },
+        "assignedTo": {
+          "id": "63df2b690b6c90138bd6bc7c",
+          "name": "hod1",
+          "rollNumber": "003",
+          "userName": "hod1",
+          "userType": "u04"
+        },
+        "taskStatus": "DONE",
+        "commentDetails": []
+      }
+    ],
+    "taskAssignedByMe": [
+      {
+        "id": "63df33200b6c90138bd6bca4",
+        "name": "Seminar",
+        "numberOfEvents": 3,
+        "description": "Conduct seminar on ChatGPT",
+        "startDate": "2023-03-02T18:30:00.000Z",
+        "endDate": "2023-01-03T18:30:00.000Z",
+        "childTaskList": [],
+        "assignedBy": {
+          "id": "63df2b690b6c90138bd6bc7c",
+          "name": "hod1",
+          "rollNumber": "003",
+          "userName": "hod1",
+          "userType": "u04"
+        },
+        "assignedTo": {
+          "id": "63df2c270b6c90138bd6bc87",
+          "name": "faculty1",
+          "rollNumber": "005",
+          "userName": "faculty1",
+          "userType": "u05"
+        },
+        "taskStatus": "TO DO",
+        "commentDetails": []
+      }
+    ]
+  }
