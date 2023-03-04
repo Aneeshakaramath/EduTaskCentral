@@ -29,12 +29,12 @@ const store = useUserStore();
 const router = useRouter();
 
 onBeforeMount(async()=> {
-  /*if(store.isLoggedIn) {
+  if(store.isLoggedIn) {
     const response = await store.fetchUserData();
     store.setUserData(response);
   } else {
     router.push('/login');
-  }*/
+  }
 });
 
 </script>

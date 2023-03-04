@@ -37,7 +37,7 @@ import { RouterLink } from "vue-router";
 
 
 .btn-link {
-    font-size: 8px;
+    /*font-size: 8px;*/
     text-align: left;
     display: block;
     color: grey;

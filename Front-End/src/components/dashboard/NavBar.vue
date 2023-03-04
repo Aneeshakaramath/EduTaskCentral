@@ -1,9 +1,13 @@
 <template>
   <div class="flex-container-nav">
-    <RouterLink to="/logout">Logout</RouterLink>
+    <RouterLink to="/logout">
+      Logout
+      <img class="logout_icon" src="@/assets/images/logout.png"/>
+    </RouterLink>
     <div class="hello-message">
-      <span> Hello, {{ store?.userData?.userDetails?.name }} </span>
+      <span> Hello, {{ store?.userData?.userDetails?.userName }} </span>
     </div>
+    <div class="user_icon"><img src="@/assets/images/user_icon.png"/></div>
   </div>
 </template>
 
@@ -26,11 +30,20 @@ const store = useUserStore();
 
 .flex-container-nav > * {
   text-align: center;
-  /*line-height: 75px;*/
-  font-size: 30px;
 }
 
 .hello-message {
   margin-right: 20px;
 }
+
+.user_icon > img {
+    height: 25px;
+    margin-right: 10px;
+}
+
+.logout_icon {
+  height: 20px;
+  width: 20px;
+}
+
 </style>
