@@ -14,12 +14,16 @@
                 </div>
             </div>
         </div>
+        <div id="chart" class="donut-chart">
+            <apexchart type="donut" width="380" :options="chartOptions" :series="series"></apexchart>
+        </div>
     </div>
 </template>
   
 <script setup lang="ts">
 import { useUserStore } from '@/stores/User';
-import { watch } from 'vue';
+import { computed, onMounted, ref, watch } from 'vue';
+import { useRoute } from 'vue-router';
 import TaskTable from './TaskTable.vue';
 
 const props = defineProps<{
@@ -27,6 +31,7 @@ const props = defineProps<{
 }>()
 
 const store = useUserStore();
+const route = useRoute();
 
 let taskStatusList = [
     {
@@ -46,10 +51,19 @@ let taskStatusList = [
     }
 ];
 
+let series = [0,0,0];
+
+watch(()=> route.name, () => {
+    console.log("getting called ********8")
+    series = [taskStatusList[0].taskList.length, taskStatusList[1].taskList.length, taskStatusList[2].taskList.length];
+});
+
+
 watch(()=>props.taskListType, (newValue, oldValue)=> {
     for (let i = 0; i < taskStatusList.length; i++) {
         taskStatusList[i].taskList = getTaskList(taskStatusList[i].status);
     }
+    series = [taskStatusList[0].taskList.length, taskStatusList[1].taskList.length, taskStatusList[2].taskList.length];
 });
 
 function getTaskList(taskStatus: string) {
@@ -70,19 +84,46 @@ function getTaskList(taskStatus: string) {
     return filteredArray;
 }
 
-/*const taskListForCurrentStatus = computed(() => {
-  let filteredArray = [];
-  if(store.userData?.taskAssignedToMe && props.taskStatus) {
-    filteredArray = store.userData.taskAssignedToMe.filter( function(task) {
-       return task!=null && task.taskStatus == props.taskStatus?.toUpperCase();
-    })
-  }
-  return filteredArray;
-});*/
-
-
-
-
+const chartOptions = computed(() => {
+  return  {
+            chart: {
+              width: 380,
+              type: 'donut',
+            },
+            labels: ['TO DO', 'IN PROGRESS', 'DONE'],
+            plotOptions: {
+              pie: {
+                startAngle: -90,
+                endAngle: 270
+              }
+            },
+            dataLabels: {
+              enabled: false
+            },
+            fill: {
+              type: 'gradient',
+            },
+            legend: {
+              formatter: function(val, opts) {
+                return val + " - " + opts.w.globals.series[opts.seriesIndex]
+              }
+            },
+            title: {
+              text: 'Donut Chart'
+            },
+            responsive: [{
+              breakpoint: 480,
+              options: {
+                chart: {
+                  width: 200
+                },
+                legend: {
+                  position: 'bottom'
+                }
+              }
+            }]
+          }
+})
 </script>
   
 <style scoped>
@@ -113,6 +154,10 @@ function getTaskList(taskStatus: string) {
   }
 
   .table-container {
+    text-align: center;
+  }
+
+  .donut-chart {
     text-align: center;
   }
 </style>
