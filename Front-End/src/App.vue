@@ -7,16 +7,19 @@
       </nav>
     </div>
   </header>
-  <RouterView />
+  <router-view></router-view>
+  <!--<RouterView />-->
 </template>
 <script setup lang="ts">
 import { RouterLink, RouterView, useRoute } from "vue-router";
 import { computed } from "@vue/reactivity";
+import { useUserStore } from "./stores/User";
 
 const route = useRoute();
+const store = useUserStore();
 
 const isNavbarVisible = computed(() => {
-  return route.name != 'dashboard' && route.name != 'logout';
+  return  !store.isLoggedIn && route.name != 'logout';
 })
 </script>
 <style scoped>

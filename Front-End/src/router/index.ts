@@ -2,7 +2,9 @@ import { createRouter, createWebHashHistory, createWebHistory } from "vue-router
 import LoginForm from "../components/Login-Form.vue";
 import RegisterForm from "../components/Register-Form.vue";
 import Logout from "../components/Logout.vue";
-import Dashboard from "../components/Dashboard.vue";
+import Home from "../components/Home.vue";
+import Dashboard from "../components/dashboard/Dashboard.vue";
+import Task from "../components/Task/Task.vue";
 
 const router = createRouter({
   history: createWebHashHistory(), // createWebHistory(import.meta.env.BASE_URL),
@@ -31,9 +33,25 @@ const router = createRouter({
       component: RegisterForm,
     },
     {
-      path: "/dashboard",
-      name: "dashboard",
-      component: Dashboard,
+      path: "/home",
+      name: "home",
+      component: Home,
+      children: [
+        {
+          path: "",
+          redirect: "/home/dashboard"
+        },
+        {
+          path: "dashboard",
+          name: "dashboard",
+          component: Dashboard,
+        },
+        {
+          path: "task",
+          name: "task",
+          component: Task,
+        }
+      ]
     },
   ],
 });

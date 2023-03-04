@@ -45,7 +45,7 @@ const showPassword = ref(false);
 
 onBeforeMount(async()=> {
   if(store.isLoggedIn) {
-    router.push('/dashboard');
+    router.push('/home');
   } 
 });
 
@@ -58,7 +58,7 @@ async function Submit() {
   console.log(response);
   if(response.isAuthenticated) {
     store.setIsLoggedIn(true);
-    router.push('/dashboard');
+    router.push('/home');
   } else {
     store.$reset();
     router.push('/login');

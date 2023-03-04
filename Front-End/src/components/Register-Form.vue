@@ -75,7 +75,7 @@ const passwordMatch = ref(true);
 
 onBeforeMount(async()=> {
   if(store.isLoggedIn) {
-    router.push('/dashboard');
+    router.push('/home');
   } else {
     const response = await store.fetchUserType();
     store.setUserType(response);

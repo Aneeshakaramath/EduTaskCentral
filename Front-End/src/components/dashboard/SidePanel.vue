@@ -2,7 +2,7 @@
   <div class="side-panel">
     <div class="project-name">Edu Task Central</div>
     <div class="options">
-        <RouterLink to="#"><button type="button" class="btn btn-link">Dashboard</button></RouterLink>
+        <RouterLink to="/home/dashboard"><button type="button" class="btn btn-link">Dashboard</button></RouterLink>
         <RouterLink to="#"><button type="button" class="btn btn-link">Course Delivery</button></RouterLink>
         <RouterLink to="#"><button type="button" class="btn btn-link">Question Paper Setting</button></RouterLink>
         <RouterLink to="#"><button type="button" class="btn btn-link">Meetings</button></RouterLink>
