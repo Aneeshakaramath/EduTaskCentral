@@ -2,12 +2,12 @@
   <div class="side-panel">
     <div class="project-name">Edu Task Central</div>
     <div class="options">
-        <RouterLink to="/home/dashboard"><button type="button" class="btn btn-link">Dashboard</button></RouterLink>
+        <RouterLink :to="{ name: 'dashboard' }"><button type="button" class="btn btn-link">Dashboard</button></RouterLink>
         <RouterLink to="#"><button type="button" class="btn btn-link">Course Delivery</button></RouterLink>
         <RouterLink to="#"><button type="button" class="btn btn-link">Question Paper Setting</button></RouterLink>
         <RouterLink to="#"><button type="button" class="btn btn-link">Meetings</button></RouterLink>
         <RouterLink to="#"><button type="button" class="btn btn-link">Events</button></RouterLink>
-        <RouterLink to="task"><button type="button" class="btn btn-link">Tasks</button></RouterLink>
+        <RouterLink :to="{ name: 'task' }"><button type="button" class="btn btn-link">Tasks</button></RouterLink>
     </div>
   </div>
 </template>

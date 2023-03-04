@@ -15,6 +15,8 @@ export const useUserStore = defineStore("user", {
   }),
   getters: {
     getUserType: (state) => state.userType,
+    getTaskAssignedByMe: (state) => state.userData?.taskAssignedByMe,
+    getTaskAssignedToMe: (state) => state.userData?.taskAssignedToMe,
   },
   actions: {
     async fetchUserType() {

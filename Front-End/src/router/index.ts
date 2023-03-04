@@ -5,6 +5,7 @@ import Logout from "../components/Logout.vue";
 import Home from "../components/Home.vue";
 import Dashboard from "../components/dashboard/Dashboard.vue";
 import Task from "../components/Task/Task.vue";
+import consolidatedTaskView from "../components/Task/consolidatedTaskView.vue"
 
 const router = createRouter({
   history: createWebHashHistory(), // createWebHistory(import.meta.env.BASE_URL),
@@ -50,6 +51,20 @@ const router = createRouter({
           path: "task",
           name: "task",
           component: Task,
+          children: [
+            {
+              path: "taskAssignedToMe",
+              component: consolidatedTaskView,
+              name: "taskAssignedToMe",
+              props: { taskListType: 'taskAssignedToMe' }
+            },
+            {
+              path: "taskAssignedByMe",
+              name: "taskAssignedByMe",
+              component: consolidatedTaskView,
+              props: { taskListType: 'taskAssignedByMe' }
+            }
+          ]
         }
       ]
     },
