@@ -2,14 +2,7 @@
     {
       "_id": "63de4baadb83b00048697c4f",
       "groupName": "admin",
-      "userId": [
-        {
-          "_id": "63de4a0eff44d7cfb3afe61d",
-          "name": "admin1",
-          "rollNumber": "001",
-          "usertype": "u01"
-        }
-      ],
+      "userId": [],
       "__v": 0
     },
     {

@@ -15,10 +15,13 @@
                         <tr v-for="group in store.groupDetails">
                             <th scope="row" class="group-name"> {{ group.groupName }} </th>
                             <td>
-                                <div class="group-members">
+                                <div class="group-members" v-if="group.userId.length > 0">
                                     <span v-for="(user,index) in group.userId">
                                         {{ user.name + ((index + 1) == group.userId.length ? "" : "," ) }}
                                     </span>
+                                </div>
+                                <div class="group-members" v-else>
+                                    0 member
                                 </div>
                             </td>
                         </tr>
