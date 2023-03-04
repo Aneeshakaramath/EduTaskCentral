@@ -3,41 +3,72 @@
         <div class="row">
             <div class="col-sm" v-for="taskStatus in taskStatusList">
                 <h3 class="taks-status-label" :style="{ 'background-color': taskStatus.color}">{{ taskStatus.status }} </h3>
+                <span class="count-task" v-if="taskStatus.taskList.length > 0"> {{ taskStatus.taskList.length }} TASK </span>
+                <div>
+                    <div class="table-container" v-if="taskStatus.taskList.length > 0">
+                        <TaskTable :task-list="taskStatus.taskList"></TaskTable>
+                    </div>
+                    <div class="no-task-available-message" v-else>
+                        No Task Available to Display
+                    </div>
+                </div>
             </div>
         </div>
-        <!--<h3 class="taks-status-label" :style="{ 'background-color': fontcolor}"> {{ taskStatus.toUpperCase() }} </h3>
-        <span class="count-task" v-if="taskListForCurrentStatus.length > 0"> {{ taskListForCurrentStatus.length }} TASK </span>
-        <div>
-            <div class="table-container" v-if="taskListForCurrentStatus.length > 0">
-                <TaskTable :task-list="getMaxThreeStatus"></TaskTable>
-            </div>
-            <div class="no-task-available-message" v-else>
-                No Task Available to Display
-            </div>
-        </div>-->
     </div>
 </template>
   
 <script setup lang="ts">
-
-const taskStatusList = [
-    {
-        status: 'TODO',
-        color: 'grey'
-    }, 
-    {
-        status: 'IN PROGRESS',
-        color: 'orange'
-    },
-    {
-        status: 'DONE',
-        color: 'green'
-    }
-];
+import { useUserStore } from '@/stores/User';
+import { watch } from 'vue';
+import TaskTable from './TaskTable.vue';
 
 const props = defineProps<{
     taskListType:string
 }>()
+
+const store = useUserStore();
+
+let taskStatusList = [
+    {
+        status: 'TO DO',
+        color: 'grey',
+        taskList: getTaskList('TO DO')
+    }, 
+    {
+        status: 'IN PROGRESS',
+        color: 'orange',
+        taskList: getTaskList('IN PROGRESS')
+    },
+    {
+        status: 'DONE',
+        color: 'green',
+        taskList: getTaskList('DONE')
+    }
+];
+
+watch(()=>props.taskListType, (newValue, oldValue)=> {
+    for (let i = 0; i < taskStatusList.length; i++) {
+        taskStatusList[i].taskList = getTaskList(taskStatusList[i].status);
+    }
+});
+
+function getTaskList(taskStatus: string) {
+    let filteredArray = [];
+
+    if(props.taskListType == 'taskAssignedToMe') {
+        filteredArray = store.userData.taskAssignedToMe.filter(function(task) {
+            return task!=null && task.taskStatus == taskStatus;
+        })
+    }
+
+    else if (props.taskListType == 'taskAssignedByMe') {
+        filteredArray = store.userData.taskAssignedByMe.filter(function(task) {
+            return task!=null && task.taskStatus == taskStatus;
+        })
+    }
+
+    return filteredArray;
+}
 
 /*const taskListForCurrentStatus = computed(() => {
   let filteredArray = [];
@@ -48,6 +79,8 @@ const props = defineProps<{
   }
   return filteredArray;
 });*/
+
+
 
 
 </script>
