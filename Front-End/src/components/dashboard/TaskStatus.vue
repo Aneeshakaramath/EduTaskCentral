@@ -16,7 +16,7 @@
 <script setup lang="ts">
 import { useUserStore } from '@/stores/User';
 import { computed } from '@vue/reactivity';
-import TaskTable from './TaskTable.vue';
+import TaskTable from '../Task/TaskTable.vue';
 
 const props = defineProps<{
     taskStatus: string,
