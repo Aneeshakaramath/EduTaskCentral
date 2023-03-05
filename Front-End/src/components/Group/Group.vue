@@ -36,8 +36,7 @@ function addTag (newTag) {
         name: newTag,
         id: 'newGroup' + Math.floor((Math.random() * 10000000))
       }
-      groupOptions.value.push(tag);
-      groupValue.value.push(tag);  
+      groupOptions.value.push(tag); 
 }
 
 onBeforeMount(async()=> {
@@ -79,10 +78,12 @@ watch(groupValue, (newValue, oldValue)=> {
 async function submit() {
     let payload = {
         groupName : "",
+        groupId: "",
         userId: []
     }
     console.log(groupValue.value);
     payload.groupName = groupValue.value.name;
+    payload.groupId = groupValue.value.id;
     if(userValues.value.length > 0) {
         userValues.value.forEach((user)=> {
             payload.userId.push(user.id);
@@ -90,11 +91,12 @@ async function submit() {
     }
 
     console.log(payload);
-    if(payload.groupName.includes('newGroup')) {
+    if(payload.groupId.includes('newGroup')) {
         const response = await store.addNewGroup(payload);
         if(response.groupName == payload.groupName || response.groupName!=null) {
             setAndFetchGroupAndUserDetails();
             groupOptions.value = [];
+            userOptions.value = [];
             alert('new Group Created');
         }
     } else {
@@ -102,6 +104,7 @@ async function submit() {
         if(response.groupName == payload.groupName || response.groupName!=null) {
             setAndFetchGroupAndUserDetails();
             groupOptions.value = [];
+            userOptions.value = [];
             alert('Group Modified');
         }
     }
