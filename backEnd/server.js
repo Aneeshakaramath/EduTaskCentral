@@ -22,6 +22,7 @@ const oneDay = 1000 * 60 * 60 * 24;
 // initialize express object
 const app = express();
 
+// serving the static front end build files
 app.use(express.static("public"));
 
 // connect to mongo db
