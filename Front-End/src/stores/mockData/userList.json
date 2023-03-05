@@ -1,0 +1,56 @@
+[
+    {
+      "_id": "6401607f067c1d45ba3db495",
+      "name": "admin1",
+      "rollNumber": "001",
+      "username": "admin1",
+      "password": "admin123",
+      "usertype": "uo1",
+      "__v": 0
+    },
+    {
+      "_id": "6401613f067c1d45ba3db49c",
+      "name": "admin2",
+      "rollNumber": "002",
+      "username": "admin2",
+      "password": "admin123",
+      "usertype": "uo1",
+      "__v": 0
+    },
+    {
+      "_id": "63de4ac4db83b00048697c31",
+      "name": "dean2",
+      "rollNumber": "002",
+      "username": "dean2",
+      "password": "dean123",
+      "usertype": "u03",
+      "__v": 0
+    },
+    {
+        "_id": "63de4ab8db83b00048697c2e",
+        "name": "dean1",
+        "rollNumber": "003",
+        "username": "dean1",
+        "password": "dean123",
+        "usertype": "u03",
+        "__v": 0
+      },
+    {
+      "_id": "63de4ad4db83b00048697c34",
+      "name": "hod1",
+      "rollNumber": "005",
+      "username": "hod1",
+      "password": "hod1",
+      "usertype": "uo4",
+      "__v": 0
+    },
+    {
+      "_id": "63de4ae2db83b00048697c37",
+      "name": "hod2",
+      "rollNumber": "006",
+      "username": "hod2",
+      "password": "hod2",
+      "usertype": "uo4",
+      "__v": 0
+    }
+  ]

@@ -5,6 +5,7 @@ import authenticateUser from "./actions/authenticateUser";
 import logout from "./actions/logout";
 import fetchUserData from "./actions/fetchUserData";
 import fetchGroupDetails from "./actions/fetchGroupDetails";
+import fetchAllUser from "./actions/getAllUser";
 
 export const useUserStore = defineStore("user", {
   state: () => ({ 
@@ -15,6 +16,7 @@ export const useUserStore = defineStore("user", {
     isLoggedIn: false,
     isErrorOccured: false,
     userData: null,
+    userList: []
   }),
   getters: {
     getUserType: (state) => state.userType,
@@ -73,6 +75,14 @@ export const useUserStore = defineStore("user", {
       console.log(response);
       this.isGetGroupCallInProgress = false;
       return response;
+    },
+    async fetchUserDetails() {
+      const response = await fetchAllUser();
+      console.log(response);
+      return response;
+    },
+    setUserList(payload) {
+      this.userList = payload;
     }
   },
 })

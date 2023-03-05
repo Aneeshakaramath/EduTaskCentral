@@ -62,7 +62,7 @@ const addUsersToGroup = async (req, res, next) => {
             );
         }
         if (req.body.userId != null && await isValidUserIdList(req.body.userId)) {
-            let  concatUserIdList = [...req.body.userId, ...groupId.userId]; // merging two list
+            let  concatUserIdList = [...req.body.userId]; // merging two list
             let concatUserIdListConvertedToString = concatUserIdList.map((element)=>element.toString());
             let uniqueUserIdList = [...new Set(concatUserIdListConvertedToString)]; // removing duplicates
             groupId.userId = uniqueUserIdList;
