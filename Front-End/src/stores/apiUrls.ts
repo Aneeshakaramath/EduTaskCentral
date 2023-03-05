@@ -4,7 +4,8 @@ const API_URLS = {
     login: 'http://localhost:5000/api/auth/login',
     logout: 'http://localhost:5000/api/auth/logout',
     userData: 'http://localhost:5000/api/getAccountDetails',
-    group: 'http://localhost:5000/api/group'
+    group: 'http://localhost:5000/api/group',
+    modifyGroup: 'http://localhost:5000/api/group/addUser'
 };
 
 export default API_URLS;

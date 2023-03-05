@@ -6,6 +6,8 @@ import logout from "./actions/logout";
 import fetchUserData from "./actions/fetchUserData";
 import fetchGroupDetails from "./actions/fetchGroupDetails";
 import fetchAllUser from "./actions/getAllUser";
+import createNewGroup from "./actions/createGroup";
+import modifyGroup from "./actions/modifyGroup";
 
 export const useUserStore = defineStore("user", {
   state: () => ({ 
@@ -83,6 +85,16 @@ export const useUserStore = defineStore("user", {
     },
     setUserList(payload) {
       this.userList = payload;
+    },
+    async addNewGroup(groupDetails) {
+      const response = await createNewGroup(groupDetails);
+      console.log(response);
+      return response;
+    },
+    async modifyGroup(groupDetails) {
+      const response  = await modifyGroup(groupDetails);
+      console.log(response);
+      return response;
     }
   },
 })

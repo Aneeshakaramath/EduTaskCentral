@@ -41,14 +41,17 @@ function addTag (newTag) {
 }
 
 onBeforeMount(async()=> {
-    console.log('etner skfsjdf sdf')
+   await setAndFetchGroupAndUserDetails();
+});
+
+async function setAndFetchGroupAndUserDetails() {
     const response = await store.fetchGroupDetails();
     store.setGroupDetails(response);
     setGroupValues();
     const userReponse = await store.fetchUserDetails();
     store.setUserList(userReponse);
     setUserValues();
-});
+}
 
 function setGroupValues() {
     store.groupDetails.forEach((value) => {
@@ -74,13 +77,34 @@ watch(groupValue, (newValue, oldValue)=> {
 });
 
 async function submit() {
-    if(groupValue.value.id.includes('newGroup')) {
-
-    } else {
-        
+    let payload = {
+        groupName : "",
+        userId: []
     }
     console.log(groupValue.value);
-    console.log(userValues.value);
+    payload.groupName = groupValue.value.name;
+    if(userValues.value.length > 0) {
+        userValues.value.forEach((user)=> {
+            payload.userId.push(user.id);
+        });
+    }
+
+    console.log(payload);
+    if(payload.groupName.includes('newGroup')) {
+        const response = await store.addNewGroup(payload);
+        if(response.groupName == payload.groupName || response.groupName!=null) {
+            setAndFetchGroupAndUserDetails();
+            groupOptions.value = [];
+            alert('new Group Created');
+        }
+    } else {
+        const response = await store.modifyGroup(payload);
+        if(response.groupName == payload.groupName || response.groupName!=null) {
+            setAndFetchGroupAndUserDetails();
+            groupOptions.value = [];
+            alert('Group Modified');
+        }
+    }
 }
 </script>
 
