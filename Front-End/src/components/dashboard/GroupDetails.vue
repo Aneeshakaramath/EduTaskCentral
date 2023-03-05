@@ -1,6 +1,11 @@
 <template>
     <div class="group-details-container align-center">
-        <h2 class="group-details-label">Group Details</h2>
+        <RouterLink :to="{ name: 'group' }">
+            <h2 class="group-details-label">
+                Group Details 
+                <img class='edit-icon' src="@/assets/images/edit.png"/>
+            </h2>
+        </RouterLink>
         <div v-if="!store.isGetGroupCallInProgress">
             <div class="groups-container" v-if="store.groupDetails.length > 0">
                 <table class="table group-table">
@@ -57,6 +62,7 @@ onBeforeMount(async()=> {
 }
 .group-details-label {
     font-size: 15px;
+    color: black;
     text-align: left;
 }
 .spinner-border {
@@ -89,6 +95,11 @@ onBeforeMount(async()=> {
 }
 .group-name {
     font-size: 10px;
+}
+
+.edit-icon {
+    margin-left: 5px;
+    width: 15px;
 }
 </style>
   

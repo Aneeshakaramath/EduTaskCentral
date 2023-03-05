@@ -8,6 +8,7 @@
         <RouterLink to="#"><button type="button" class="btn btn-link">Meetings</button></RouterLink>
         <RouterLink to="#"><button type="button" class="btn btn-link">Events</button></RouterLink>
         <RouterLink :to="{ name: 'task' }"><button type="button" class="btn btn-link">Tasks</button></RouterLink>
+        <RouterLink :to="{ name: 'group' }"><button type="button" class="btn btn-link">Group</button></RouterLink>
     </div>
   </div>
 </template>
