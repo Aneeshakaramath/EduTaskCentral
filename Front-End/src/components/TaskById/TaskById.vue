@@ -1,8 +1,26 @@
 <template>
     <div class="task-details-container">
-        <p>
-            {{ taskById }}
-        </p>
+        <div>
+            name: {{ taskById.name }}
+        </div>
+        <div>
+            numberOfEvents: {{ taskById.numberOfEvents }}
+        </div>
+        <div>
+            description: {{ taskById.description }}
+        </div>
+        <div>
+            startDate: {{ taskById.startDate }}
+        </div>
+        <div>
+            endDate: {{ taskById.endDate }}
+        </div>
+        <div>
+            taskStatus: {{ taskById.taskStatus }}
+        </div>
+        <div>
+            assignedBy: {{ taskById.assignedBy.name }}
+        </div>
         <div class="comments-heading-label">
             Comments
         </div>
