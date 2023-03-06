@@ -7,6 +7,8 @@ import Dashboard from "../components/dashboard/Dashboard.vue";
 import Task from "../components/Task/Task.vue";
 import consolidatedTaskView from "../components/Task/consolidatedTaskView.vue"
 import Group from "../components/Group/Group.vue";
+import TaskById from "../components/TaskById/TaskById.vue";
+
 const router = createRouter({
   history: createWebHashHistory(), // createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -65,6 +67,13 @@ const router = createRouter({
               props: { taskListType: 'taskAssignedByMe' }
             }
           ]
+        },
+        {
+          path: "taskById/:taskId",
+          name: "taskById",
+          component: TaskById,
+          // props: true
+         //  props: { taskId:'123' }
         },
         {
           path: "group",

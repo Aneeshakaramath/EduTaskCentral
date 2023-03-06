@@ -24,7 +24,7 @@ const router = useRouter();
 
 function showTasks() {
     if(selectedValue.value !== 'select-one') {
-        router.push({ name: selectedValue.value})
+       router.push({ name: selectedValue.value})
     }
 }
 

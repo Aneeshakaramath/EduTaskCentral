@@ -33,7 +33,14 @@
           "userType": "u04"
         },
         "taskStatus": "IN PROGRESS",
-        "commentDetails": []
+        "commentDetails": [
+          {
+            "commentedByName": "admin1",
+            "commentedByRollNumber": "001",
+            "description": "I will start the work in 2 days",
+            "time": "2023-03-06"
+          }
+        ]
       },
       {
         "id": "63df32d10b6c90138bd6bc9c",

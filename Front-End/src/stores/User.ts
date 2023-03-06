@@ -8,6 +8,7 @@ import fetchGroupDetails from "./actions/fetchGroupDetails";
 import fetchAllUser from "./actions/getAllUser";
 import createNewGroup from "./actions/createGroup";
 import modifyGroup from "./actions/modifyGroup";
+import addComment from "./actions/addComment";
 
 export const useUserStore = defineStore("user", {
   state: () => ({ 
@@ -93,6 +94,11 @@ export const useUserStore = defineStore("user", {
     },
     async modifyGroup(groupDetails) {
       const response  = await modifyGroup(groupDetails);
+      console.log(response);
+      return response;
+    },
+    async addComments(commentsPayload) {
+      const response  = await addComment(commentsPayload);
       console.log(response);
       return response;
     }

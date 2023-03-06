@@ -9,7 +9,11 @@
         </thead>
         <tbody>
             <tr v-for="task in taskList">
-                <th scope="row"> {{ task.description }} </th>
+                <th scope="row">
+                    <RouterLink :to="{ name: 'taskById' , params : { taskId: task.id}}">
+                        {{ task.description }}
+                    </RouterLink>  
+                </th>
                 <td>{{ task.assignedBy.name }}</td>
                 <td>{{ task.endDate }}</td>
             </tr>
