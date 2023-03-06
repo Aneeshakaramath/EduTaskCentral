@@ -1,7 +1,7 @@
 <template>
   <header v-if="isNavbarVisible">
     <div class="wrapper">
-      <nav>
+      <nav class="router-link">
         <RouterLink to="/login">Login</RouterLink>
         <RouterLink to="/signup">Sign Up</RouterLink>
       </nav>
@@ -46,6 +46,7 @@ nav a.router-link-exact-active:hover {
 nav a {
   display: inline-block;
   padding: 0 1rem;
+  color: black;
   border-left: 1px solid var(--color-border);
 }
 
