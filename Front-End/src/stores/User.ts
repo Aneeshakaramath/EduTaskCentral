@@ -9,6 +9,7 @@ import fetchAllUser from "./actions/getAllUser";
 import createNewGroup from "./actions/createGroup";
 import modifyGroup from "./actions/modifyGroup";
 import addComment from "./actions/addComment";
+import getComemntById from "./actions/getCommentById";
 
 export const useUserStore = defineStore("user", {
   state: () => ({ 
@@ -19,7 +20,8 @@ export const useUserStore = defineStore("user", {
     isLoggedIn: false,
     isErrorOccured: false,
     userData: null,
-    userList: []
+    userList: [],
+    commentsById: [],
   }),
   getters: {
     getUserType: (state) => state.userType,
@@ -101,6 +103,11 @@ export const useUserStore = defineStore("user", {
       const response  = await addComment(commentsPayload);
       console.log(response);
       return response;
+    },
+    async getCommentsById(commentId) {
+      const response  = await getComemntById(commentId);
+      console.log(response);
+      this.commentsById = response;
     }
   },
 })

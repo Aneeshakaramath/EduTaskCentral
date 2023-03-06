@@ -3,15 +3,12 @@
         <p>
             {{ taskById }}
         </p>
-        <p>
-            {{  newComment }}
-        </p>
         <div class="comments-heading-label">
-
+            Comments
         </div>
         <div class="comments-container">
-            <div class="comment-container" v-for="comment in taskById.commentDetails">
-                <span> commented By : {{  comment.commentedByName }}</span>
+            <div class="comment-container" v-if="commentsById.length > 0" v-for="comment in commentsById">
+                <span> commented By : {{  comment.commentedBy.name }}</span>
                 <textarea class="form-control" :value="comment.description" id="exampleFormControlTextarea1" rows="2" readonly></textarea>
             </div> 
             <div class="comment-container">
@@ -24,11 +21,10 @@
                 </div>
             </div>
         </div>
-        
     </div>
 </template>
 <script setup lang="ts">
-import { computed, ref } from 'vue';
+import { computed, onBeforeMount, ref } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useUserStore } from '../../stores/User';
 
@@ -38,6 +34,9 @@ const store = useUserStore();
 
 let newComment = ref('Add a new Comments');
 
+const commentsById = computed(() => {
+    return store.commentsById;
+})
 const taskById = computed(() => {
     let task = null;
     if(store.getTaskAssignedByMe.length>0) {
@@ -62,7 +61,7 @@ const taskById = computed(() => {
 async function addComment() {
     console.log(newComment);
     let commentPayload = {
-        taskId : taskById.id,
+        taskId : route.params.taskId,
         description : newComment.value,
         commentedBy : store.userData?.userDetails.id,
     }
@@ -71,8 +70,14 @@ async function addComment() {
     if(response.commentedBy == commentPayload.commentedBy) {
         alert('comment Added');
         newComment.value = '';
+        await store.getCommentsById(route.params.taskId);
     }
 }
+
+onBeforeMount(async()=> {
+  await store.getCommentsById(route.params.taskId);
+});
+
 </script>
   
 <style scoped>

@@ -6,7 +6,7 @@ const API_URLS = {
     userData: 'http://localhost:5000/api/getAccountDetails',
     group: 'http://localhost:5000/api/group',
     modifyGroup: 'http://localhost:5000/api/group/addUser',
-    comment: 'http://localhost:5000/api/comment/',
+    comment: 'http://localhost:5000/api/comment',
 };
 
 export default API_URLS;

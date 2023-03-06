@@ -1,0 +1,56 @@
+[
+    {
+    "_id": "6405ba9653890f5438a7200e",
+    "taskId":{
+    "_id": "6405b9a653890f5438a71fff",
+    "taskType": "t01",
+    "numberOfEvents": 5,
+    "description": "Conduct webinar on data structures",
+    "startDate": "2023-03-02T18:30:00.000Z",
+    "endDate": "2023-04-03T18:30:00.000Z",
+    "childTaskList":[],
+    "assignedBy": "6401607f067c1d45ba3db495",
+    "assignedTo": "6401613f067c1d45ba3db49c",
+    "taskStatus": "TO DO",
+    "__v": 0
+    },
+    "commentedBy":{
+    "_id": "6401607f067c1d45ba3db495",
+    "name": "admin1",
+    "rollNumber": "001",
+    "username": "admin1",
+    "usertype": "uo1",
+    "__v": 0
+    },
+    "description": "I will start the work in 2 days",
+    "TimeEntered": "2023-03-06T10:04:06.028Z",
+    "__v": 0
+    },
+    {
+    "_id": "6405c87a7439ce654146edb6",
+    "taskId":{
+    "_id": "6405b9a653890f5438a71fff",
+    "taskType": "t01",
+    "numberOfEvents": 5,
+    "description": "Conduct webinar on data structures",
+    "startDate": "2023-03-02T18:30:00.000Z",
+    "endDate": "2023-04-03T18:30:00.000Z",
+    "childTaskList":[],
+    "assignedBy": "6401607f067c1d45ba3db495",
+    "assignedTo": "6401613f067c1d45ba3db49c",
+    "taskStatus": "TO DO",
+    "__v": 0
+    },
+    "commentedBy":{
+    "_id": "6401613f067c1d45ba3db49c",
+    "name": "admin2",
+    "rollNumber": "002",
+    "username": "admin2",
+    "usertype": "uo1",
+    "__v": 0
+    },
+    "description": "Thanks!",
+    "TimeEntered": "2023-03-06T11:03:22.448Z",
+    "__v": 0
+    }
+]
