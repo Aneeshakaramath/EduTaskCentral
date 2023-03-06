@@ -1,6 +1,9 @@
 <template>
     <div class="task-level-status-container">
-        <h3 class="taks-status-label" :style="{ 'background-color': fontcolor}"> {{ taskStatus.toUpperCase() }} </h3>
+        <div>
+          <h3 class="taks-status-label" :style="{ 'background-color': fontcolor}"> {{ taskStatus.toUpperCase() }} </h3>
+          
+        </div>
         <span class="count-task" v-if="taskListForCurrentStatus.length > 0"> {{ taskListForCurrentStatus.length }} TASK </span>
         <div>
             <div class="table-container" v-if="taskListForCurrentStatus.length > 0">
