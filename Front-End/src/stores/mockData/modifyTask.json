@@ -1,0 +1,13 @@
+{
+    "_id": "63da78d5cd6762407af6c82c",
+    "taskType": "t01",
+    "numberOfEvents": 5,
+    "description": "Conduct webinar on data structures",
+    "startDate": "2023-03-02T18:30:00.000Z",
+    "endDate": "2023-04-03T18:30:00.000Z",
+    "childTaskList":[],
+    "assignedBy": "63d9254132ebc97e89d13152",
+    "assignedTo": "63d925b632ebc97e89d13159",
+    "taskStatus": "IN PROGRESS",
+    "__v": 3
+}

@@ -7,6 +7,7 @@ const API_URLS = {
     group: 'http://localhost:5000/api/group',
     modifyGroup: 'http://localhost:5000/api/group/addUser',
     comment: 'http://localhost:5000/api/comment',
+    modifyTask: 'http://localhost:5000/api/task/update'
 };
 
 export default API_URLS;

@@ -10,6 +10,7 @@ import createNewGroup from "./actions/createGroup";
 import modifyGroup from "./actions/modifyGroup";
 import addComment from "./actions/addComment";
 import getComemntById from "./actions/getCommentById";
+import modifyTask from  "./actions/modifyTask";
 
 export const useUserStore = defineStore("user", {
   state: () => ({ 
@@ -108,6 +109,11 @@ export const useUserStore = defineStore("user", {
       const response  = await getComemntById(commentId);
       console.log(response);
       this.commentsById = response;
+    },
+    async updateTask(modifyTaskPayload) {
+      const response  = await modifyTask(modifyTaskPayload);
+      console.log(response);
+      return response;
     }
   },
 })

@@ -62,12 +62,18 @@
                             task Status
                         </div>
                         <div class="col">
-                           <span> {{ taskById.taskStatus }}</span>
-                           <!--<select class="form-select userType" id="userTypeId" v-model="userType">
-                                <option v-for="user in userTypes" :value=user.code>
-                                    {{ user.name.toUpperCase() }}
-                                </option>
-                            </select>-->
+                           <span v-if="!isEdit"> {{ taskById.taskStatus }} <img @click="() => isEdit=!isEdit" class='edit-icon' src="@/assets/images/edit.png"/> </span>
+                           <div v-else>
+                                <select class="form-select userType" id="userTypeId" v-model="updatedStatus">
+                                    <option v-for="status in taskStatus" :value=status>
+                                        {{ status.toUpperCase() }}
+                                    </option>
+                                </select>
+                                <span>
+                                    <img @click="updateTaskStatus" class='edit-icon' src="@/assets/images/tick.png"/>
+                                    <img @click="() => isEdit=!isEdit" class='edit-icon' src="@/assets/images/cross.jpg"/>
+                                </span>
+                           </div>
                         </div>
                     </div>
                 </div>
@@ -114,17 +120,22 @@ import { useRoute, useRouter } from 'vue-router';
 import { useUserStore } from '../../stores/User';
 
 const route = useRoute();
-const router = useRouter();
 const store = useUserStore();
 
-let taskStatus = ref(['TO DO', 'IN PROGRESS', 'DONE']);
+const taskStatus = ['TO DO', 'IN PROGRESS', 'DONE'];
 let newComment = ref('Add a new Comments');
+let isEdit = ref(false);
+
+let updatedStatus =  ref('');
 
 const commentsById = computed(() => {
     return store.commentsById;
 })
 const taskById = computed(() => {
-    let task = null;
+    return getTaskByTaskId(null);
+});
+
+function getTaskByTaskId(task) {
     if(store.getTaskAssignedByMe.length>0) {
         let taskById = store.getTaskAssignedByMe.find((item) => {
           return item.id == route.params.taskId;
@@ -142,8 +153,7 @@ const taskById = computed(() => {
         }
     }
     return task;
-});
-
+}
 async function addComment() {
     console.log(newComment);
     let commentPayload = {
@@ -164,6 +174,25 @@ onBeforeMount(async()=> {
   await store.getCommentsById(route.params.taskId);
 });
 
+async function updateTaskStatus() {
+    if(updatedStatus.value !== '') {
+        let task = getTaskByTaskId(null);
+        
+        let taskUpdatePayload: any = {
+            "taskId" : route.params.taskId,
+            "taskStatus" : updatedStatus.value
+        }
+        const response = await store.updateTask(taskUpdatePayload);
+        if(response._id == route.params.taskId || response._id !== null ) {
+            task.taskStatus = updatedStatus.value;
+            alert('task updated successfully')
+        }
+        else {
+            alert('task updation failed');
+        }
+        isEdit.value = false;
+    }
+}
 </script>
   
 <style scoped>
@@ -201,6 +230,11 @@ onBeforeMount(async()=> {
 }
 .field-row {
     margin-top: 15px;
+}
+
+.edit-icon {
+    margin-left: 5px;
+    width: 15px;
 }
  </style>
   
