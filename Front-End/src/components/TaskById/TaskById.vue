@@ -62,7 +62,7 @@
                             task Status
                         </div>
                         <div class="col">
-                           <span v-if="!isEdit"> {{ taskById.taskStatus }} <img @click="() => isEdit=!isEdit" class='edit-icon' src="@/assets/images/edit.png"/> </span>
+                           <span v-if="!isEdit"> {{ taskById.taskStatus }} <img @click="() => isEdit=!isEdit" v-if="!(taskById.taskStatus == 'DONE')" class='edit-icon' src="@/assets/images/edit.png"/> </span>
                            <div v-else>
                                 <select class="form-select userType" id="userTypeId" v-model="updatedStatus">
                                     <option v-for="status in taskStatus" :value=status>
@@ -90,19 +90,26 @@
                     </div>
                 </div>
                 <div class="col">
-
+                    <div class="row">
+                        <div class="col heading">
+                            assigned To
+                        </div>
+                        <div class="col">
+                            {{ taskById.assignedTo.name }}
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="comments-heading-label">
+        <div class="comments-heading-label"  v-if="commentsById.length > 0 || !(taskById.taskStatus == 'DONE')">
             Comments
         </div>
         <div class="comments-container">
             <div class="comment-container" v-if="commentsById.length > 0" v-for="comment in commentsById">
                 <span> commented By : {{  comment.commentedBy.name }}</span>
                 <textarea class="form-control" :value="comment.description" id="exampleFormControlTextarea1" rows="2" readonly></textarea>
-            </div> 
-            <div class="comment-container">
+            </div>
+            <div class="comment-container" v-if="!(taskById.taskStatus == 'DONE')">
                 <span> Add New Comments </span>
                 <!--<input class="form-control" type="text" v-model="newComment" aria-label="readonly input example">-->
                 <textarea class="form-control" v-model="newComment" id="exampleFormControlTextarea1" rows="2">
