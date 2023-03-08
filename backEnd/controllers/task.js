@@ -172,9 +172,13 @@ const updateTask = async (req, res, next) => {
         else {
             console.log("Child task list is invalid");
         }
-        if (req.body.taskStatus != null) {
-            taskById.taskStatus = req.body.taskStatus
+        if (req.body.taskStatus != null && req.body.taskStatus != undefined) {
+            taskById.taskStatus = req.body.taskStatus;
         }
+        if (req.body.endDate != null && req.body.endDate!=undefined) {
+            taskById.endDate = req.body.endDate;
+        }
+       
         const updatedTask = await taskById.save();
         res.json(updatedTask);
     } catch (err) {

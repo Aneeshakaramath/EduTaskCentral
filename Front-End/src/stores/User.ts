@@ -79,6 +79,12 @@ export const useUserStore = defineStore("user", {
       this.apiCallBeingMade = false;
       return response;
     },
+    async refreshUserData() {
+      const response = await fetchUserData();
+      this.userData = response;
+      console.log(response);
+      return response;
+    },
     setUserData(payload) {
       this.userData = payload;
     },

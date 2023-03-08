@@ -49,7 +49,7 @@
                 <div class="col">
                     <div class="row">
                         <div class="col heading">
-                            description
+                            end Date
                         </div>
                         <div class="col">
                             {{ taskById.endDate }}
@@ -182,10 +182,16 @@ async function updateTaskStatus() {
             "taskId" : route.params.taskId,
             "taskStatus" : updatedStatus.value
         }
+
+        if(updatedStatus.value == 'DONE') {
+            taskUpdatePayload["endDate"] = new Date().toJSON().toString();
+        }
+
         const response = await store.updateTask(taskUpdatePayload);
         if(response._id == route.params.taskId || response._id !== null ) {
             task.taskStatus = updatedStatus.value;
-            alert('task updated successfully')
+            alert('task updated successfully');
+            await store.refreshUserData();
         }
         else {
             alert('task updation failed');
