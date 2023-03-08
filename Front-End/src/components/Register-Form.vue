@@ -65,13 +65,13 @@ const router = useRouter();
 
 store.fetchUserType();
 
-const name = ref('');
-const username = ref('');
-const password = ref('');
-const reenterPassword = ref('');
-const userType = ref('')
-const rollNumber = ref('');
-const passwordMatch = ref(true);
+let name = ref('');
+let username = ref('');
+let password = ref('');
+let reenterPassword = ref('');
+let userType = ref('')
+let rollNumber = ref('');
+let passwordMatch = ref(true);
 
 onBeforeMount(async()=> {
   if(store.isLoggedIn) {

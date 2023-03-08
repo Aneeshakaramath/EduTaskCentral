@@ -2,15 +2,19 @@
     <div class="task-details-container">
         <div class="dropdown">
             <select v-model="selectedValue" class="select-option custom-select custom-select-sm" @change="showTasks">
-                <option value="select-one" selected>Select the Task Type</option>
+                <option value="select-one" selected>select the option</option>
                 <option value="taskAssignedToMe">
-                    task Assigned To Me
+                    see task assigned to me
                 </option>
                 <option value="taskAssignedByMe">
-                    task Assigned By Me
+                    see task assigned by Me
+                </option>
+                <option value="createTask">
+                    add new task
                 </option>
             </select>
         </div>
+
         <router-view></router-view>
     </div>
 </template>
@@ -41,6 +45,11 @@ function showTasks() {
     display: block;
     background-color: grey;
     color: white;
+}
+
+.button-add-task {
+    float: right;
+    background-color: grey;
 }
  </style>
   

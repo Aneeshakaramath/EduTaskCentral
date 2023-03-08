@@ -11,10 +11,13 @@ import modifyGroup from "./actions/modifyGroup";
 import addComment from "./actions/addComment";
 import getComemntById from "./actions/getCommentById";
 import modifyTask from  "./actions/modifyTask";
+import fetchTaskTYpe from "./actions/fetchTaskType";
+import addNewTask from "./actions/addNewTask";
 
 export const useUserStore = defineStore("user", {
   state: () => ({ 
     userType: [],
+    taskType: [],
     apiCallBeingMade: false,
     groupDetails: [],
     isGetGroupCallInProgress: false,
@@ -36,8 +39,15 @@ export const useUserStore = defineStore("user", {
       this.apiCallBeingMade = false;
       return response;
     },
+    async fetchTaskType() {
+      const response = await fetchTaskTYpe();
+      return response;
+    },
     setUserType(payload) {
       this.userType = payload;
+    },
+    setTaskType(payload) {
+      this.taskType = payload;
     },
     async signUp(userDetails) {
       this.apiCallBeingMade = true;
@@ -112,6 +122,11 @@ export const useUserStore = defineStore("user", {
     },
     async updateTask(modifyTaskPayload) {
       const response  = await modifyTask(modifyTaskPayload);
+      console.log(response);
+      return response;
+    },
+    async addNewTask(addNewTaskPayload) {
+      const response  = await addNewTask(addNewTaskPayload);
       console.log(response);
       return response;
     }

@@ -8,6 +8,7 @@ import Task from "../components/Task/Task.vue";
 import consolidatedTaskView from "../components/Task/consolidatedTaskView.vue"
 import Group from "../components/Group/Group.vue";
 import TaskById from "../components/TaskById/TaskById.vue";
+import addTask from "../components/Task/addTask.vue";
 
 const router = createRouter({
   history: createWebHashHistory(), // createWebHistory(import.meta.env.BASE_URL),
@@ -65,6 +66,11 @@ const router = createRouter({
               name: "taskAssignedByMe",
               component: consolidatedTaskView,
               props: { taskListType: 'taskAssignedByMe' }
+            },
+            {
+              path: "createTask",
+              name: "createTask",
+              component: addTask,
             }
           ]
         },
