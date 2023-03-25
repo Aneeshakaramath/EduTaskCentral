@@ -1,12 +1,13 @@
 <template>
   <div class="side-panel">
-    <div class="project-name">Edu Task Central</div>
+    <div class="project-name">
+      <img class="logo" src="@/assets/favicon.png"/>
+      Edu Task Central
+    </div>
     <div class="options">
         <RouterLink :to="{ name: 'dashboard' }"><button type="button" class="btn btn-link">Dashboard</button></RouterLink>
-        <RouterLink to="#"><button type="button" class="btn btn-link">Course Delivery</button></RouterLink>
-        <RouterLink to="#"><button type="button" class="btn btn-link">Question Paper Setting</button></RouterLink>
-        <RouterLink to="#"><button type="button" class="btn btn-link">Meetings</button></RouterLink>
-        <RouterLink to="#"><button type="button" class="btn btn-link">Events</button></RouterLink>
+        <RouterLink :to="{ name: 'courseDelivery' }"><button type="button" class="btn btn-link">Course Delivery</button></RouterLink>
+        <RouterLink :to="{ name: 'courseEnrollment' }"><button type="button" class="btn btn-link">Course Enrollment</button></RouterLink>
         <RouterLink :to="{ name: 'task' }"><button type="button" class="btn btn-link">Tasks</button></RouterLink>
         <RouterLink :to="{ name: 'group' }"><button type="button" class="btn btn-link">Group</button></RouterLink>
     </div>

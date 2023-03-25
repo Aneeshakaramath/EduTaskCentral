@@ -26,6 +26,7 @@ export const useUserStore = defineStore("user", {
     userData: null,
     userList: [],
     commentsById: [],
+    fromRoute: ''
   }),
   getters: {
     getUserType: (state) => state.userType,

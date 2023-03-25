@@ -13,6 +13,7 @@ const taskRouter = require('./routers/task');
 const commentsRouter = require('./routers/comments');
 const accountDetailsRouter = require('./routers/accountDetails');
 const groupRouter = require('./routers/group');
+const courseRouter = require('./routers/course');
 
 const errroHandlingMiddleware = require('./middleware/errorHandler');
 const { isAuthorized } = require('./middleware/isAuthorized');
@@ -68,9 +69,10 @@ app.use('/api/task', isAuthorized, taskRouter);
 app.use('/api/comment', isAuthorized, commentsRouter);
 app.use('/api/getAccountDetails', isAuthorized, accountDetailsRouter);
 app.use('/api/group', isAuthorized, groupRouter);
+app.use('/api/course', isAuthorized, courseRouter);
 
 /*
-*   Set handle unknown routes and errorhandling middleware
+*   Set handler for unknown routes and errorhandling middleware
 */
 app.use(errroHandlingMiddleware.unknownRouteHandler);
 app.use(errroHandlingMiddleware.errorHandler);

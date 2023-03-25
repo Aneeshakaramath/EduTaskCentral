@@ -2,6 +2,7 @@
   <header v-if="isNavbarVisible">
     <div class="wrapper">
       <nav class="router-link">
+        <RouterLink to="/about">About</RouterLink>
         <RouterLink to="/login">Login</RouterLink>
         <RouterLink to="/signup">Sign Up</RouterLink>
       </nav>

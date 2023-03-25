@@ -15,7 +15,7 @@
                 <div class="col">
                     <div class="row">
                         <div class="col heading">
-                            number of Events
+                            Number Of Events
                         </div>
                         <div class="col">
                             {{ taskById.numberOfEvents }}
@@ -27,7 +27,7 @@
                 <div class="col">
                     <div class="row">
                         <div class="col heading">
-                            description
+                            Description
                         </div>
                         <div class="col">
                             {{ taskById.description }}
@@ -37,7 +37,7 @@
                 <div class="col">
                     <div class="row">
                         <div class="col heading">
-                            start Date
+                            Start Date
                         </div>
                         <div class="col">
                             {{ taskById.startDate }}
@@ -49,7 +49,7 @@
                 <div class="col">
                     <div class="row">
                         <div class="col heading">
-                            end Date
+                            End Date
                         </div>
                         <div class="col">
                             {{ taskById.endDate }}
@@ -59,7 +59,7 @@
                 <div class="col">
                     <div class="row">
                         <div class="col heading">
-                            task Status
+                            Task Status
                         </div>
                         <div class="col">
                            <span v-if="!isEdit"> {{ taskById.taskStatus }} <img @click="() => isEdit=!isEdit" v-if="!(taskById.taskStatus == 'DONE')" class='edit-icon' src="@/assets/images/edit.png"/> </span>
@@ -82,7 +82,7 @@
                 <div class="col">
                     <div class="row">
                         <div class="col heading">
-                            assigned By
+                            Assigned By
                         </div>
                         <div class="col">
                             {{ taskById.assignedBy.name }}
@@ -92,7 +92,7 @@
                 <div class="col">
                     <div class="row">
                         <div class="col heading">
-                            assigned To
+                            Assigned To
                         </div>
                         <div class="col">
                             {{ taskById.assignedTo.name }}
@@ -106,7 +106,7 @@
         </div>
         <div class="comments-container">
             <div class="comment-container" v-if="commentsById.length > 0" v-for="comment in commentsById">
-                <span> commented By : {{  comment.commentedBy.name }}</span>
+                <span> Commented By : {{  comment.commentedBy.name }}</span>
                 <textarea class="form-control" :value="comment.description" id="exampleFormControlTextarea1" rows="2" readonly></textarea>
             </div>
             <div class="comment-container" v-if="!(taskById.taskStatus == 'DONE')">
@@ -123,7 +123,7 @@
 </template>
 <script setup lang="ts">
 import { computed, onBeforeMount, ref } from 'vue';
-import { useRoute, useRouter } from 'vue-router';
+import { useRoute } from 'vue-router';
 import { useUserStore } from '../../stores/User';
 
 const route = useRoute();
@@ -206,6 +206,7 @@ async function updateTaskStatus() {
         isEdit.value = false;
     }
 }
+
 </script>
   
 <style scoped>
@@ -248,6 +249,10 @@ async function updateTaskStatus() {
 .edit-icon {
     margin-left: 5px;
     width: 15px;
+}
+
+.align-right {
+    text-align: right;
 }
  </style>
   

@@ -9,13 +9,25 @@ import consolidatedTaskView from "../components/Task/consolidatedTaskView.vue"
 import Group from "../components/Group/Group.vue";
 import TaskById from "../components/TaskById/TaskById.vue";
 import addTask from "../components/Task/addTask.vue";
+import About from "../components/About.vue";
+import CourseEnrollment from "../components/CourseEnrollment/courseEnrollment.vue";
+import CourseDelivery from "../components/CourseDelivery/courseDelivery.vue";
+
+import { useUserStore } from "../stores/User";
+
+
 
 const router = createRouter({
   history: createWebHashHistory(), // createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: "/",
-      redirect: "/login"
+      redirect: "/about"
+    },
+    {
+      path: "/about",
+      name: "about",
+      component: About,
     },
     {
       path: "/logout",
@@ -80,12 +92,26 @@ const router = createRouter({
           component: TaskById,
           // props: true
          //  props: { taskId:'123' }
+         beforeEnter(to, from,) {
+            const store = useUserStore();
+            store.fromRoute = from.name?.toString() || '';
+          }
         },
         {
           path: "group",
           name: "group",
           component: Group,
         },
+        {
+          path: "/courseEnrollment",
+          name: "courseEnrollment",
+          component: CourseEnrollment,
+        },
+        {
+          path: "/courseDelivery",
+          name: "courseDelivery",
+          component: CourseDelivery,
+        }
       ]
     },
   ],
