@@ -51,18 +51,6 @@ let taskType = ref('')
 let noOfEvents = ref(1);
 let userOptions = ref([]);
 
-let add_task_data = {
-  "taskType" : "t01",
-  "numberOfEvents" : "5",
-  "description" : "Conduct webinar on data structures",
-  "assignedBy" : "6401607f067c1d45ba3db495",
-  "assignedTo" : "6401613f067c1d45ba3db49c",
-  "childTaskList" : [],
-  "startDate" : "2023-03-08T07:31:56.563Z",
-  "endDate" : "",
-  "taskStatus" : "TO DO"
-}
-
 onBeforeMount(async()=> {
     const response = await store.fetchTaskType();
     store.setTaskType(response);

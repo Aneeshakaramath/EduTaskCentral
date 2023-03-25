@@ -136,7 +136,10 @@ export const useUserStore = defineStore("user", {
       const response  = await addNewTask(addNewTaskPayload);
       console.log(response);
       return response;
-    }
+    },
+    async addNewCourse(addNewCoursePayload) {
+      
+    },
   },
 })
 
