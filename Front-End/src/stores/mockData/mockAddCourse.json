@@ -1,0 +1,15 @@
+{
+    "code": "c01",
+    "name": "course1",
+    "semester": 1,
+    "yearOfStudy": 1,
+    "credit": 2,
+    "studentCount": 60,
+    "start_year": 2023,
+    "end_year": 2024,
+    "typeOfCourse": "Theory",
+    "isElective": false,
+    "createdBy": "6401607f067c1d45ba3db495",
+    "_id": "641ee031dd34c03d7f7aafbb",
+    "__v": 0
+}

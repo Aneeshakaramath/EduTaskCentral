@@ -127,7 +127,7 @@ async function Submit() {
     console.log(addCourseDetails);
     const response = await store.addNewCourse(addCourseDetails);
     if(response.name == addCourseDetails.name) {
-        alert('task added successfully');
+        alert('course added successfully');
     }
 }
 </script>

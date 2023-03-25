@@ -12,6 +12,8 @@ import addTask from "../components/Task/addTask.vue";
 import About from "../components/About.vue";
 import CourseEnrollment from "../components/CourseEnrollment/courseEnrollment.vue";
 import CourseDelivery from "../components/CourseDelivery/courseDelivery.vue";
+import MyCourse from "../components/CourseDelivery/myCourse.vue";
+import OtherCourse from "../components/CourseDelivery/otherCourse.vue";
 
 import { useUserStore } from "../stores/User";
 
@@ -111,6 +113,18 @@ const router = createRouter({
           path: "/courseDelivery",
           name: "courseDelivery",
           component: CourseDelivery,
+          children: [
+            {
+              path: 'myCourses',
+              component: MyCourse,
+              name: "myCourses",
+            },
+            {
+              path: 'otherCourse',
+              component: OtherCourse,
+              name: "otherCourses",
+            }
+          ]
         }
       ]
     },

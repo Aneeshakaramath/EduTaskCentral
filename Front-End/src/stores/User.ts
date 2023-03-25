@@ -13,6 +13,8 @@ import getComemntById from "./actions/getCommentById";
 import modifyTask from  "./actions/modifyTask";
 import fetchTaskTYpe from "./actions/fetchTaskType";
 import addNewTask from "./actions/addNewTask";
+import getCourseByUserId from "./actions/getCourseByUserId";
+import addNewCourse from "./actions/addNewCourse";
 
 export const useUserStore = defineStore("user", {
   state: () => ({ 
@@ -26,7 +28,8 @@ export const useUserStore = defineStore("user", {
     userData: null,
     userList: [],
     commentsById: [],
-    fromRoute: ''
+    fromRoute: '',
+    courses: [],
   }),
   getters: {
     getUserType: (state) => state.userType,
@@ -46,6 +49,9 @@ export const useUserStore = defineStore("user", {
     },
     setUserType(payload) {
       this.userType = payload;
+    },
+    setCourses(payload) {
+      this.courses = payload;
     },
     setTaskType(payload) {
       this.taskType = payload;
@@ -138,8 +144,15 @@ export const useUserStore = defineStore("user", {
       return response;
     },
     async addNewCourse(addNewCoursePayload) {
-      
+      const response  = await addNewCourse(addNewCoursePayload);
+      console.log(response);
+      return response;
     },
+    async getCourseByUserId(userId) {
+      const response = await getCourseByUserId(userId);
+      console.log(response);
+      return response;
+    }
   },
 })
 

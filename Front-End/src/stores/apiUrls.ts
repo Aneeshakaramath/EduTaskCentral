@@ -9,7 +9,8 @@ const API_URLS = {
     comment: 'http://localhost:5000/api/comment',
     modifyTask: 'http://localhost:5000/api/task/update',
     taskType: 'http://localhost:5000/api/taskType',
-    task: 'http://localhost:5000/api/task'
+    task: 'http://localhost:5000/api/task',
+    course: 'http://localhost:5000/api/course'
 };
 
 export default API_URLS;
