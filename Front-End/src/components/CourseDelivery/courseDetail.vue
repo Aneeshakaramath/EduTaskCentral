@@ -40,7 +40,6 @@ const courseDetails = computed(() => {
 function showDetails(courseDetail) {
     console.log(courseDetail);
     store.setSelectedCourse(courseDetail);
-    this.selectedCourseDetail = courseDetail;
     isShowDetails.value = true;
 }
 </script>
