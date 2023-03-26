@@ -105,12 +105,12 @@ const router = createRouter({
           component: Group,
         },
         {
-          path: "/courseEnrollment",
+          path: "courseEnrollment",
           name: "courseEnrollment",
           component: CourseEnrollment,
         },
         {
-          path: "/courseDelivery",
+          path: "courseDelivery",
           name: "courseDelivery",
           component: CourseDelivery,
           children: [

@@ -30,6 +30,7 @@ export const useUserStore = defineStore("user", {
     commentsById: [],
     fromRoute: '',
     courses: [],
+    selectedCourse: {},
   }),
   getters: {
     getUserType: (state) => state.userType,
@@ -55,6 +56,9 @@ export const useUserStore = defineStore("user", {
     },
     setTaskType(payload) {
       this.taskType = payload;
+    },
+    setSelectedCourse(payload) {
+      this.selectedCourse = payload;
     },
     async signUp(userDetails) {
       this.apiCallBeingMade = true;
