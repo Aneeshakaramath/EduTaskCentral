@@ -71,12 +71,12 @@
                 </div>
             </div>
             <div v-else>
-                show the overall Plan
+                <OverAllPlanDetails/>
             </div>
         </div>
         <div v-else>
             <div v-if="isOverAllPlanAvailable">
-                show the overall Plan
+                <OverAllPlanDetails/>
             </div>
             <div v-else>
                 <h1> No Over All Plan Available for Selected Course and User</h1>
@@ -88,6 +88,7 @@
 import { useCourseDeliveryStore } from '@/stores/CourseDelivery';
 import { computed, ref } from "@vue/reactivity";
 import { onBeforeMount, watch } from 'vue';
+import OverAllPlanDetails from './OverAllPlanDetails.vue';
 
 const documentDetails = ref('');
 const moduleCount = ref(0);
@@ -166,4 +167,5 @@ onBeforeMount(async()=> {
 
 .drive-link {
     margin-top: 10px;
-}</style>
+}
+</style>
