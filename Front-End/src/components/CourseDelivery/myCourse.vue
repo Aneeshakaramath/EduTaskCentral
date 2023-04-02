@@ -4,7 +4,7 @@
             <button type="submit" class="btn btn-default button-add-course" @click="addCourse">Add New Course</button>
         </div>
         <div v-if="isLoaded" class="course-detail-container">
-            <CourseDetail></CourseDetail>
+            <CourseDetail :isViewingMyCourse=true></CourseDetail>
         </div>
     </div>
 </template>

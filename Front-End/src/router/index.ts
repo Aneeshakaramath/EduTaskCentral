@@ -14,6 +14,7 @@ import CourseEnrollment from "../components/CourseEnrollment/courseEnrollment.vu
 import CourseDelivery from "../components/CourseDelivery/courseDelivery.vue";
 import MyCourse from "../components/CourseDelivery/myCourse.vue";
 import OtherCourse from "../components/CourseDelivery/otherCourse.vue";
+import OverAllPlan from "../components/CourseDelivery/overallPlan.vue";
 
 import { useUserStore } from "../stores/User";
 
@@ -125,6 +126,11 @@ const router = createRouter({
               name: "otherCourses",
             }
           ]
+        },
+        {
+          path: "overallPlan",
+          component: OverAllPlan,
+          name: "overallPlan",
         }
       ]
     },

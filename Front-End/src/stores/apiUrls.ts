@@ -10,7 +10,8 @@ const API_URLS = {
     modifyTask: 'http://localhost:5000/api/task/update',
     taskType: 'http://localhost:5000/api/taskType',
     task: 'http://localhost:5000/api/task',
-    course: 'http://localhost:5000/api/course'
+    course: 'http://localhost:5000/api/course',
+    overAllPlan: 'http://localhost:5000/api/overAllPlan'
 };
 
 export default API_URLS;

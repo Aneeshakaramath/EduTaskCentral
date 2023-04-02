@@ -1,0 +1,23 @@
+{
+  "courseId": "641ee031dd34c03d7f7aafbb",
+  "createdBy": "6401607f067c1d45ba3db495",
+  "moduleDetails": [
+    {
+      "moduleNumber": 1,
+      "moduleName": "firstModel",
+      "NoOfHours": 6,
+      "NoOfClassesRequired": 4,
+      "_id": "64293a7bac97b2e8524bf306"
+    },
+    {
+      "moduleNumber": 2,
+      "moduleName": "second Module",
+      "NoOfHours": 8,
+      "NoOfClassesRequired": 12,
+      "_id": "64293a7bac97b2e8524bf307"
+    }
+  ],
+  "driveLinkForMaterials": "test Drive Link",
+  "_id": "64293a7bac97b2e8524bf305",
+  "__v": 0
+}

@@ -10,7 +10,7 @@
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <button class="dropdown-item" @click=showDetails(courseDetail)>View Details</button>
-                        <button class="dropdown-item">Overall Plan</button>
+                        <button class="dropdown-item" @click="routeChange('overallPlan', courseDetail)">Overall Plan</button>
                         <button class="dropdown-item">Weekly Plan</button>
                         <button class="dropdown-item">Daily Plan</button>
                     </div>
@@ -28,10 +28,19 @@
 <script setup lang="ts">
 import { computed, reactive, ref } from 'vue';
 import { useUserStore } from '@/stores/User';
+import { useCourseDeliveryStore } from '@/stores/CourseDelivery';
+import { useRouter } from 'vue-router';
 import SingleCourseDetail from './singleCourseDetail.vue';
 
+const props = defineProps<{
+    isViewingMyCourse: boolean
+}>()
+
 const store = useUserStore();
+const courseDeliveryStore = useCourseDeliveryStore();
+
 const isShowDetails = ref(false);
+const router = useRouter();
 
 const courseDetails = computed(() => {
     return store.courses;
@@ -41,6 +50,14 @@ function showDetails(courseDetail) {
     console.log(courseDetail);
     store.setSelectedCourse(courseDetail);
     isShowDetails.value = true;
+}
+
+function routeChange(routeValue, courseDetail) {
+    courseDeliveryStore.setCourseName(courseDetail.name);
+    courseDeliveryStore.setSelectedCourseId(courseDetail._id);
+    courseDeliveryStore.setSelectedUserId(courseDetail.createdBy._id);
+    courseDeliveryStore.setIsViewingMyCourse( props.isViewingMyCourse);
+    router.push({ name: routeValue});
 }
 </script>
 <style>

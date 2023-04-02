@@ -11,7 +11,7 @@
             <button type="submit" class="btn btn-default button-add-course" @click="search">Search</button>
         </div>
         <div v-if="isLoaded">
-            <CourseDetail></CourseDetail>
+            <CourseDetail :isViewingMyCourse=false></CourseDetail>
         </div>
     </div>
 </template>
