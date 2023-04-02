@@ -14,6 +14,7 @@ const commentsRouter = require('./routers/comments');
 const accountDetailsRouter = require('./routers/accountDetails');
 const groupRouter = require('./routers/group');
 const courseRouter = require('./routers/course');
+const overAllPlanRouter = require('./routers/overallPlan');
 
 const errroHandlingMiddleware = require('./middleware/errorHandler');
 const { isAuthorized } = require('./middleware/isAuthorized');
@@ -70,6 +71,7 @@ app.use('/api/comment', isAuthorized, commentsRouter);
 app.use('/api/getAccountDetails', isAuthorized, accountDetailsRouter);
 app.use('/api/group', isAuthorized, groupRouter);
 app.use('/api/course', isAuthorized, courseRouter);
+app.use('/api/overAllPlan', isAuthorized, overAllPlanRouter)
 
 /*
 *   Set handler for unknown routes and errorhandling middleware

@@ -23,12 +23,22 @@
             </div>
 
             <!-- select user-->
-            <div>
+            <div class="mb-3">
                 <label class="typo__label">Assign to</label>
                 <VueMultiselect
                         v-model="userName" placeholder="Search an User" label="name" track-by="id"
                         :options="userOptions" :multiple="false" :taggable="false">
                 </VueMultiselect>
+            </div>
+
+            <div class="mb-3">
+                <label for="start-date">Start Date</label>
+                <input class="date-input" type="date" id="start-date" name="start-date" v-model="startDate">
+            </div>
+
+            <div class="mb-3">
+                <label for="end-date">End Date</label>
+                <input class="date-input" type="date" id="end-date" name="end-date" v-model="endDate">
             </div>
 
             <!-- Submit button -->
@@ -50,6 +60,8 @@ let description = ref('');
 let taskType = ref('')
 let noOfEvents = ref(1);
 let userOptions = ref([]);
+let startDate = ref('');
+let endDate = ref('');
 
 onBeforeMount(async()=> {
     const response = await store.fetchTaskType();
@@ -71,9 +83,10 @@ const taskTypes = computed(() => {
 })
 
 async function Submit() {
+    let startDateFromForm = new Date(startDate.value);
+    let endDateFromForm = new Date(endDate.value);
+
   if(validateParamters()) {
-    var date = new Date();
-    date.setDate(date.getDate() + 90);
 
     const addTaskDetails : any = {
         assignedTo : userName.value.id,
@@ -82,8 +95,8 @@ async function Submit() {
         taskType : taskType.value,
         numberOfEvents : noOfEvents.value.toString(),
         childTaskList : [],
-        startDate : new Date().toJSON().toString(),
-        endDate : date.toJSON().toString(),
+        startDate : formatDate(startDateFromForm), // yy-mm-dd
+        endDate : formatDate(endDateFromForm), // yy-mm-dd
         taskStatus : "TO DO"
     }
     console.log(addTaskDetails);
@@ -94,6 +107,20 @@ async function Submit() {
         store.setUserData(userDataRefresh);
     }
   };
+}
+
+function formatDate(date) {
+    var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+    if (month.length < 2) 
+        month = '0' + month;
+    if (day.length < 2) 
+        day = '0' + day;
+
+    return [year, month, day].join('-');
 }
 
 function validateParamters() {
@@ -131,6 +158,9 @@ function validateParamters() {
   display: inline-block;
   background-color: #166df7;
   color: white;
+}
+.date-input {
+    margin-left: 20px;
 }
  </style>
   
