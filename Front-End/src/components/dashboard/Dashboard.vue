@@ -17,6 +17,7 @@ import GroupDetails from './GroupDetails.vue';
 import { useUserStore } from '@/stores/User';
 
 const store = useUserStore();
+
 </script>
   
 <style scoped>

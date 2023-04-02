@@ -15,6 +15,7 @@ import fetchTaskTYpe from "./actions/fetchTaskType";
 import addNewTask from "./actions/addNewTask";
 import getCourseByUserId from "./actions/getCourseByUserId";
 import addNewCourse from "./actions/addNewCourse";
+import getNotificationByUserId from "./actions/getNotificationById";
 
 export const useUserStore = defineStore("user", {
   state: () => ({ 
@@ -31,6 +32,7 @@ export const useUserStore = defineStore("user", {
     fromRoute: '',
     courses: [],
     selectedCourse: {},
+    notifications: [],
   }),
   getters: {
     getUserType: (state) => state.userType,
@@ -59,6 +61,9 @@ export const useUserStore = defineStore("user", {
     },
     setSelectedCourse(payload) {
       this.selectedCourse = payload;
+    },
+    setNotifications(payload) {
+      this.notifications = payload;
     },
     async signUp(userDetails) {
       this.apiCallBeingMade = true;
@@ -154,6 +159,11 @@ export const useUserStore = defineStore("user", {
     },
     async getCourseByUserId(userId) {
       const response = await getCourseByUserId(userId);
+      console.log(response);
+      return response;
+    },
+    async getNotificationByUserId(userId) {
+      const response = await getNotificationByUserId(userId);
       console.log(response);
       return response;
     }

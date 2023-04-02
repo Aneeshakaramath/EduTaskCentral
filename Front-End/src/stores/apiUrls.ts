@@ -11,7 +11,8 @@ const API_URLS = {
     taskType: 'http://localhost:5000/api/taskType',
     task: 'http://localhost:5000/api/task',
     course: 'http://localhost:5000/api/course',
-    overAllPlan: 'http://localhost:5000/api/overAllPlan'
+    overAllPlan: 'http://localhost:5000/api/overAllPlan',
+    notification: 'http://localhost:5000/api/notification'
 };
 
 export default API_URLS;

@@ -15,8 +15,24 @@
 <script setup lang="ts">
 import { useUserStore } from '@/stores/User';
 import TaskStatus from './TaskStatus.vue';
+import { onMounted } from "vue";
 
 const store = useUserStore();
+
+
+onMounted(async()=> {
+  setTimeout(async () => {
+    const response = await store.getNotificationByUserId(store.userData?.userDetails.id);
+    store.setNotifications(response);
+    for(let i =0; i < response.length; i++) {
+      if(response[i].isRead == false) {
+        alert('You have new notifications');
+        break;
+      }
+    }
+  }, 1)
+});
+
 </script>
 
 <style scoped>
