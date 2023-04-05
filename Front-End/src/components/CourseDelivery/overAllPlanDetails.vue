@@ -1,5 +1,17 @@
 <template>
     <div>
+        <div v-if="isViewingMyCourse" class="send-notification-container">
+            <div>
+                <label class="typo__label">Select an user to send notification</label>
+                <VueMultiselect
+                        v-model="userValues" placeholder="Search an User" label="name" track-by="id"
+                        :options="userOptions" :multiple="false" :taggable="false">
+                </VueMultiselect>
+            </div>
+            <div class="align-center">
+                <button type="submit" class="btn btn-default button-add-course" @click="sendNotification">Send</button>
+            </div>
+        </div>
         <div class="row">
             <div class="col heading">
                 <div class="row">
@@ -59,8 +71,39 @@
     </div>
 </template>
 <script setup>
+import { useUserStore } from '@/stores/User';
 import { useCourseDeliveryStore } from '@/stores/CourseDelivery';
 import { computed } from "@vue/reactivity";
+import { onBeforeMount, ref } from 'vue';
+import VueMultiselect from 'vue-multiselect';
+
+
+const store = useUserStore();
+
+let userValues = ref([]);
+let userOptions = ref([]);
+
+onBeforeMount(async()=> {
+    const userReponse = await store.fetchUserDetails();
+    store.setUserList(userReponse);
+    setUserValues();
+});
+
+async function search() {
+    if(userValues.value.id) {
+        const response = await store.getCourseByUserId(userValues.value.id);
+        store.setCourses(response);
+        isLoaded.value = true;
+    }
+}
+
+function setUserValues() {
+    store.userList.forEach((value) => {
+        userOptions.value.push({name: value.name, id: value._id});
+        userOptions.value.push({name: value.rollNumber, id: value._id});
+    })
+}
+
 const courseDeliveryStore = useCourseDeliveryStore();
 
 const courseName = computed(() => {
@@ -71,6 +114,10 @@ const moduleCount = computed(() => {
     return ((JSON.parse(JSON.stringify(courseDeliveryStore.overALLPlanById))))[0].moduleDetails.length;
 })
 
+const isViewingMyCourse = computed(() => {
+    return courseDeliveryStore.isViewingMyCourse;
+})
+
 const documentDetails = computed(() => {
     return ((JSON.parse(JSON.stringify(courseDeliveryStore.overALLPlanById))))[0].driveLinkForMaterials;
 })
@@ -78,6 +125,25 @@ const documentDetails = computed(() => {
 const ModulesData = computed(() => {
     return ((JSON.parse(JSON.stringify(courseDeliveryStore.overALLPlanById))))[0].moduleDetails;
 })
+
+async function sendNotification() {
+    if(!userValues.value.id) {
+        alert('select an user');
+        return;
+    }
+    let descriptionNotificaiton = `over all plan details has been submitted for ${courseDeliveryStore.courseName} by ${store.userData.userDetails.name}`;
+    let notificationCreatePayload = {
+        "userId" : userValues?.value?.id ,
+        "description" : descriptionNotificaiton
+    };
+    const response = await courseDeliveryStore.sendNotificaion(notificationCreatePayload);
+    if (response._id == notificationCreatePayload.userId || response.userId !== null) {
+        alert('notification sent successfully');
+    }
+    else {
+        alert('notification failed');
+    }
+}
 </script>
 <style>
 .module-card {
@@ -93,5 +159,9 @@ const ModulesData = computed(() => {
 
 .drive-link {
     margin-top: 10px;
+}
+
+.send-notification-container {
+    margin-bottom: 10px;
 }
 </style>

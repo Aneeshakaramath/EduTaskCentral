@@ -38,6 +38,8 @@ async function search() {
         const response = await store.getCourseByUserId(userValues.value.id);
         store.setCourses(response);
         isLoaded.value = true;
+    } else {
+        alert('select an user');
     }
 }
 

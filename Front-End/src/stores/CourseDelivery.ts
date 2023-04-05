@@ -1,6 +1,7 @@
 import { defineStore } from "pinia";
 import addOverAllPlan from "./actions/addOverAllPlan";
 import getOverALLPlanById from "./actions/getOverAllPlanById";
+import sendNotification from "./actions/sendNotification";
 
 export const useCourseDeliveryStore = defineStore("courseDelivery", {
     state: () => ({
@@ -36,6 +37,11 @@ export const useCourseDeliveryStore = defineStore("courseDelivery", {
             console.log(response);
             this.setOverAllPlanById(response);
             return;
+        },
+        async sendNotificaion(payload) {
+            const response  = await sendNotification(payload);
+            console.log(response);
+            return response;
         }
     }
 });
