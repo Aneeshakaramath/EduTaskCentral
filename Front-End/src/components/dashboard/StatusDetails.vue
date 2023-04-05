@@ -3,10 +3,12 @@
     <div class="task-status-container">
       <div>
         <h2 class="task-status-label">Task Status</h2>
-        <span class="router-link"><RouterLink :to="{ name: 'taskAssignedToMe' }">see All</RouterLink></span>
+        <span class="router-link">
+          <RouterLink :to="{ name: 'taskAssignedToMe' }">see All</RouterLink>
+        </span>
       </div>
       <TaskStatus taskStatus="To Do" fontcolor="grey"></TaskStatus>
-      <TaskStatus  taskStatus="In progress" fontcolor="orange"></TaskStatus>
+      <TaskStatus taskStatus="In progress" fontcolor="orange"></TaskStatus>
       <TaskStatus taskStatus="Done" fontcolor="green"></TaskStatus>
     </div>
   </div>
@@ -20,37 +22,40 @@ import { onMounted } from "vue";
 const store = useUserStore();
 
 
-onMounted(async()=> {
-  setTimeout(async () => {
-    const response = await store.getNotificationByUserId(store.userData?.userDetails.id);
-    store.setNotifications(response);
-    for(let i =0; i < response.length; i++) {
-      if(response[i].isRead == false) {
-        alert('You have new notifications');
-        break;
+onMounted(async () => {
+  if (!store.isNotificationCallAlreadyMadeOnPageLoad) {
+    store.setIsNotificationCallAlreadyMadeOnPageLoad(true);
+    setTimeout(async () => {
+      const response = await store.getNotificationByUserId(store.userData?.userDetails.id);
+      store.setNotifications(response);
+      for (let i = 0; i < response.length; i++) {
+        if (response[i].isRead == false) {
+          alert('You have new notifications');
+          break;
+        }
       }
-    }
-  }, 1)
+    }, 1)
+  }
 });
 
 </script>
 
 <style scoped>
-
 .task-status-container {
   padding: 10px;
   background-color: #f3d5ec;
 }
+
 .task-status-label {
   font-size: 15px;
   display: inline-block;
 }
 
 .router-link {
-  float: right; 
+  float: right;
 }
 
-.router-link > a {
-    color: blue!important;
+.router-link>a {
+  color: blue !important;
 }
 </style>

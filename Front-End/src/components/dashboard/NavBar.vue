@@ -8,6 +8,9 @@
       <span> Hello, {{ store?.userData?.userDetails?.userName }} </span>
     </div>
     <div class="user_icon"><img src="@/assets/images/user_icon.png"/></div>
+    <RouterLink :to="{ name: 'notification' }">
+      <img class="bell-icon" src="@/assets/images/bell.jpg"/>
+    </RouterLink>
   </div>
 </template>
 
@@ -48,4 +51,9 @@ const store = useUserStore();
   width: 20px;
 }
 
+.bell-icon {
+  height: 25px;
+  width: 25px;
+  margin-right: 10px;
+}
 </style>

@@ -1,0 +1,107 @@
+<template>
+    <div class="notifications-container">
+        <div v-if="isNotificationAvailable">
+            <div v-if="isUnreadNotificaitonAvailable">
+                <h2>Unread Notifications</h2>
+                <table class="table">
+                    <thead>
+                        <tr class="table-header">
+                            <th scope="col">Date</th>
+                            <th scope="col">Description</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="notification in unReadNotification">
+                            <th scope="row">
+                                {{ notification.createdTime }}
+                            </th>
+                            <td>{{ notification.description }}</td>
+                            <td> <a v-on:click.prevent.stop="handleClick(notification)">markAsRead</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div v-if="isReadNotificaitonAvailable">
+                <h2>Old Notifications</h2>
+                <table class="table">
+                    <thead>
+                        <tr class="table-header">
+                            <th scope="col">Date</th>
+                            <th scope="col">Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="notification in readNotifcation">
+                            <th scope="row">
+                                {{ notification.createdTime }}
+                            </th>
+                            <td>{{ notification.description }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div v-else>
+            <h1>
+                You have no notifications yet
+            </h1>
+        </div>
+    </div>
+</template>
+<script setup lang="ts">
+import { useUserStore } from '@/stores/User';
+import { computed, onBeforeMount } from "vue";
+
+const store = useUserStore();
+
+onBeforeMount(async () => {
+    await refreshNotification();
+});
+
+async function refreshNotification() {
+    const response = await store.getNotificationByUserId(store.userData?.userDetails.id);
+    store.setNotifications(response);
+}
+const isNotificationAvailable = computed(() => {
+    return store?.notifications?.length > 0;
+});
+
+const isUnreadNotificaitonAvailable = computed(() => {
+    const unReadNotificationList = store?.notifications?.filter((element) => element.isRead == false);
+    return unReadNotificationList.length > 0;
+});
+
+const isReadNotificaitonAvailable = computed(() => {
+    const ReadNotificationList = store?.notifications?.filter((element) => element.isRead == true);
+    return ReadNotificationList.length > 0;
+});
+
+const unReadNotification = computed(() => {
+    return store?.notifications?.filter((element) => element.isRead == false);
+});
+
+const readNotifcation = computed(() => {
+    return store?.notifications?.filter((element) => element.isRead == true);
+})
+
+async function handleClick(notification) {
+    let notificationUpdatePayload: any = {
+        "notificationId": notification._id,
+        "isRead": true
+    }
+    const response = await store.updateNotifcations(notificationUpdatePayload);
+    if (response._id == notificationUpdatePayload.notificationId || response._id !== null) {
+        alert('notification updated successfully');
+        await refreshNotification();
+    }
+    else {
+        alert('notification updation failed');
+    }
+}
+</script>
+<style scoped>
+.notifications-container {
+    margin: 30px;
+}
+</style>

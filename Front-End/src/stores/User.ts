@@ -16,6 +16,7 @@ import addNewTask from "./actions/addNewTask";
 import getCourseByUserId from "./actions/getCourseByUserId";
 import addNewCourse from "./actions/addNewCourse";
 import getNotificationByUserId from "./actions/getNotificationById";
+import updateNotification from "./actions/updateNotification";
 
 export const useUserStore = defineStore("user", {
   state: () => ({ 
@@ -33,6 +34,7 @@ export const useUserStore = defineStore("user", {
     courses: [],
     selectedCourse: {},
     notifications: [],
+    isNotificationCallAlreadyMadeOnPageLoad: false
   }),
   getters: {
     getUserType: (state) => state.userType,
@@ -64,6 +66,9 @@ export const useUserStore = defineStore("user", {
     },
     setNotifications(payload) {
       this.notifications = payload;
+    },
+    setIsNotificationCallAlreadyMadeOnPageLoad(payload) {
+      this.isNotificationCallAlreadyMadeOnPageLoad = payload
     },
     async signUp(userDetails) {
       this.apiCallBeingMade = true;
@@ -164,6 +169,11 @@ export const useUserStore = defineStore("user", {
     },
     async getNotificationByUserId(userId) {
       const response = await getNotificationByUserId(userId);
+      console.log(response);
+      return response;
+    },
+    async updateNotifcations(payload) {
+      const response  = await updateNotification(payload);
       console.log(response);
       return response;
     }
