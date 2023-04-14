@@ -5,14 +5,15 @@ const TaskDetails = require('../models/AccountDetails/TaskDetails');
 const CommentDetails = require('../models/AccountDetails/CommentDetails');
 const { formatDate } = require('../Utils/UtilMethods');
 
-const build = function (currentUser,assignedByUser, assignedToUser, commentsForAllTask, taskType) {
+const build = function (currentUser,assignedByUser, assignedToUser, commentsForAllTask, taskType, notifications) {
 
     let userDetail = new UserDetails(currentUser.id, currentUser.name, currentUser.rollNumber, currentUser.username, currentUser.usertype);
     let accessDetail = new AccessDetails(true);
     let taskAssignedToMe = getTaskDetails(assignedToUser, commentsForAllTask, taskType);
     let taskAssignedByMe = getTaskDetails(assignedByUser, commentsForAllTask, taskType);
+    let isNewNotificationAvailable = notifications?.length > 0 ? true : false;
 
-    let accountDetail = new AccountDetails(userDetail, accessDetail, taskAssignedToMe, taskAssignedByMe);
+    let accountDetail = new AccountDetails(userDetail, accessDetail, taskAssignedToMe, taskAssignedByMe, isNewNotificationAvailable);
 
     return accountDetail;
 }

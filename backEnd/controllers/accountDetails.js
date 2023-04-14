@@ -3,6 +3,7 @@ const User = require('../models/User');
 const Task = require('../models/Task');
 const TaskType = require('../models/TaskType');
 const Comment = require('../models/Comment');
+const Notification = require('../models/Notification');
 const HttpError = require('../models/HttpError');
 const accountDetailsBuilder = require('../Builder/AccountDetailsBuilder');
 
@@ -23,7 +24,9 @@ const getAccountDetails = async (req, res, next) => {
                                         .populate('commentedBy');
         const taskType = await TaskType.find();
 
-        res.json(accountDetailsBuilder.build(currentUser[0],assignedByUser, assignedToUser, commentsForAllTask, taskType));
+        const notifications = await Notification.find({ user: userId, isRead: false })
+                                .sort('-createdTime');
+        res.json(accountDetailsBuilder.build(currentUser[0],assignedByUser, assignedToUser, commentsForAllTask, taskType, notifications));
     } catch (err) {
         console.log(err);
         return next(
