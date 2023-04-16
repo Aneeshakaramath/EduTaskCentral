@@ -16,6 +16,8 @@ import MyCourse from "../components/CourseDelivery/myCourse.vue";
 import OtherCourse from "../components/CourseDelivery/otherCourse.vue";
 import OverAllPlan from "../components/CourseDelivery/overallPlan.vue";
 import Notification from "../components/Notification/Notification.vue";
+import WeeklyPlan from "../components/CourseDelivery/weeklyPlan/weeklyPlan.vue";
+import WeeklyModuleDetails from "../components/CourseDelivery/weeklyPlan/weeklyModuleDetails.vue";
 
 import { useUserStore } from "../stores/User";
 
@@ -132,6 +134,16 @@ const router = createRouter({
           path: "overallPlan",
           component: OverAllPlan,
           name: "overallPlan",
+        },
+        {
+          path: "weeklyPlan",
+          component: WeeklyPlan,
+          name: "weeklyPlan",
+        },
+        {
+          path: "weeklyPlanModuleDetails",
+          component: WeeklyModuleDetails,
+          name: "weeklyPlanModuleDetails"
         },
         {
           path: "notification",

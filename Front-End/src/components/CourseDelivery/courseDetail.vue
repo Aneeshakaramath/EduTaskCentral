@@ -11,7 +11,7 @@
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <button class="dropdown-item" @click=showDetails(courseDetail)>View Details</button>
                         <button class="dropdown-item" @click="routeChange('overallPlan', courseDetail)">Overall Plan</button>
-                        <button class="dropdown-item">Weekly Plan</button>
+                        <button class="dropdown-item" @click="routeChange('weeklyPlan', courseDetail)">Weekly Plan</button>
                         <button class="dropdown-item">Daily Plan</button>
                     </div>
                 </div>

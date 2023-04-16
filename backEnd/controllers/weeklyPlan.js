@@ -64,6 +64,7 @@ const addNewWeeklyPlan = async (req, res, next) => {
         NoOfClassesRequired: req.body.NoOfClassesRequired,
         startDate: req.body.startDate,
         endDate: req.body.endDate,
+        classDays: req.body.classDays
     });
 
     if(await isValidOverAllPlan(weeklyPlan)) {

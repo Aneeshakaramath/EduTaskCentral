@@ -26,14 +26,17 @@ onMounted(async () => {
   if (!store.isNotificationCallAlreadyMadeOnPageLoad) {
     store.setIsNotificationCallAlreadyMadeOnPageLoad(true);
     setTimeout(async () => {
-      const response = await store.getNotificationByUserId(store.userData?.userDetails.id);
+      if(store.userData?.isNewNotificationAvailable) {
+        alert('You have new notifications');
+      }
+      /*const response = await store.getNotificationByUserId(store.userData?.userDetails.id);
       store.setNotifications(response);
       for (let i = 0; i < response.length; i++) {
         if (response[i].isRead == false) {
           alert('You have new notifications');
           break;
         }
-      }
+      }*/
     }, 1)
   }
 });

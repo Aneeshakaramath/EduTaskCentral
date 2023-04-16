@@ -19,6 +19,7 @@ router.post(
     check("NoOfClassesRequired").not().isEmpty(),
     check("startDate").not().isEmpty(),
     check("endDate").not().isEmpty(),
+    check("classDays").not().isEmpty(),
   ],
   weeklyPlanController.addNewWeeklyPlan
 );

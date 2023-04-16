@@ -45,6 +45,13 @@ const courseWeeklyPlan = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
+  classDays: [
+    {
+      type: String,
+      enum : ['MON','TUE', 'WED', 'THUR', 'FRI'],
+      required: true,
+    }
+  ]
 });
 
 module.exports = mongoose.model("WeeklyPlan", courseWeeklyPlan);

@@ -2,7 +2,7 @@
   <div class="side-panel">
     <div class="project-name">
       <img class="logo" src="@/assets/favicon.png"/>
-      Edu Task Central
+      <div>Edu Task Central</div>
     </div>
     <div class="options">
         <RouterLink :to="{ name: 'dashboard' }"><button type="button" class="btn btn-link">Dashboard</button></RouterLink>

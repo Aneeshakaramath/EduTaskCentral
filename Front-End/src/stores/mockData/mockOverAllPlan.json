@@ -10,6 +10,13 @@
         "NoOfHours": 6,
         "NoOfClassesRequired": 4,
         "_id": "64293a43ac97b2e8524bf2fb"
+      },
+      {
+        "moduleNumber": 2,
+        "moduleName": "second model",
+        "NoOfHours": 5,
+        "NoOfClassesRequired": 2,
+        "_id": "64293a43ac97b2e8524bf2fb"
       }
     ],
     "driveLinkForMaterials": "test Drive Link",

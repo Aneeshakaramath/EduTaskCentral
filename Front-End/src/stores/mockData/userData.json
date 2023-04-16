@@ -225,5 +225,6 @@
         "taskStatus": "TO DO",
         "commentDetails": []
       }
-    ]
+    ],
+    "isNewNotificationAvailable": false
   }
