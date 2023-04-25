@@ -17,6 +17,7 @@ import getCourseByUserId from "./actions/getCourseByUserId";
 import addNewCourse from "./actions/addNewCourse";
 import getNotificationByUserId from "./actions/getNotificationById";
 import updateNotification from "./actions/updateNotification";
+import addNewTaskToGroup from "./actions/addNewTaskToGroup";
 
 export const useUserStore = defineStore("user", {
   state: () => ({ 
@@ -154,6 +155,11 @@ export const useUserStore = defineStore("user", {
     },
     async addNewTask(addNewTaskPayload) {
       const response  = await addNewTask(addNewTaskPayload);
+      console.log(response);
+      return response;
+    },
+    async addNewTaskToGroup(addNewTaskPayload) {
+      const response  = await addNewTaskToGroup(addNewTaskPayload);
       console.log(response);
       return response;
     },

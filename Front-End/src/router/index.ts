@@ -9,6 +9,7 @@ import consolidatedTaskView from "../components/Task/consolidatedTaskView.vue"
 import Group from "../components/Group/Group.vue";
 import TaskById from "../components/TaskById/TaskById.vue";
 import addTask from "../components/Task/addTask.vue";
+import addTaskToGroup from "../components/Task/addTaskToGroup.vue";
 import About from "../components/About.vue";
 import CourseEnrollment from "../components/CourseEnrollment/courseEnrollment.vue";
 import CourseDelivery from "../components/CourseDelivery/courseDelivery.vue";
@@ -89,6 +90,11 @@ const router = createRouter({
               path: "createTask",
               name: "createTask",
               component: addTask,
+            },
+            {
+              path: "addTaskToGroup",
+              name: "addTaskToGroup",
+              component: addTaskToGroup,
             }
           ]
         },

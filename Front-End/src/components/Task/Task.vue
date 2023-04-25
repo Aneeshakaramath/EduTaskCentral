@@ -12,6 +12,9 @@
                 <option value="createTask">
                     add new task
                 </option>
+                <option value="addTaskToGroup">
+                    add new task to group
+                </option>
             </select>
         </div>
 
