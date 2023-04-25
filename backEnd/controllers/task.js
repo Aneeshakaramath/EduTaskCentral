@@ -2,6 +2,8 @@ const { validationResult } = require('express-validator');
 const HttpError = require('../models/HttpError');
 const Task = require('../models/Task');
 const Group = require('../models/Group');
+const Notification = require('../models/Notification');
+
 const { isValidTaskType } = require('../Utils/isValidTaskType');
 const { isValidUser } = require('../Utils/isValidUser');
 const { isValidTaskList } = require('../Utils/isValidTask');
@@ -77,6 +79,7 @@ const addTask = async (req, res, next) => {
     if(await isTaskValid(task)) {
         try {
             const newTask = await task.save();
+            await addNotificationForTaskCreated(req.body.assignedTo)
             res.status(201).json(newTask);
         } catch (err) {
             console.log(err.message)
@@ -119,6 +122,7 @@ const addTaskToGroupId = async (req, res, next) => {
                     count++
                     if(await isTaskValid(task)) {
                         await task.save();
+                        await addNotificationForTaskCreated(element.toString());
                     } else {
                         return next(
                             new HttpError('task couldnt be created for the group', 400)
@@ -198,6 +202,14 @@ async function isTaskValid(task) {
     return isTaskTypeValid && isAssignedByUserValid && isAssignedToUserValid && isChildTaskValid;
 }
 
+async function addNotificationForTaskCreated(userId) {
+    const notification = new Notification({
+        user: userId,
+        description: 'A new task has been assigned to you'
+    });
+    const newNotification = await notification.save();
+    return;
+}
 exports.getAllTask = getAllTask;
 exports.addTask = addTask;
 exports.getTaskAssignedByMe = getTaskAssignedByMe;
