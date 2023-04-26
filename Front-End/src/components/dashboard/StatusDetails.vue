@@ -50,8 +50,9 @@ onMounted(async () => {
 }
 
 .task-status-label {
-  font-size: 15px;
+  font-size: 20px;
   display: inline-block;
+  font-weight: bold;
 }
 
 .router-link {

@@ -21,10 +21,11 @@ import { RouterLink } from "vue-router";
 
 <style scoped>
 .side-panel {
-    background-color: black;
+    background-color: rgb(242, 238, 238);
     padding: 10px;
     border-radius: 10px;
     height: 100%;
+    background-color: black;
 }
 .project-name{
     display: block;
@@ -33,7 +34,6 @@ import { RouterLink } from "vue-router";
     color: white;
     border: white;
     border-style: solid;
-    border-width: 2px;
     text-align: center;
 }
 
@@ -42,6 +42,6 @@ import { RouterLink } from "vue-router";
     /*font-size: 8px;*/
     text-align: left;
     display: block;
-    color: grey;
+    color: white;
 }
 </style>

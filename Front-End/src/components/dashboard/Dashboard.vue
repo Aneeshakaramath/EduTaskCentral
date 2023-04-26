@@ -1,6 +1,6 @@
 <template>
   <div class="dashboard-container">
-    <h1 class="welcome-message">Welcome back, {{ store?.userData?.userDetails?.name }}! </h1>
+    <h1 class="welcome-message boldText">Welcome back, {{ store?.userData?.userDetails?.name }}! </h1>
     <div class="row">
         <div class="col-sm-8">
           <StatusDetails></StatusDetails>

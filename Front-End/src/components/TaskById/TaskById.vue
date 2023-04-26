@@ -241,6 +241,7 @@ async function updateTaskStatus() {
 
 .heading {
     font-weight: 700;
+    font-size: 20px;
 }
 .field-row {
     margin-top: 15px;

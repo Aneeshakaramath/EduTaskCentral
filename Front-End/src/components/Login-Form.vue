@@ -1,7 +1,14 @@
 <template>
   <div class="login-form">
-    <div class="login-form-container" v-if="!store.apiCallBeingMade">
-      <form @submit.prevent="Submit">
+    <div>
+      
+    </div>
+    <div v-if="!store.apiCallBeingMade">
+      <div class="project-name">
+            <img class="logo" src="@/assets/logo.svg"/>
+      </div>
+      <div class="login-form-container">
+        <form @submit.prevent="Submit">
         <!-- username input -->
         <div class="form-group">
           <input type="text" id="form1Example1" placeholder="Username" class="form-control" v-model="username"/>
@@ -23,7 +30,8 @@
 
         <!-- Submit button -->
         <button type="submit" class="btn btn-default button-sign-in">Sign in</button>
-      </form>
+        </form>
+      </div> 
     </div>
     <div class="spinner-border" v-if="store.apiCallBeingMade" role="status">
       <span class="visually-hidden" ></span>
@@ -107,5 +115,9 @@ function showPasswordFlipped() {
 
 .form-check-label {
   color: lightgray;
+}
+
+.project-name {
+  margin: 20px;
 }
 </style>

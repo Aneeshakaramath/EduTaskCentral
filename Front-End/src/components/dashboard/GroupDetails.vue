@@ -1,31 +1,31 @@
 <template>
-    <div class="group-details-container align-center">
+    <div class="group-details-container align-center boldText">
         <RouterLink :to="{ name: 'group' }">
-            <h2 class="group-details-label">
+            <h2 class="group-details-label boldText">
                 Group Details 
                 <img class='edit-icon' src="@/assets/images/edit.png"/>
             </h2>
         </RouterLink>
         <div v-if="!store.isGetGroupCallInProgress">
-            <div class="groups-container" v-if="store.groupDetails.length > 0">
-                <table class="table group-table">
+            <div class="groups-container boldText" v-if="store.groupDetails.length > 0">
+                <table class="table group-table boldText">
                     <thead>
                         <tr class="table-header">
-                            <th scope="col" class="col-header">Group Name</th>
-                            <th scope="col" class="col-header">Members</th>
+                            <th scope="col" class="col-header boldText">Group Name</th>
+                            <th scope="col" class="col-header boldText">Members</th>
                         </tr>
                     </thead>
                 
                     <tbody>
                         <tr v-for="group in store.groupDetails">
-                            <th scope="row" class="group-name"> {{ group.groupName }} </th>
+                            <th scope="row" class="group-name boldText"> {{ group.groupName }} </th>
                             <td>
-                                <div class="group-members" v-if="group.userId.length > 0">
+                                <div class="group-members boldText" v-if="group.userId.length > 0">
                                     <span v-for="(user,index) in group.userId">
                                         {{ user.name + ((index + 1) == group.userId.length ? "" : "," ) }}
                                     </span>
                                 </div>
-                                <div class="group-members" v-else>
+                                <div class="group-members boldText" v-else>
                                     0 member
                                 </div>
                             </td>
@@ -33,7 +33,7 @@
                     </tbody>
                 </table>
             </div>
-            <div class="no-group-available-message" v-else>
+            <div class="no-group-available-message boldText" v-else>
                 No Groups Created Yet
             </div>
         </div>

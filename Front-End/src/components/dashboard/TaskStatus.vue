@@ -80,11 +80,12 @@ const getMaxThreeStatus = computed(()=> {
 
   .no-task-available-message {
     text-align: center;
-    font-size: 12px;
+    font-size: 20px;
+    font-weight: bold;
   }
 
   .count-task {
-    font-size: 12px;
+    font-size: 20px;
     padding: 5px;
     margin-left: 10px;
     color: grey;

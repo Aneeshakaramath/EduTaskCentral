@@ -1,5 +1,8 @@
 <template>
     <div class="group-details-container">
+        <div class="btn-container-group">
+            <button type="button" class="btn btn-secondary" @click="navigateToAddTaskToGroup">add task to group</button>
+        </div>
         <div>
             <label class="typo__label">Select an existing group or Add a Group Name</label>
             <VueMultiselect
@@ -23,8 +26,10 @@
 import { useUserStore } from '@/stores/User';
 import { onBeforeMount, ref, watch } from 'vue';
 import VueMultiselect from 'vue-multiselect';
+import { useRouter } from 'vue-router';
 
 const store = useUserStore();
+const router = useRouter();
 
 let groupValue =  ref([]);
 let groupOptions =  ref([]);
@@ -75,6 +80,9 @@ watch(groupValue, (newValue, oldValue)=> {
     })
 });
 
+function navigateToAddTaskToGroup() {
+    router.push({ name: 'addTaskToGroup'})
+}
 async function submit() {
     let payload = {
         groupName : "",
@@ -121,6 +129,10 @@ async function submit() {
 
 .btn-container {
     text-align: center;
+    margin: 20px;
+}
+
+.btn-container-group {
     margin: 20px;
 }
  </style>
