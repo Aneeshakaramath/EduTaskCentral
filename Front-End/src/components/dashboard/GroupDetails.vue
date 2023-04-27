@@ -22,7 +22,7 @@
                             <td>
                                 <div class="group-members boldText" v-if="group.userId.length > 0">
                                     <span v-for="(user,index) in group.userId">
-                                        {{ user.name + ((index + 1) == group.userId.length ? "" : "," ) }}
+                                        {{ user.name + ((index + 1) == group.userId.length ? "" : ", " ) }}
                                     </span>
                                 </div>
                                 <div class="group-members boldText" v-else>
@@ -58,7 +58,7 @@ onBeforeMount(async()=> {
 <style scoped>
 .group-details-container {
     padding: 10px;
-    background-color: #f3d5ec;
+    background-color: #f3eff2;
 }
 .group-details-label {
     font-size: 15px;

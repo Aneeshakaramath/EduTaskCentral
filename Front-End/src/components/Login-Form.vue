@@ -1,8 +1,5 @@
 <template>
   <div class="login-form">
-    <div>
-      
-    </div>
     <div v-if="!store.apiCallBeingMade">
       <div class="project-name">
             <img class="logo" src="@/assets/logo.svg"/>
