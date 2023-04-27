@@ -1,17 +1,17 @@
 <template>
     <div class="weekly-plan-container">
             <div v-if="isOverAllPlanAvailable">
-                <h1 class="select-module-heading">select the module for weekly plan</h1>
+                <h1 class="select-module-heading boldText">select the module for weekly plan</h1>
                 <ul v-for="moduleData in ModulesData">
                     <li>
-                        <a class='override-to-green' v-on:click.prevent="redirectToIndividualModule(moduleData)">
+                        <a class='override-to-green boldText' v-on:click.prevent="redirectToIndividualModule(moduleData)">
                             {{ moduleData.moduleName }}
                         </a>
                     </li> 
                 </ul>
             </div>
             <div v-else>
-                <h1> No Over All Plan Available for the selected course. Complete the overall Plan </h1>
+                <h1 class="boldText"> No Over All Plan Available for the selected course. Complete the overall Plan </h1>
             </div>
     </div>
 </template>

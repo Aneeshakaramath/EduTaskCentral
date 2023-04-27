@@ -1,12 +1,12 @@
 <template>
-  <div class="course-details-container">
-      <div class="dropdown">
-          <select v-model="selectedValue" class="select-option custom-select custom-select-sm" @change="handleSelection">
-              <option value="select-one" selected>select the option</option>
-              <option value="myCourses">
+  <div class="course-details-container boldText">
+      <div class="dropdown boldText">
+          <select v-model="selectedValue" class="select-option custom-select custom-select-sm boldText" @change="handleSelection">
+              <option value="select-one" selected class="boldText">select the option</option>
+              <option value="myCourses" class="boldText">
                   My Courses
               </option>
-              <option value="otherCourses">
+              <option value="otherCourses" class="boldText">
                   Other Courses
               </option>
           </select>

@@ -1,30 +1,30 @@
 <template>
-    <div class="add-task-form-container">
-        <h1 class="page-heading">Create Task</h1>
+    <div class="add-task-form-container boldText" >
+        <h1 class="page-heading boldText">Create Task</h1>
         <form @submit.prevent="Submit">
             <!-- number of events -->
-            <div class="mb-3">
-                <label class="form-label" for="description">Description</label>
-                <input type="text"  id="description" placeholder="Enter the description" class="form-control form-control-sm" v-model="description" required/>
+            <div class="mb-3 boldText">
+                <label class="form-label boldText" for="description">Description</label>
+                <input type="text"  id="description" placeholder="Enter the description" class="form-control form-control-sm boldText" v-model="description" required/>
             </div>
             <!-- Task Type -->
-            <div class="mb-3">
-                <label class="form-label select-label" for="taskTypeId">Select the task type</label>
-                <select class="form-select task-type-select" id="taskTypeId" v-model="taskType" required> 
-                    <option v-for="taskType in taskTypes" :value=taskType.code>
+            <div class="mb-3 boldText">
+                <label class="form-label select-label boldText" for="taskTypeId">Select the task type</label>
+                <select class="form-select task-type-select boldText" id="taskTypeId" v-model="taskType" required> 
+                    <option v-for="taskType in taskTypes" :value=taskType.code class="boldText">
                         {{ taskType.name.toUpperCase() }}
                     </option>
                 </select>
             </div>
             <!-- number of events -->
-            <div class="mb-3">
-                <label class="form-label" for="no-of-events">Number of events</label>
-                <input type="number"  id="no-of-events" class="form-control form-control-sm" v-model="noOfEvents" min="1" max="15" required/>
+            <div class="mb-3 boldText">
+                <label class="form-label boldText" for="no-of-events">Number of events</label>
+                <input type="number"  id="no-of-events" class="form-control form-control-sm boldText" v-model="noOfEvents" min="1" max="15" required/>
             </div>
 
             <!-- select user-->
             <div class="mb-3">
-                <label class="typo__label">Assign to</label>
+                <label class="typo__label boldText">Assign to</label>
                 <VueMultiselect
                         v-model="userName" placeholder="Search an User" label="name" track-by="id"
                         :options="userOptions" :multiple="false" :taggable="false">
@@ -32,18 +32,18 @@
             </div>
 
             <div class="mb-3">
-                <label for="start-date">Start Date</label>
-                <input class="date-input" type="date" id="start-date" name="start-date" v-model="startDate">
+                <label for="start-date" class="boldText">Start Date</label>
+                <input class="date-input boldText" type="date" id="start-date" name="start-date" v-model="startDate">
             </div>
 
             <div class="mb-3">
-                <label for="end-date">End Date</label>
-                <input class="date-input" type="date" id="end-date" name="end-date" v-model="endDate">
+                <label for="end-date" class="boldText">End Date</label>
+                <input class="date-input boldText" type="date" id="end-date" name="end-date" v-model="endDate">
             </div>
 
             <!-- Submit button -->
-            <div class="text-center">
-                <button type="submit" class="btn btn-default button-add-task">submit</button>
+            <div class="text-center boldText">
+                <button type="submit" class="btn btn-default button-add-task boldText">submit</button>
             </div>
         </form>
     </div>

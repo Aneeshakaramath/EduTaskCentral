@@ -1,23 +1,23 @@
 <template>
     <div>
-        <div class="course-detail-label">Course Detail</div>
+        <div class="course-detail-label boldText">Course Detail</div>
         <div v-if="courseDetails.length > 0" class="course-details">
-            <div class="col-sm course-name" v-for="(courseDetail,index) in courseDetails" :key="courseDetail.name">
+            <div class="col-sm course-name boldText" v-for="(courseDetail,index) in courseDetails" :key="courseDetail.name">
                 {{  courseDetail.name }}
-                <div class="dropdown course-action">
-                    <button type="button" class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split dropdown-course" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <div class="dropdown course-action boldText">
+                    <button type="button" class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split dropdown-course boldText" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <span class="sr-only">Toggle Dropdown</span>
                     </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <button class="dropdown-item" @click=showDetails(courseDetail)>View Details</button>
-                        <button class="dropdown-item" @click="routeChange('overallPlan', courseDetail)">Overall Plan</button>
-                        <button class="dropdown-item" @click="routeChange('weeklyPlan', courseDetail)">Weekly Plan</button>
-                        <button class="dropdown-item">Daily Plan</button>
+                    <div class="dropdown-menu boldText" aria-labelledby="dropdownMenuButton">
+                        <button class="dropdown-item boldText" @click=showDetails(courseDetail)>View Details</button>
+                        <button class="dropdown-item boldText" @click="routeChange('overallPlan', courseDetail)">Overall Plan</button>
+                        <button class="dropdown-item boldText" @click="routeChange('weeklyPlan', courseDetail)">Weekly Plan</button>
+                        <button class="dropdown-item boldText">Daily Plan</button>
                     </div>
                 </div>
             </div>  
         </div>
-        <div v-else>
+        <div v-else class="boldText">
             No Course Added Yet
         </div>
         <div v-if="isShowDetails">

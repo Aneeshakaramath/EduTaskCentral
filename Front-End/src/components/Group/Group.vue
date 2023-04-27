@@ -1,24 +1,24 @@
 <template>
     <div class="group-details-container">
         <div class="btn-container-group">
-            <button type="button" class="btn btn-secondary" @click="navigateToAddTaskToGroup">add task to group</button>
+            <button type="button" class="btn btn-secondary boldText" @click="navigateToAddTaskToGroup">add task to group</button>
         </div>
         <div>
-            <label class="typo__label">Select an existing group or Add a Group Name</label>
+            <label class="typo__label boldText">Select an existing group or Add a Group Name</label>
             <VueMultiselect
                     v-model="groupValue" tag-placeholder="Add this as new group" placeholder="Search or add a group" label="name" track-by="id"
                     :options="groupOptions" :multiple="false" :taggable="true" @tag="addTag">
             </VueMultiselect>
         </div>
         <div>
-            <label class="typo__label">Add or remove users from the group</label>
+            <label class="typo__label boldText">Add or remove users from the group</label>
             <VueMultiselect
                     v-model="userValues" placeholder="Search an User" label="name" track-by="id"
                     :options="userOptions" :multiple="true" :taggable="false">
             </VueMultiselect>
         </div>
         <div class="btn-container">
-            <button type="button" class="btn btn-secondary" @click="submit">submit</button>
+            <button type="button" class="btn btn-secondary boldText" @click="submit">submit</button>
         </div>
     </div>
 </template>

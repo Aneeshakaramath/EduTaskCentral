@@ -2,13 +2,13 @@
     <div class="notifications-container">
         <div v-if="isNotificationAvailable">
             <div v-if="isUnreadNotificaitonAvailable">
-                <h2>Unread Notifications</h2>
-                <table class="table">
+                <h2 class="boldText">Unread Notifications</h2>
+                <table class="table boldText">
                     <thead>
-                        <tr class="table-header">
-                            <th scope="col">Date</th>
-                            <th scope="col">Description</th>
-                            <th scope="col"></th>
+                        <tr class="table-header boldText">
+                            <th scope="col" class="boldText">Date</th>
+                            <th scope="col" class="boldText">Description</th>
+                            <th scope="col" class="boldText"></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -16,22 +16,22 @@
                             <th scope="row">
                                 {{ notification.createdTime }}
                             </th>
-                            <td>{{ notification.description }}</td>
-                            <td> <a v-on:click.prevent.stop="handleClick(notification)">markAsRead</a></td>
+                            <td >{{ notification.description }}</td>
+                            <td class="boldText"> <a v-on:click.prevent.stop="handleClick(notification)" class="boldText">markAsRead</a></td>
                         </tr>
                     </tbody>
                 </table>
             </div>
             <div v-if="isReadNotificaitonAvailable">
-                <h2>Old Notifications</h2>
-                <table class="table">
-                    <thead>
-                        <tr class="table-header">
-                            <th scope="col">Date</th>
-                            <th scope="col">Description</th>
+                <h2 class="boldText">Old Notifications</h2>
+                <table class="table boldText">
+                    <thead class="boldText">
+                        <tr class="table-header boldText">
+                            <th scope="col" class="boldText">Date</th>
+                            <th scope="col" class="boldText">Description</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="boldText">
                         <tr v-for="notification in readNotifcation">
                             <th scope="row">
                                 {{ notification.createdTime }}

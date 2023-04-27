@@ -5,10 +5,10 @@
                 <div class="row">
                     <div class="col heading">
                         <div class="row">
-                            <div class="col heading">
+                            <div class="col heading boldText">
                                 Name
                             </div>
-                            <div class="col">
+                            <div class="col boldText">
                                 {{ courseName }}
                             </div>
                         </div>
@@ -17,54 +17,54 @@
 
                     </div>
                 </div>
-                <div class="add-over-all-plan-form-container">
+                <div class="add-over-all-plan-form-container boldText">
                     <form @submit.prevent="addOverAllPlan">
                         <!-- Module Count Input -->
-                        <div class="form-group">
-                            <input id="form1Example2" class="form-control" v-model="moduleCount" required />
-                            <label class="form-label" for="form1Example2">No Of Modules</label>
+                        <div class="form-group boldText">
+                            <input id="form1Example2" class="form-control boldText" v-model="moduleCount" required />
+                            <label class="form-label boldText" for="form1Example2">No Of Modules</label>
                         </div>
 
                         <div v-for="moduleData in ModulesData">
-                            <div class="module-card">
+                            <div class="module-card boldText">
                                 <!-- Module Number -->
-                                <div class="form-group">
-                                    <input id="form1Example2" class="form-control" v-model="moduleData.moduleNumber"
+                                <div class="form-group boldText">
+                                    <input id="form1Example2" class="form-control boldText" v-model="moduleData.moduleNumber"
                                         required />
-                                    <label class="form-label" for="form1Example2">ModuleNumber</label>
+                                    <label class="form-label boldText" for="form1Example2">ModuleNumber</label>
                                 </div>
 
                                 <!-- Module Name -->
-                                <div class="form-group">
-                                    <input id="form1Example2" class="form-control" v-model="moduleData.moduleName"
+                                <div class="form-group boldText">
+                                    <input id="form1Example2" class="form-control boldText" v-model="moduleData.moduleName"
                                         required />
-                                    <label class="form-label" for="form1Example2">Module Name</label>
+                                    <label class="form-label boldText" for="form1Example2">Module Name</label>
                                 </div>
 
                                 <!-- Module Number -->
-                                <div class="form-group">
-                                    <input id="form1Example2" class="form-control" v-model="moduleData.NoOfHours"
+                                <div class="form-group boldText">
+                                    <input id="form1Example2" class="form-control boldText" v-model="moduleData.NoOfHours"
                                         required />
-                                    <label class="form-label" for="form1Example2">No Of Hours Required</label>
+                                    <label class="form-label boldText" for="form1Example2">No Of Hours Required</label>
                                 </div>
 
                                 <!-- Module Number -->
-                                <div class="form-group">
-                                    <input id="form1Example2" class="form-control" v-model="moduleData.NoOfClassesRequired"
+                                <div class="form-group boldText">
+                                    <input id="form1Example2" class="form-control boldText" v-model="moduleData.NoOfClassesRequired"
                                         required />
-                                    <label class="form-label" for="form1Example2">No Of Classes Required</label>
+                                    <label class="form-label boldText" for="form1Example2">No Of Classes Required</label>
                                 </div>
                             </div>
                         </div>
 
                         <!-- Document Input -->
-                        <div class="form-group drive-link">
-                            <input id="form1Example2" class="form-control" v-model="documentDetails" required />
-                            <label class="form-label" for="form1Example2">Drive Link for materials</label>
+                        <div class="form-group drive-link boldText">
+                            <input id="form1Example2" class="form-control boldText" v-model="documentDetails" required />
+                            <label class="form-label boldText" for="form1Example2">Drive Link for materials</label>
                         </div>
 
-                        <div class="align-center">
-                            <button type="submit" class="btn btn-default button-add-course">Add</button>
+                        <div class="align-center boldText">
+                            <button type="submit" class="btn btn-default button-add-course boldText">Add</button>
                         </div>
 
                     </form>
@@ -79,7 +79,7 @@
                 <OverAllPlanDetails/>
             </div>
             <div v-else>
-                <h1> No Over All Plan Available for Selected Course and User</h1>
+                <h1 class="boldText"> No Over All Plan Available for Selected Course and User</h1>
             </div>
         </div>
     </div>

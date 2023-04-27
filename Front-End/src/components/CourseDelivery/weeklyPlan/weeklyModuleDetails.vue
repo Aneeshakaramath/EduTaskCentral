@@ -2,16 +2,16 @@
     <div class="selected-weekly-plan-container">
         <div v-if="!showSpinner"> 
             <div v-if="isWeeklyPlanAvailable">
-                <div v-if="isViewingMyCourse" class="send-notification-container">
+                <div v-if="isViewingMyCourse" class="send-notification-container boldText">
                     <div>
-                        <label class="typo__label">Select an user to send notification</label>
+                        <label class="typo__label boldText">Select an user to send notification</label>
                         <VueMultiselect
                                 v-model="userValues" placeholder="Search an User" label="name" track-by="id"
                                 :options="userOptions" :multiple="false" :taggable="false">
                         </VueMultiselect>
                     </div>
                     <div class="align-center">
-                        <button type="submit" class="btn btn-default button-add-course" @click="sendNotification">Send</button>
+                        <button type="submit" class="btn btn-default button-add-course boldText" @click="sendNotification">Send</button>
                     </div>
                 </div>
                 <div>

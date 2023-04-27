@@ -1,14 +1,14 @@
 <template>
     <div>
         <div>
-            <label class="typo__label">Select an user to search course details</label>
+            <label class="typo__label boldText margin-top">Select an user to search course details</label>
             <VueMultiselect
                     v-model="userValues" placeholder="Search an User" label="name" track-by="id"
                     :options="userOptions" :multiple="false" :taggable="false">
             </VueMultiselect>
         </div>
         <div class="align-center">
-            <button type="submit" class="btn btn-default button-add-course" @click="search">Search</button>
+            <button type="submit" class="btn btn-default button-add-course boldText" @click="search">Search</button>
         </div>
         <div v-if="isLoaded">
             <CourseDetail :isViewingMyCourse=false></CourseDetail>
@@ -51,4 +51,7 @@ function setUserValues() {
 }
 </script>
 <style>
+.margin-top{
+    margin-top: 20px;
+}
 </style>

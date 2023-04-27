@@ -20,12 +20,12 @@
                         <tr v-for="group in store.groupDetails">
                             <th scope="row" class="group-name boldText"> {{ group.groupName }} </th>
                             <td>
-                                <div class="group-members boldText" v-if="group.userId.length > 0">
+                                <div class="group-members" v-if="group.userId.length > 0">
                                     <span v-for="(user,index) in group.userId">
                                         {{ user.name + ((index + 1) == group.userId.length ? "" : ", " ) }}
                                     </span>
                                 </div>
-                                <div class="group-members boldText" v-else>
+                                <div class="group-members" v-else>
                                     0 member
                                 </div>
                             </td>
@@ -88,7 +88,7 @@ onBeforeMount(async()=> {
 }
 .group-members {
     font-weight: 400;
-    font-size: 10px;
+    font-size: 20px;
 }
 .group-table{
     margin: 0px;

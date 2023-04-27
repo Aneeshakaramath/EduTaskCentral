@@ -1,24 +1,24 @@
 <template>
-    <div class="course-enrollment-container">
-        <h1 class="course-enrollment-heading">
+    <div class="course-enrollment-container boldText">
+        <h1 class="course-enrollment-heading boldText">
             Course Enrollment
         </h1>
-        <div class="add-course-form-container">
+        <div class="add-course-form-container boldText">
             <form @submit.prevent="Submit">
 
-                <label class="form-label">Academic year</label>
+                <label class="form-label boldText">Academic year</label>
                 <!-- Academic Year -->
-                <div class="mb-3">
-                    <div class="row">
-                        <div class="col">
-                            <div class="row">
-                                <div class="col">
-                                    <label class="form-label" for="from">From</label>
-                                    <input type="text"  id="from" class="form-control form-control-sm"  v-model="fromAcademicYear" required/>
+                <div class="mb-3 boldText">
+                    <div class="row boldText">
+                        <div class="col boldText">
+                            <div class="row boldText">
+                                <div class="col boldText">
+                                    <label class="form-label boldText" for="from">From</label>
+                                    <input type="text"  id="from" class="form-control form-control-sm boldText"  v-model="fromAcademicYear" required/>
                                 </div>
                                 <div class="col">
-                                    <label class="form-label" for="to">To</label>
-                                    <input type="text"  id="to" class="form-control form-control-sm" v-model="ToAcademicYear" required/>
+                                    <label class="form-label boldText" for="to">To</label>
+                                    <input type="text"  id="to" class="form-control form-control-sm boldText" v-model="ToAcademicYear" required/>
                                 </div>
                             </div>
                         </div>
@@ -27,39 +27,39 @@
 
                 <!-- Year Of study -->
                 <div class="mb-3">
-                    <label class="form-label" for="yearOfStudy">Year Of Study</label>
-                    <input type="number"  id="yearOfStudy" class="form-control form-control-sm" v-model="yearOfStudy" min="1" max="4" required/>
+                    <label class="form-label boldText" for="yearOfStudy">Year Of Study</label>
+                    <input type="number"  id="yearOfStudy" class="form-control form-control-sm boldText" v-model="yearOfStudy" min="1" max="4" required/>
                 </div>
 
                 <!-- Semester -->
                 <div class="mb-3">
-                    <label class="form-label" for="semester">Semester</label>
-                    <input type="number"  id="semester" class="form-control form-control-sm" v-model="semester" min="1" max="8" required/>
+                    <label class="form-label boldText" for="semester">Semester</label>
+                    <input type="number"  id="semester" class="form-control form-control-sm boldText" v-model="semester" min="1" max="8" required/>
                 </div>
 
                 <!-- Course name -->
                 <div class="mb-3">
-                    <label class="form-label" for="course-name">Course Name</label>
-                    <input type="text"  id="course-name" class="form-control form-control-sm" v-model="courseName" required/>
+                    <label class="form-label boldText" for="course-name">Course Name</label>
+                    <input type="text"  id="course-name" class="form-control form-control-sm boldText" v-model="courseName" required/>
                 </div>
 
                 <!-- Course Code -->
                 <div class="mb-3">
-                    <label class="form-label" for="course-code">Course Code</label>
-                    <input type="text"  id="course-code" class="form-control form-control-sm" v-model="courseCode" required/>
+                    <label class="form-label boldText" for="course-code">Course Code</label>
+                    <input type="text"  id="course-code" class="form-control form-control-sm boldText" v-model="courseCode" required/>
                 </div>
 
                 <!-- Course Type -->
                 <div class="mb-3">
-                    <label class="form-label select-label" for="courseType">Select the Course Type</label>
-                    <select class="form-select course-type-select" id="courseType" v-model="courseType" required> 
-                        <option value="Theory">
+                    <label class="form-label select-label boldText" for="courseType">Select the Course Type</label>
+                    <select class="form-select course-type-select boldText" id="courseType" v-model="courseType" required> 
+                        <option value="Theory" class="boldText">
                             Theory
                         </option>
-                        <option value="Lab">
+                        <option value="Lab" class="boldText">
                             Lab
                         </option>
-                        <option value="Lab Integrated Theory">
+                        <option value="Lab Integrated Theory" class="boldText">
                             Lab Integrated Theory
                         </option>
                     </select>
@@ -67,27 +67,27 @@
 
                 <!-- Elective  -->
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" v-model="isElective">
-                    <label class="form-check-label" for="flexCheckDefault">
+                    <input class="form-check-input boldText" type="checkbox" value="" id="flexCheckDefault" v-model="isElective">
+                    <label class="form-check-label boldText" for="flexCheckDefault">
                         Elective Course
                     </label>
                 </div>
 
                 <!-- Credit -->
                 <div class="mb-3">
-                    <label class="form-label" for="credit">Credit</label>
-                    <input type="number"  id="credit" class="form-control form-control-sm" v-model="credit" min="1" max="10" required/>
+                    <label class="form-label boldText" for="credit">Credit</label>
+                    <input type="number"  id="credit" class="form-control form-control-sm boldText" v-model="credit" min="1" max="10" required/>
                 </div>
 
                 <!-- Strength Of Students -->
                 <div class="mb-3">
-                    <label class="form-label" for="student-count">Strength Of Students</label>
-                    <input type="number"  id="student-count" class="form-control form-control-sm" v-model="studentCount" required/>
+                    <label class="form-label boldText" for="student-count">Strength Of Students</label>
+                    <input type="number"  id="student-count" class="form-control form-control-sm boldText" v-model="studentCount" required/>
                 </div>
 
                 <!-- Submit button -->
                 <div class="align-center">
-                    <button type="submit" class="btn btn-default add-course">Submit</button>
+                    <button type="submit" class="btn btn-default add-course boldText">Submit</button>
                 </div>
             </form>
         </div>

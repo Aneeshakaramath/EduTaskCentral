@@ -1,24 +1,24 @@
 <template>
     <div>
-        <div v-if="isViewingMyCourse" class="send-notification-container">
+        <div v-if="isViewingMyCourse" class="send-notification-container boldText">
             <div>
-                <label class="typo__label">Select an user to send notification</label>
+                <label class="typo__label boldText">Select an user to send notification</label>
                 <VueMultiselect
                         v-model="userValues" placeholder="Search an User" label="name" track-by="id"
                         :options="userOptions" :multiple="false" :taggable="false">
                 </VueMultiselect>
             </div>
-            <div class="align-center">
-                <button type="submit" class="btn btn-default button-add-course" @click="sendNotification">Send</button>
+            <div class="align-center boldText">
+                <button type="submit" class="btn btn-default button-add-course boldText" @click="sendNotification">Send</button>
             </div>
         </div>
         <div class="row">
             <div class="col heading">
                 <div class="row">
-                    <div class="col heading">
+                    <div class="col heading boldText">
                         Name
                     </div>
-                    <div class="col">
+                    <div class="col boldText">
                         {{ courseName }}
                     </div>
                 </div>
@@ -27,45 +27,45 @@
 
             </div>
         </div>
-        <div class="add-over-all-plan-form-container">
+        <div class="add-over-all-plan-form-container boldText">
             <!-- Module Count Input -->
-            <div class="form-group">
-                <input id="form1Example2" class="form-control" v-model="moduleCount" disabled />
-                <label class="form-label" for="form1Example2">No Of Modules</label>
+            <div class="form-group boldText">
+                <input id="form1Example2" class="form-control boldText" v-model="moduleCount" disabled />
+                <label class="form-label boldText" for="form1Example2">No Of Modules</label>
             </div>
 
             <div v-for="moduleData in ModulesData">
-                <div class="module-card">
+                <div class="module-card boldText">
                     <!-- Module Number -->
-                    <div class="form-group">
-                        <input id="form1Example2" class="form-control" v-model="moduleData.moduleNumber" disabled />
-                        <label class="form-label" for="form1Example2">ModuleNumber</label>
+                    <div class="form-group boldText">
+                        <input id="form1Example2" class="form-control boldText" v-model="moduleData.moduleNumber" disabled />
+                        <label class="form-label boldText" for="form1Example2">ModuleNumber</label>
                     </div>
 
                     <!-- Module Name -->
                     <div class="form-group">
-                        <input id="form1Example2" class="form-control" v-model="moduleData.moduleName" disabled />
-                        <label class="form-label" for="form1Example2">Module Name</label>
+                        <input id="form1Example2" class="form-control boldText" v-model="moduleData.moduleName" disabled />
+                        <label class="form-label boldText" for="form1Example2">Module Name</label>
                     </div>
 
                     <!-- Module Number -->
                     <div class="form-group">
-                        <input id="form1Example2" class="form-control" v-model="moduleData.NoOfHours" disabled />
-                        <label class="form-label" for="form1Example2">No Of Hours Required</label>
+                        <input id="form1Example2" class="form-control boldText" v-model="moduleData.NoOfHours" disabled />
+                        <label class="form-label boldText" for="form1Example2">No Of Hours Required</label>
                     </div>
 
                     <!-- Module Number -->
                     <div class="form-group">
-                        <input id="form1Example2" class="form-control" v-model="moduleData.NoOfClassesRequired" disabled />
-                        <label class="form-label" for="form1Example2">No Of Classes Required</label>
+                        <input id="form1Example2" class="form-control boldText" v-model="moduleData.NoOfClassesRequired" disabled />
+                        <label class="form-label boldText" for="form1Example2">No Of Classes Required</label>
                     </div>
                 </div>
             </div>
 
             <!-- Document Input -->
             <div class="form-group drive-link">
-                <input id="form1Example2" class="form-control" v-model="documentDetails" disabled />
-                <label class="form-label" for="form1Example2">Drive Link for materials</label>
+                <input id="form1Example2" class="form-control boldText" v-model="documentDetails" disabled />
+                <label class="form-label boldText" for="form1Example2">Drive Link for materials</label>
             </div>
         </div>
     </div>

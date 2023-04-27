@@ -10,7 +10,7 @@
         <tbody class="boldText">
             <tr v-for="task in taskList">
                 <th scope="row" class="boldText">
-                    <RouterLink :to="{ name: 'taskById' , params : { taskId: task.id}}">
+                    <RouterLink :to="{ name: 'taskById' , params : { taskId: task.id}}" class="boldText">
                         {{ task.description }}
                     </RouterLink>  
                 </th>

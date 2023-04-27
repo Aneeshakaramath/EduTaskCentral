@@ -1,7 +1,7 @@
 <template>
     <div>
         <div>
-            <button type="submit" class="btn btn-default button-add-course" @click="addCourse">Add New Course</button>
+            <button type="submit" class="btn btn-default button-add-course boldText" @click="addCourse">Add New Course</button>
         </div>
         <div v-if="isLoaded" class="course-detail-container">
             <CourseDetail :isViewingMyCourse=true></CourseDetail>
