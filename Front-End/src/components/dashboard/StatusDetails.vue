@@ -67,6 +67,7 @@ onMounted(async () => {
 .task-status-container {
   padding: 10px;
   background-color: #f3eff2;
+  margin-top: 20px;
 }
 
 .task-status-label {

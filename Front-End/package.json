@@ -11,6 +11,7 @@
     "lint": "eslint . --ext .jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore"
   },
   "dependencies": {
+    "@mpachnis/mp-calendar": "^3.1.1",
     "apexcharts": "^3.37.1",
     "pinia": "^2.0.28",
     "vue": "^3.2.45",

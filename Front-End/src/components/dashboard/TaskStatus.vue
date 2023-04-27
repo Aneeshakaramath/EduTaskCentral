@@ -66,7 +66,7 @@ const getMaxThreeStatus = computed(()=> {
 <style scoped>
   .task-level-status-container {
     background-color: white;
-    margin: 20px;
+    margin-top: 20px;
     padding: 5px;
   }
 

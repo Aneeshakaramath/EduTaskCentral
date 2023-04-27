@@ -6,15 +6,17 @@
     <div v-if="!isAnyTaskDone && !isAnyTaskOverDue" class="align-center boldText">
       No Task is in done status or over due status
     </div>
-    <div else>
-      <apexchart type="donut" width="380" :options="chartOptions" :series="series"></apexchart>
-      <p class="over-due-task-button">
+    <div v-else>
+      <div class="align-center">
+        <apexchart type="donut" width="380" :options="chartOptions" :series="series"></apexchart>
+      </div>
+      <p class="over-due-task-button" v-if="taskList.length > 0">
         <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample"
           aria-expanded="false" aria-controls="collapseExample">
           show overdue tasks
         </button>
       </p>
-      <div class="collapse" id="collapseExample">
+      <div class="collapse" id="collapseExample" v-if="taskList.length > 0">
         <ul v-for="task in taskList">
           <RouterLink :to="{ name: 'taskById' , params : { taskId: task.id}}">
                         {{ task.description }}
@@ -129,7 +131,6 @@ const series = computed(() => {
   
 <style scoped>
 .over-due-details-container {
-  margin-top: 20px;
   padding: 10px;
   background-color: #f3eff2;
 }
@@ -143,6 +144,10 @@ const series = computed(() => {
 .over-due-task-button {
   text-align: left;
   margin-top: 10px;
+}
+
+::v-deep .apexcharts-canvas {
+  margin: auto!important;;
 }
 </style>
   

@@ -1,0 +1,67 @@
+<template>
+    <div v-if="isLoaded" class="date-picker-container">
+        <mp-calendar theme="light-grey" :events-object="importantDates"></mp-calendar>
+    </div>
+</template>
+<script setup>
+import { useUserStore } from '@/stores/User';
+import '@mpachnis/mp-calendar/mp-calendar.js';
+import { onBeforeMount, ref } from 'vue';
+import { computed } from 'vue';
+const store = useUserStore();
+
+
+onBeforeMount(async()=> {
+   /*const response = await store.getCourseByUserId(store.userData?.userDetails.id);
+   store.setCourses(response);*/
+});
+
+const isLoaded = computed(()=> {
+    return store.userData != null;
+})
+const importantDates = computed(() => {
+    let dataArray = [];
+
+    if (store.userData?.taskAssignedToMe) {
+        store.userData?.taskAssignedToMe?.forEach(element => {
+            dataArray.push({
+                "title": element.description,
+                "content": element.assignedTo.name,
+                "date": element.startDate,
+                "end": element.endDate,
+                "category": "red",
+                "color": "#d60000"
+            })
+        });
+    }
+
+    if (store.userData?.taskAssignedByMe) {
+        store.userData?.taskAssignedByMe?.forEach(element => {
+            dataArray.push({
+                "title": element.description,
+                "content": element.assignedTo.name,
+                "date": element.startDate,
+                "end": element.endDate,
+                "category": "red",
+                "color": "#d60000"
+            })
+        });
+    }
+
+    /*if(store.courses?.lenght > 0) {
+        store.courses?.forEach(async element => {
+            await courseDeliveryStore.getOverALLPlanById(courseDeliveryStore.selectedUserId,courseDeliveryStore.selectedCourseId)
+        });
+    }*/
+    
+    return JSON.stringify(dataArray);
+});
+</script>
+<style>
+
+.date-picker-container {
+    padding: 10px;
+    background-color: #f3eff2;
+}
+
+</style>

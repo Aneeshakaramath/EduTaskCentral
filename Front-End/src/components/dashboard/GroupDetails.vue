@@ -57,6 +57,7 @@ onBeforeMount(async()=> {
   
 <style scoped>
 .group-details-container {
+    margin-top: 20px;
     padding: 10px;
     background-color: #f3eff2;
 }
