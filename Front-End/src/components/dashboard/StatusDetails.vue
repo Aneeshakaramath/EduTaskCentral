@@ -18,6 +18,7 @@
 import { useUserStore } from '@/stores/User';
 import TaskStatus from './TaskStatus.vue';
 import { onMounted } from "vue";
+import swal from 'sweetalert';
 
 const store = useUserStore();
 
@@ -26,8 +27,27 @@ onMounted(async () => {
   if (!store.isNotificationCallAlreadyMadeOnPageLoad) {
     store.setIsNotificationCallAlreadyMadeOnPageLoad(true);
     setTimeout(async () => {
+      let today = new Date();
+      let count = 0;
+      if (store.userData?.taskAssignedToMe) {
+        store.userData.taskAssignedToMe.filter(function (task) {
+          var endDate = new Date(task.endDate);
+          if (today > endDate && task.taskStatus !== 'DONE') {
+            count++;
+          }
+        })
+      };
+      if(count > 0 && store.userData?.isNewNotificationAvailable) {
+        swal(`You have new notifications and ${count} over due task`);
+        return;
+      }
+      if(count > 0) {
+        swal(`You have ${count} over due task`);
+        return;
+      }
       if(store.userData?.isNewNotificationAvailable) {
-        alert('You have new notifications');
+        swal(`You have new notifications`);
+        return;
       }
       /*const response = await store.getNotificationByUserId(store.userData?.userDetails.id);
       store.setNotifications(response);

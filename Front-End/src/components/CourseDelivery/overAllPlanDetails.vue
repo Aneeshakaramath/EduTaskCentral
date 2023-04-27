@@ -51,13 +51,13 @@
                     <!-- Module Number -->
                     <div class="form-group">
                         <input id="form1Example2" class="form-control boldText" v-model="moduleData.NoOfHours" disabled />
-                        <label class="form-label boldText" for="form1Example2">No Of Hours Required</label>
+                        <label class="form-label boldText" for="form1Example2">No Of Classes Required</label>
                     </div>
 
                     <!-- Module Number -->
                     <div class="form-group">
                         <input id="form1Example2" class="form-control boldText" v-model="moduleData.NoOfClassesRequired" disabled />
-                        <label class="form-label boldText" for="form1Example2">No Of Classes Required</label>
+                        <label class="form-label boldText" for="form1Example2">No Of Days Required</label>
                     </div>
                 </div>
             </div>
@@ -76,7 +76,7 @@ import { useCourseDeliveryStore } from '@/stores/CourseDelivery';
 import { computed } from "@vue/reactivity";
 import { onBeforeMount, ref } from 'vue';
 import VueMultiselect from 'vue-multiselect';
-
+import swal from 'sweetalert';
 
 const store = useUserStore();
 
@@ -128,7 +128,8 @@ const ModulesData = computed(() => {
 
 async function sendNotification() {
     if(!userValues.value.id) {
-        alert('select an user');
+        swal("Oops!", "Select an user!", "error");
+        // alert('select an user');
         return;
     }
     let descriptionNotificaiton = `over all plan details has been submitted for ${courseDeliveryStore.courseName} by ${store.userData.userDetails.name}`;
@@ -138,10 +139,12 @@ async function sendNotification() {
     };
     const response = await courseDeliveryStore.sendNotificaion(notificationCreatePayload);
     if (response._id == notificationCreatePayload.userId || response.userId !== null) {
-        alert('notification sent successfully');
+        swal("Success!", "notification sent successfully", "success");
+        // alert('notification sent successfully');
     }
     else {
-        alert('notification failed');
+        swal("Oops!", "notification failed!", "error");
+        // alert('notification failed');
     }
 }
 </script>

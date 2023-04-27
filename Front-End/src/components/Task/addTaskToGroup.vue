@@ -52,6 +52,7 @@
 import { useUserStore } from '@/stores/User';
 import { computed, onBeforeMount, ref  } from 'vue'
 import VueMultiselect from 'vue-multiselect';
+import swal from 'sweetalert';
 
 const store = useUserStore();
 
@@ -100,7 +101,8 @@ async function Submit() {
     console.log(addTaskDetails);
     const response = await store.addNewTaskToGroup(addTaskDetails);
     if(response.code == 200) {
-        alert('task added successfully');
+        swal("Success!", "task added successfully", "success");
+        // alert('task added successfully');
         let userDataRefresh = await store.fetchUserData();
         store.setUserData(userDataRefresh);
     }
@@ -123,14 +125,17 @@ function formatDate(date) {
 
 function validateParamters() {
     if(description.value === '') {
-        alert('descirption cannot be empty');
+        swal("Oops!", "descirption cannot be empty!", "error");
+        // alert('descirption cannot be empty');
         return false;
     }
     if(taskType.value === '') {
-        alert('task type cannot be empty');
+        swal("Oops!", "task type cannot be empty!", "error");
+        // alert('task type cannot be empty');
         return false;
     }
     if(!groupName?.value?.id) {
+        swal("Oops!", "you need to select a group to assign the task", "error");
         alert('you need to select a group to assign the task');
         return false;
     }  

@@ -42,6 +42,7 @@ import { onBeforeMount } from 'vue';
 import VueMultiselect from 'vue-multiselect';
 import WeeklyPlanDetails from './weeklyPlanDetailsModule.vue';
 import AddWeeklyPlan from './addWeeklyPlan.vue';
+import swal from 'sweetalert';
 
 const courseDeliveryStore = useCourseDeliveryStore();
 const store = useUserStore();
@@ -88,7 +89,8 @@ const isWeeklyPlanAvailable = computed(()=> {
 
 async function sendNotification() {
     if(!userValues.value.id) {
-        alert('select an user');
+        swal("Oops!", "Select an user!", "error");
+        // alert('select an user');
         return;
     }
     let descriptionNotificaiton = `weekly plan details has been submitted for course ${courseDeliveryStore.courseName} for module ${courseDeliveryStore.selectedModule.moduleName} by ${store.userData.userDetails.name}`;
@@ -98,10 +100,12 @@ async function sendNotification() {
     };
     const response = await courseDeliveryStore.sendNotificaion(notificationCreatePayload);
     if (response._id == notificationCreatePayload.userId || response.userId !== null) {
-        alert('notification sent successfully');
+        swal("Success!", "notification sent successfully", "success");
+        // alert('notification sent successfully');
     }
     else {
-        alert('notification failed');
+        swal("Oops!", "notification failed!", "error");
+        // alert('notification failed');
     }
 }
 

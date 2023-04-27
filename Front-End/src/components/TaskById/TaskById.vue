@@ -125,6 +125,7 @@
 import { computed, onBeforeMount, ref } from 'vue';
 import { useRoute } from 'vue-router';
 import { useUserStore } from '../../stores/User';
+import swal from 'sweetalert';
 
 const route = useRoute();
 const store = useUserStore();
@@ -171,7 +172,8 @@ async function addComment() {
     console.log(commentPayload);
     const response = await store.addComments(commentPayload);
     if(response.commentedBy == commentPayload.commentedBy) {
-        alert('comment Added');
+        swal("Success!", "comment Added", "success");
+        // alert('comment Added');
         newComment.value = '';
         await store.getCommentsById(route.params.taskId);
     }
@@ -197,11 +199,13 @@ async function updateTaskStatus() {
         const response = await store.updateTask(taskUpdatePayload);
         if(response._id == route.params.taskId || response._id !== null ) {
             task.taskStatus = updatedStatus.value;
-            alert('task updated successfully');
+            swal("Success!", "task updated successfully", "success");
+            // alert('task updated successfully');
             await store.refreshUserData();
         }
         else {
-            alert('task updation failed');
+            swal("Oops!", "task updation failed", "error");
+            // alert('task updation failed');
         }
         isEdit.value = false;
     }

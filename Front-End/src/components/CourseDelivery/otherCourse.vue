@@ -20,6 +20,7 @@ import { useUserStore } from '@/stores/User';
 import CourseDetail from './courseDetail.vue';
 import { onBeforeMount, ref } from 'vue';
 import VueMultiselect from 'vue-multiselect';
+import swal from 'sweetalert';
 
 const store = useUserStore();
 
@@ -39,7 +40,8 @@ async function search() {
         store.setCourses(response);
         isLoaded.value = true;
     } else {
-        alert('select an user');
+        swal("Oops!", "Select an user!", "error");
+        // alert('select an user');
     }
 }
 

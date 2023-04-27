@@ -96,6 +96,7 @@
 <script setup lang="ts">
 import { useUserStore } from '@/stores/User';
 import { ref } from 'vue'
+import swal from 'sweetalert';
 
 const store = useUserStore();
 
@@ -127,7 +128,8 @@ async function Submit() {
     console.log(addCourseDetails);
     const response = await store.addNewCourse(addCourseDetails);
     if(response.name == addCourseDetails.name) {
-        alert('course added successfully');
+        swal("Success!", "course added successfully", "success");
+        // alert('course added successfully');
     }
 }
 </script>

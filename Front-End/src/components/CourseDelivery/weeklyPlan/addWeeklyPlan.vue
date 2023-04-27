@@ -27,7 +27,7 @@
         <!-- Total hours Input -->
         <div class="form-group boldText">
             <input id="form1Example2" class="form-control boldText" v-model="noOfHours" disabled />
-            <label class="form-label boldText" for="form1Example2">Total hours required</label>
+            <label class="form-label boldText" for="form1Example2">Total Classes required</label>
         </div>
 
         <!-- Total DaysInput -->
@@ -66,6 +66,7 @@ import { useCourseDeliveryStore } from '@/stores/CourseDelivery';
 import { computed } from "@vue/reactivity";
 import { onBeforeMount, ref } from 'vue';
 import VueMultiselect from 'vue-multiselect';
+import swal from 'sweetalert';
 
 let startDate = ref('');
 let endDate = ref('');
@@ -141,7 +142,8 @@ async function submit() {
     }
     const response = await courseDeliveryStore.submitWeeklyPlan(payload);
     if(response.courseId == payload.courseId || response.courseId!=null) {
-        alert('weekly plan added successfully');
+        swal("Success!", "weekly plan added successfully", "success");
+        // alert('weekly plan added successfully');
         const response 
             = await courseDeliveryStore
             .fetchWeeklyPlanById(

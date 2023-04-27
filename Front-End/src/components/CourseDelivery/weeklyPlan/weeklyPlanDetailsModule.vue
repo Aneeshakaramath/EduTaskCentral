@@ -27,7 +27,7 @@
         <!-- Total hours Input -->
         <div class="form-group">
             <input id="form1Example2" class="form-control boldText" v-model="weeklyPlanModule.NoOfHours" disabled />
-            <label class="form-label boldText" for="form1Example2">Total hours required</label>
+            <label class="form-label boldText" for="form1Example2">Total Classes required</label>
         </div>
 
         <!-- Total DaysInput -->

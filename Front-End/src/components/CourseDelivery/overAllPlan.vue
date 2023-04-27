@@ -45,14 +45,14 @@
                                 <div class="form-group boldText">
                                     <input id="form1Example2" class="form-control boldText" v-model="moduleData.NoOfHours"
                                         required />
-                                    <label class="form-label boldText" for="form1Example2">No Of Hours Required</label>
+                                    <label class="form-label boldText" for="form1Example2">No Of Classes Required</label>
                                 </div>
 
                                 <!-- Module Number -->
                                 <div class="form-group boldText">
                                     <input id="form1Example2" class="form-control boldText" v-model="moduleData.NoOfClassesRequired"
                                         required />
-                                    <label class="form-label boldText" for="form1Example2">No Of Classes Required</label>
+                                    <label class="form-label boldText" for="form1Example2">No Of Days Required</label>
                                 </div>
                             </div>
                         </div>
@@ -89,6 +89,7 @@ import { useCourseDeliveryStore } from '@/stores/CourseDelivery';
 import { computed, ref } from "@vue/reactivity";
 import { onBeforeMount, watch } from 'vue';
 import OverAllPlanDetails from './OverAllPlanDetails.vue';
+import swal from 'sweetalert';
 
 const documentDetails = ref('');
 const moduleCount = ref(0);
@@ -137,10 +138,12 @@ async function addOverAllPlan() {
     console.log(JSON.parse(JSON.stringify(overAllPlanPayload)));
     const response = await courseDeliveryStore.addOverAllPlan(JSON.parse(JSON.stringify(overAllPlanPayload)));
     if(response.courseId) {
-        alert('overAll Plan Added');
+        swal("Success!", "overAll Plan Added", "success");
+       // alert('overAll Plan Added');
         await courseDeliveryStore.getOverALLPlanById(courseDeliveryStore.selectedUserId,courseDeliveryStore.selectedCourseId)
     } else {
-        alert('overAll Plan Addition Failed');
+        swal("Oops!", "overAll Plan Addition Failed", "error");
+        // alert('overAll Plan Addition Failed');
     }
 }
 

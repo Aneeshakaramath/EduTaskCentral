@@ -27,6 +27,7 @@ import { useUserStore } from '@/stores/User';
 import { onBeforeMount, ref, watch } from 'vue';
 import VueMultiselect from 'vue-multiselect';
 import { useRouter } from 'vue-router';
+import swal from 'sweetalert';
 
 const store = useUserStore();
 const router = useRouter();
@@ -105,7 +106,8 @@ async function submit() {
             setAndFetchGroupAndUserDetails();
             groupOptions.value = [];
             userOptions.value = [];
-            alert('new Group Created');
+            swal("Success!", "new Group Created", "success");
+            // alert('new Group Created');
         }
     } else {
         const response = await store.modifyGroup(payload);
@@ -113,7 +115,8 @@ async function submit() {
             setAndFetchGroupAndUserDetails();
             groupOptions.value = [];
             userOptions.value = [];
-            alert('Group Modified');
+            swal("Success!", "Group Modified", "success");
+            // alert('Group Modified');
         }
     }
 }

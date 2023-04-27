@@ -3,7 +3,7 @@
         <div class="course-detail-label boldText">Course Detail</div>
         <div v-if="courseDetails.length > 0" class="course-details">
             <div class="col-sm course-name boldText" v-for="(courseDetail,index) in courseDetails" :key="courseDetail.name">
-                {{  courseDetail.name }}
+                {{ courseDetail.code }} | {{  courseDetail.name }}
                 <div class="dropdown course-action boldText">
                     <button type="button" class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split dropdown-course boldText" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <span class="sr-only">Toggle Dropdown</span>

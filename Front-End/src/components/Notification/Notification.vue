@@ -52,6 +52,7 @@
 <script setup lang="ts">
 import { useUserStore } from '@/stores/User';
 import { computed, onBeforeMount } from "vue";
+import swal from 'sweetalert';
 
 const store = useUserStore();
 
@@ -92,11 +93,13 @@ async function handleClick(notification) {
     }
     const response = await store.updateNotifcations(notificationUpdatePayload);
     if (response._id == notificationUpdatePayload.notificationId || response._id !== null) {
-        alert('notification updated successfully');
+        swal("Success!", "notification updated successfully", "success");
+        // alert('notification updated successfully');
         await refreshNotification();
     }
     else {
-        alert('notification updation failed');
+        swal("Oops!", "notification updation failed!", "error");
+        // alert('notification updation failed');
     }
 }
 </script>
