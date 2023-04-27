@@ -140,7 +140,18 @@ function validateParamters() {
         swal("Oops!", "you need to select an user to assign the task to", "error");
         // alert('you need to select an user to assign the task to');
         return false;
-    }  
+    }
+    if(userName?.value?.id)  {
+        console.log(userName?.value?.id);
+        let taskPendingForSelectedUser = store.userData.taskAssignedByMe.filter(function(task) {
+            return task.assignedTo.id == userName?.value?.id && task.taskStatus!='DONE';
+        })
+        if(taskPendingForSelectedUser.length >= 5) {
+            swal("Oops!", "The selected user has 5 or more task already pending", "error");
+            return false;
+        }
+    }
+
     return true;
 }
 
