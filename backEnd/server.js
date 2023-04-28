@@ -17,6 +17,7 @@ const courseRouter = require('./routers/course');
 const overAllPlanRouter = require('./routers/overallPlan');
 const notificationRouter = require('./routers/notification');
 const weeklyPlanRouter = require('./routers/weeklyPlan');
+const groupCommentsRouter = require('./routers/groupComments');
 
 const errroHandlingMiddleware = require('./middleware/errorHandler');
 const { isAuthorized } = require('./middleware/isAuthorized');
@@ -76,7 +77,7 @@ app.use('/api/course', isAuthorized, courseRouter);
 app.use('/api/overAllPlan', isAuthorized, overAllPlanRouter);
 app.use('/api/notification', isAuthorized, notificationRouter);
 app.use('/api/weeklyPlan', isAuthorized, weeklyPlanRouter);
-
+app.use('/api/groupComments', isAuthorized, groupCommentsRouter);
 /*
 *   Set handler for unknown routes and errorhandling middleware
 */
