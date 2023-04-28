@@ -14,6 +14,7 @@ const API_URLS = {
     overAllPlan: 'http://localhost:5000/api/overAllPlan',
     notification: 'http://localhost:5000/api/notification',
     weeklyPlan: 'http://localhost:5000/api/weeklyPlan',
+    groupComments: 'http://localhost:5000/api/groupComments',
 };
 
 export default API_URLS;

@@ -9,6 +9,7 @@ import fetchAllUser from "./actions/getAllUser";
 import createNewGroup from "./actions/createGroup";
 import modifyGroup from "./actions/modifyGroup";
 import addComment from "./actions/addComment";
+import addCommentForGroup from "./actions/addCommentForGroup";
 import getComemntById from "./actions/getCommentById";
 import modifyTask from  "./actions/modifyTask";
 import fetchTaskTYpe from "./actions/fetchTaskType";
@@ -18,6 +19,7 @@ import addNewCourse from "./actions/addNewCourse";
 import getNotificationByUserId from "./actions/getNotificationById";
 import updateNotification from "./actions/updateNotification";
 import addNewTaskToGroup from "./actions/addNewTaskToGroup";
+import fetchCommentsForSelectedGroup from "./actions/fetchCommentsForSelectedGroup";
 
 export const useUserStore = defineStore("user", {
   state: () => ({ 
@@ -35,7 +37,8 @@ export const useUserStore = defineStore("user", {
     courses: [],
     selectedCourse: {},
     notifications: [],
-    isNotificationCallAlreadyMadeOnPageLoad: false
+    isNotificationCallAlreadyMadeOnPageLoad: false,
+    commentForSelectedGroup: [],
   }),
   getters: {
     getUserType: (state) => state.userType,
@@ -70,6 +73,9 @@ export const useUserStore = defineStore("user", {
     },
     setIsNotificationCallAlreadyMadeOnPageLoad(payload) {
       this.isNotificationCallAlreadyMadeOnPageLoad = payload
+    },
+    setCommentForSelectedGroup(payload) {
+      this.commentForSelectedGroup = payload;
     },
     async signUp(userDetails) {
       this.apiCallBeingMade = true;
@@ -120,6 +126,11 @@ export const useUserStore = defineStore("user", {
       this.isGetGroupCallInProgress = false;
       return response;
     },
+    async fetchCommentsForSelectedGroup(groupId) {
+      const response = await fetchCommentsForSelectedGroup(groupId);
+      console.log(response);
+      return response;
+    },
     async fetchUserDetails() {
       const response = await fetchAllUser();
       console.log(response);
@@ -140,6 +151,11 @@ export const useUserStore = defineStore("user", {
     },
     async addComments(commentsPayload) {
       const response  = await addComment(commentsPayload);
+      console.log(response);
+      return response;
+    },
+    async addCommentsForGorup(commentsPayload) {
+      const response  = await addCommentForGroup(commentsPayload);
       console.log(response);
       return response;
     },
@@ -185,3 +201,5 @@ export const useUserStore = defineStore("user", {
     }
   },
 })
+
+

@@ -131,7 +131,7 @@ const route = useRoute();
 const store = useUserStore();
 
 const taskStatus = ['TO DO', 'IN PROGRESS', 'DONE'];
-let newComment = ref('Add a new Comments');
+let newComment = ref('');
 let isEdit = ref(false);
 
 let updatedStatus =  ref('');
