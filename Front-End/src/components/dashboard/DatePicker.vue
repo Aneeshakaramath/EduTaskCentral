@@ -28,7 +28,14 @@ const importantDates = computed(() => {
                 "title": element.description,
                 "content": element.assignedTo.name,
                 "date": element.startDate,
-                "end": element.endDate,
+                "category": "green",
+                "color": "#d60000"
+            })
+
+            dataArray.push({
+                "title": element.description,
+                "content": element.assignedTo.name,
+                "date": element.endDate,
                 "category": "red",
                 "color": "#d60000"
             })
@@ -41,9 +48,16 @@ const importantDates = computed(() => {
                 "title": element.description,
                 "content": element.assignedTo.name,
                 "date": element.startDate,
-                "end": element.endDate,
+                "category": "green",
+               // "color": "#d60000"
+            })
+
+            dataArray.push({
+                "title": element.description,
+                "content": element.assignedTo.name,
+                "date": element.endDate,
                 "category": "red",
-                "color": "#d60000"
+               // "color": "#d60000"
             })
         });
     }

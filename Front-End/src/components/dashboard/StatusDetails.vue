@@ -7,9 +7,27 @@
           <RouterLink :to="{ name: 'taskAssignedToMe' }">see All</RouterLink>
         </span>
       </div>
-      <TaskStatus taskStatus="To Do" fontcolor="grey"></TaskStatus>
+      <vaadin-accordion>
+        <vaadin-accordion-panel summary="To Do">
+          <vaadin-vertical-layout>
+            <TaskStatus taskStatus="To Do" fontcolor="grey"></TaskStatus>
+          </vaadin-vertical-layout>
+        </vaadin-accordion-panel>
+        <vaadin-accordion-panel summary="In Progress">
+          <vaadin-vertical-layout>
+            <TaskStatus taskStatus="In progress" fontcolor="orange"></TaskStatus>
+          </vaadin-vertical-layout>
+        </vaadin-accordion-panel>
+        <vaadin-accordion-panel summary="Done">
+          <vaadin-vertical-layout>
+            <TaskStatus taskStatus="Done" fontcolor="green"></TaskStatus>
+          </vaadin-vertical-layout>
+        </vaadin-accordion-panel>
+      </vaadin-accordion>
+
+      <!--<TaskStatus taskStatus="To Do" fontcolor="grey"></TaskStatus>
       <TaskStatus taskStatus="In progress" fontcolor="orange"></TaskStatus>
-      <TaskStatus taskStatus="Done" fontcolor="green"></TaskStatus>
+      <TaskStatus taskStatus="Done" fontcolor="green"></TaskStatus>-->
     </div>
   </div>
 </template>
@@ -19,6 +37,7 @@ import { useUserStore } from '@/stores/User';
 import TaskStatus from './TaskStatus.vue';
 import { onMounted } from "vue";
 import swal from 'sweetalert';
+import '@vaadin/accordion/theme/lumo/vaadin-accordion.js';
 
 const store = useUserStore();
 

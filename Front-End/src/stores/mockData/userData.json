@@ -205,8 +205,8 @@
         "name": "Seminar",
         "numberOfEvents": 3,
         "description": "Conduct seminar on ChatGPT",
-        "startDate": "2023-03-02T18:30:00.000Z",
-        "endDate": "2023-01-03T18:30:00.000Z",
+        "startDate": "2023-01-02",
+        "endDate": "2023-01-03",
         "childTaskList": [],
         "assignedBy": {
           "id": "63df2b690b6c90138bd6bc7c",
