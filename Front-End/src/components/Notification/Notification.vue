@@ -119,4 +119,8 @@ async function handleClick(notification) {
 .notifications-container {
     margin: 30px;
 }
+
+::v-deep vaadin-tab {
+        height: 50px; /* Set the desired height here */
+      }
 </style>

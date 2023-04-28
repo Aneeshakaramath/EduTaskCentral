@@ -1,25 +1,43 @@
 <template>
     <div class="group-details-container">
         <div class="btn-container-group">
-            <button type="button" class="btn btn-secondary boldText" @click="navigateToAddTaskToGroup">add task to group</button>
+            <button type="button" class="btn btn-secondary boldText" @click="navigateToAddTaskToGroup">add task to
+                group</button>
         </div>
-        <div>
-            <label class="typo__label boldText">Select an existing group or Add a Group Name</label>
-            <VueMultiselect
-                    v-model="groupValue" tag-placeholder="Add this as new group" placeholder="Search or add a group" label="name" track-by="id"
-                    :options="groupOptions" :multiple="false" :taggable="true" @tag="addTag">
-            </VueMultiselect>
-        </div>
-        <div>
-            <label class="typo__label boldText">Add or remove users from the group</label>
-            <VueMultiselect
-                    v-model="userValues" placeholder="Search an User" label="name" track-by="id"
-                    :options="userOptions" :multiple="true" :taggable="false">
-            </VueMultiselect>
-        </div>
-        <div class="btn-container">
-            <button type="button" class="btn btn-secondary boldText" @click="submit">submit</button>
-        </div>
+        <vaadin-tabsheet>
+            <vaadin-tabs selected="0" slot="tabs">
+                    <vaadin-tab id="group-modification">
+                        Modify group
+                    </vaadin-tab>
+                    <vaadin-tab id="group-chat">
+                        Chat group
+                    </vaadin-tab>
+            </vaadin-tabs>
+            <div tab="group-modification">
+
+                <div>
+                    <label class="typo__label boldText">Select an existing group or Add a Group Name</label>
+                    <VueMultiselect v-model="groupValue" tag-placeholder="Add this as new group"
+                        placeholder="Search or add a group" label="name" track-by="id" :options="groupOptions"
+                        :multiple="false" :taggable="true" @tag="addTag">
+                    </VueMultiselect>
+                </div>
+                <div>
+                    <label class="typo__label boldText">Add or remove users from the group</label>
+                    <VueMultiselect v-model="userValues" placeholder="Search an User" label="name" track-by="id"
+                        :options="userOptions" :multiple="true" :taggable="false">
+                    </VueMultiselect>
+                </div>
+                <div class="btn-container">
+                    <button type="button" class="btn btn-secondary boldText" @click="submit">submit</button>
+                </div>
+
+            </div>
+            <div tab="group-chat">
+                <GroupComments/>
+            </div>
+        </vaadin-tabsheet>
+
     </div>
 </template>
 <script setup lang="ts">
@@ -28,25 +46,27 @@ import { onBeforeMount, ref, watch } from 'vue';
 import VueMultiselect from 'vue-multiselect';
 import { useRouter } from 'vue-router';
 import swal from 'sweetalert';
+import '@vaadin/tabsheet/theme/material/vaadin-tabsheet.js';
+import GroupComments from './GroupComments.vue';
 
 const store = useUserStore();
 const router = useRouter();
 
-let groupValue =  ref([]);
-let groupOptions =  ref([]);
+let groupValue = ref([]);
+let groupOptions = ref([]);
 let userValues = ref([]);
 let userOptions = ref([]);
 
-function addTag (newTag) {
-      const tag = {
+function addTag(newTag) {
+    const tag = {
         name: newTag,
         id: 'newGroup' + Math.floor((Math.random() * 10000000))
-      }
-      groupOptions.value.push(tag); 
+    }
+    groupOptions.value.push(tag);
 }
 
-onBeforeMount(async()=> {
-   await setAndFetchGroupAndUserDetails();
+onBeforeMount(async () => {
+    await setAndFetchGroupAndUserDetails();
 });
 
 async function setAndFetchGroupAndUserDetails() {
@@ -60,49 +80,49 @@ async function setAndFetchGroupAndUserDetails() {
 
 function setGroupValues() {
     store.groupDetails.forEach((value) => {
-        groupOptions.value.push({name: value.groupName, id: value._id});
+        groupOptions.value.push({ name: value.groupName, id: value._id });
     })
 }
 
 function setUserValues() {
     store.userList.forEach((value) => {
-        userOptions.value.push({name: value.name, id: value._id});
-        userOptions.value.push({name: value.rollNumber, id: value._id});
+        userOptions.value.push({ name: value.name, id: value._id });
+        userOptions.value.push({ name: value.rollNumber, id: value._id });
     })
 }
-watch(groupValue, (newValue, oldValue)=> {
+watch(groupValue, (newValue, oldValue) => {
     userValues.value = [];
     store.groupDetails.forEach((value) => {
-        if(value._id == newValue.id) {
-            value.userId.forEach((user)=> {
-                userValues.value.push({name: user.name, id: user._id});
+        if (value._id == newValue.id) {
+            value.userId.forEach((user) => {
+                userValues.value.push({ name: user.name, id: user._id });
             })
         }
     })
 });
 
 function navigateToAddTaskToGroup() {
-    router.push({ name: 'addTaskToGroup'})
+    router.push({ name: 'addTaskToGroup' })
 }
 async function submit() {
     let payload = {
-        groupName : "",
+        groupName: "",
         groupId: "",
         userId: []
     }
     console.log(groupValue.value);
     payload.groupName = groupValue.value.name;
     payload.groupId = groupValue.value.id;
-    if(userValues.value.length > 0) {
-        userValues.value.forEach((user)=> {
+    if (userValues.value.length > 0) {
+        userValues.value.forEach((user) => {
             payload.userId.push(user.id);
         });
     }
 
     console.log(payload);
-    if(payload.groupId.includes('newGroup')) {
+    if (payload.groupId.includes('newGroup')) {
         const response = await store.addNewGroup(payload);
-        if(response.groupName == payload.groupName || response.groupName!=null) {
+        if (response.groupName == payload.groupName || response.groupName != null) {
             setAndFetchGroupAndUserDetails();
             groupOptions.value = [];
             userOptions.value = [];
@@ -111,7 +131,7 @@ async function submit() {
         }
     } else {
         const response = await store.modifyGroup(payload);
-        if(response.groupName == payload.groupName || response.groupName!=null) {
+        if (response.groupName == payload.groupName || response.groupName != null) {
             setAndFetchGroupAndUserDetails();
             groupOptions.value = [];
             userOptions.value = [];
@@ -124,7 +144,6 @@ async function submit() {
 
 
 <style scoped>
-
 .group-details-container {
     margin: 30px;
     color: black;
@@ -138,5 +157,9 @@ async function submit() {
 .btn-container-group {
     margin: 20px;
 }
- </style>
+
+::v-deep vaadin-tab {
+        height: 50px; /* Set the desired height here */
+      }
+</style>
   
