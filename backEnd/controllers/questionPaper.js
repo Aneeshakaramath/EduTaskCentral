@@ -59,7 +59,8 @@ const addQuestionPaper = async (req, res, next) => {
 const getByCourseId = async (req, res, next) => {
     try {
         let courseid = req.params.courseid;
-        const questionPaperById = await QuestionPaper.find({ courseId: courseid });
+        let examType = req.query.examType;
+        const questionPaperById = await QuestionPaper.find({ courseId: courseid, examType: examType });
         res.json(questionPaperById);
     } catch (err) {
         console.log(err);
