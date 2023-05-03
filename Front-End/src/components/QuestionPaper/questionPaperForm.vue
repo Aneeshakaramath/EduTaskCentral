@@ -299,7 +299,7 @@ function addNewEntry(arrayName) {
     arrayName.push([{
         question: '',
         bt: 'select-one',
-        CO: 'select-one',
+        couseOutcome: 'select-one',
         marks: ''
     }])
 }
@@ -360,9 +360,10 @@ async function addQuestionPaper() {
         },
         totalMarks: totalMarks.value,
         partA: partA.value,
-        partB: partB.value,
-        partC: partC.value
+        partB: getPayload(partB.value),
+        partC: getPayload(partC.value)
     }
+    console.log(JSON.parse(JSON.stringify(questionPaperPayload)))
     const response = await questionPaperStore.addQuestionpaper(JSON.parse(JSON.stringify(questionPaperPayload)));
     if(response.courseId == questionPaperPayload.courseId || response.courseId!=null) {
         swal("Success!", "question paper added successfully", "success");
@@ -372,6 +373,17 @@ async function addQuestionPaper() {
     } else {
         swal("Oops!", "question Paper Submission Failed", "error");
     }
+}
+
+function getPayload(questionsArray) {
+    let payload = [];
+
+    questionsArray.forEach((value)=> {
+       payload.push({
+            questions: value
+        })
+    })
+    return payload;
 }
 
 function formatDate(date) {
