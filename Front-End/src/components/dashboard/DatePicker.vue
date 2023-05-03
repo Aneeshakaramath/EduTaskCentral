@@ -1,5 +1,6 @@
 <template>
     <div v-if="isLoaded" class="date-picker-container">
+        <!-- :day-labels="dayArray" -->
         <mp-calendar theme="light-grey" :events-object="importantDates"></mp-calendar>
     </div>
 </template>
@@ -15,6 +16,10 @@ onBeforeMount(async()=> {
    /*const response = await store.getCourseByUserId(store.userData?.userDetails.id);
    store.setCourses(response);*/
 });
+
+/*const dayArray = computed(()=> {
+    return JSON.stringify(["riyaz", "rasool", "rafi", "aneesha", "barakath", "raja", "zulekha"]);
+});*/
 
 const isLoaded = computed(()=> {
     return store.userData != null;
