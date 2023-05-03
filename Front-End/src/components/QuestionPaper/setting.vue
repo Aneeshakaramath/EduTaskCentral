@@ -17,6 +17,9 @@
                 </div>
                 </div>
             </div>
+            <div v-else class="boldText">
+                No Course Added Yet
+            </div>
         </div>
         <div class="spinner-border" v-else role="status">
             <span class="visually-hidden" ></span>
