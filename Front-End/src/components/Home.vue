@@ -50,7 +50,7 @@ onBeforeMount(async()=> {
   background-color: white;
 }
 .columns:nth-of-type(even){
-  flex: 3; 
+  flex: 5; 
 }
 
 </style>

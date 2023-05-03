@@ -2,6 +2,7 @@ const { validationResult } = require('express-validator');
 const HttpError = require('../models/HttpError');
 const QuestionPaper = require('../models/QuestionPaper');
 const { isValidCourse } = require('../Utils/isValidCourse');
+const { isValidUser } = require('../Utils/isValidUser');
 
 const getAllQuestionPaper = async (req, res, next) => {
     try {
@@ -26,6 +27,7 @@ const addQuestionPaper = async (req, res, next) => {
 
     const questionPaper = new QuestionPaper({
         courseId: req.body.courseId,
+        createdBy: req.body.createdBy,
         examType: req.body.examType,
         session: req.body.session,
         semester: req.body.semester,
@@ -37,7 +39,7 @@ const addQuestionPaper = async (req, res, next) => {
         partC: req.body.partC
     });
     
-    if(await isValidCourse(questionPaper.courseId)) {
+    if(await isValidCourse(questionPaper.courseId) && await isValidUser(questionPaper.createdBy)) {
         try {
             const newQuestionPaper = await questionPaper.save();
             res.status(201).json(newQuestionPaper);

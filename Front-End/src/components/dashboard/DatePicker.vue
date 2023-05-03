@@ -1,7 +1,7 @@
 <template>
     <div v-if="isLoaded" class="date-picker-container">
         <!-- :day-labels="dayArray" -->
-        <mp-calendar theme="light-grey" :events-object="importantDates"></mp-calendar>
+        <mp-calendar theme="light-grey" :day-labels="dayArray" :events-object="importantDates"></mp-calendar>
     </div>
 </template>
 <script setup>
@@ -17,9 +17,9 @@ onBeforeMount(async()=> {
    store.setCourses(response);*/
 });
 
-/*const dayArray = computed(()=> {
-    return JSON.stringify(["riyaz", "rasool", "rafi", "aneesha", "barakath", "raja", "zulekha"]);
-});*/
+const dayArray = computed(()=> {
+    return JSON.stringify(["sun", "mon", "tue", "wed", "thur", "fri", "sat"]);
+});
 
 const isLoaded = computed(()=> {
     return store.userData != null;

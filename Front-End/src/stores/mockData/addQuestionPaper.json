@@ -1,0 +1,52 @@
+{
+  "courseId": "641ee031dd34c03d7f7aafbb",
+  "createdBy": "6401607f067c1d45ba3db495",
+  "examType": "CAT_1",
+  "session": "FN",
+  "semester": 2,
+  "examDate": "2023-05-28T00:00:00.000Z",
+  "duration": {
+    "hours": 1,
+    "mins": 30
+  },
+  "totalMarks": 50,
+  "partA": [
+    {
+      "question": "test question?",
+      "bt": "remember",
+      "couseOutcome": "CO2",
+      "marks": 12,
+      "_id": "645227fc02f048a282ca9974"
+    }
+  ],
+  "partB": [
+    {
+      "questions": [
+        {
+          "question": "test question?",
+          "bt": "remember",
+          "couseOutcome": "CO2",
+          "marks": 12,
+          "_id": "645227fc02f048a282ca9976"
+        }
+      ],
+      "_id": "645227fc02f048a282ca9975"
+    }
+  ],
+  "partC": [
+    {
+      "questions": [
+        {
+          "question": "test question?",
+          "bt": "remember",
+          "couseOutcome": "CO2",
+          "marks": 12,
+          "_id": "645227fc02f048a282ca9978"
+        }
+      ],
+      "_id": "645227fc02f048a282ca9977"
+    }
+  ],
+  "_id": "645227fc02f048a282ca9973",
+  "__v": 0
+}

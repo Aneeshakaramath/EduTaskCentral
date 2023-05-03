@@ -29,6 +29,11 @@ const questionPaperSchema = new mongoose.Schema({
         ref: "CourseSchema",
         required: true,
     },
+    createdBy: {
+        type: mongoose.Types.ObjectId,
+        ref: 'User' ,
+        required: true,
+    },
     examType : {
         type: String,
         enum : ['CAT_1','CAT_2', 'SEM'],

@@ -19,6 +19,10 @@ import OverAllPlan from "../components/CourseDelivery/overallPlan.vue";
 import Notification from "../components/Notification/Notification.vue";
 import WeeklyPlan from "../components/CourseDelivery/weeklyPlan/weeklyPlan.vue";
 import WeeklyModuleDetails from "../components/CourseDelivery/weeklyPlan/weeklyModuleDetails.vue";
+import QuestionPaper from "../components/QuestionPaper/questionPaper.vue";
+import Setting from "../components/QuestionPaper/setting.vue";
+import Audit from "../components/QuestionPaper/audit.vue";
+import QuestionPaperForm from "../components/QuestionPaper/questionPaperForm.vue";
 
 import { useUserStore } from "../stores/User";
 
@@ -113,6 +117,28 @@ const router = createRouter({
           path: "group",
           name: "group",
           component: Group,
+        },
+        {
+          path: "questionPaper",
+          name: "questionPaper",
+          component: QuestionPaper,
+          children: [
+            {
+              path: 'setting',
+              component: Setting,
+              name: "setting",
+            },
+            {
+              path: 'audit',
+              component: Audit,
+              name: "audit",
+            }
+          ]
+        },
+        {
+          path: "questionPaperForm",
+          name: "questionPaperForm",
+          component: QuestionPaperForm,
         },
         {
           path: "courseEnrollment",
