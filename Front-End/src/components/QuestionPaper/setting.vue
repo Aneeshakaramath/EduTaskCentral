@@ -18,6 +18,9 @@
                 </div>
             </div>
         </div>
+        <div class="spinner-border" v-else role="status">
+            <span class="visually-hidden" ></span>
+        </div>
     </div>
 </template>
 <script setup lang="ts">
@@ -48,7 +51,7 @@ function routeChange(examType, courseDetail) {
     courseDeliveryStore.setSelectedCourseId(courseDetail._id);
     courseDeliveryStore.setSelectedUserId(courseDetail.createdBy._id);
     questionPaperStore.setExamType(examType);
-    router.push({ name: 'questionPaperForm'});
+    router.push({ name: 'questionPaperDetails'});
 }
 
 </script>

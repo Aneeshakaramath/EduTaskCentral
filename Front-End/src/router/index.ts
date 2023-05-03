@@ -23,6 +23,7 @@ import QuestionPaper from "../components/QuestionPaper/questionPaper.vue";
 import Setting from "../components/QuestionPaper/setting.vue";
 import Audit from "../components/QuestionPaper/audit.vue";
 import QuestionPaperForm from "../components/QuestionPaper/questionPaperForm.vue";
+import QuestionPaperDetails from "../components/QuestionPaper/questionPaperDetails.vue";
 
 import { useUserStore } from "../stores/User";
 
@@ -139,6 +140,11 @@ const router = createRouter({
           path: "questionPaperForm",
           name: "questionPaperForm",
           component: QuestionPaperForm,
+        },
+        {
+          path: "questionPaperDetails",
+          name: "questionPaperDetails",
+          component: QuestionPaperDetails,
         },
         {
           path: "courseEnrollment",
