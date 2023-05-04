@@ -19,6 +19,7 @@ const notificationRouter = require('./routers/notification');
 const weeklyPlanRouter = require('./routers/weeklyPlan');
 const groupCommentsRouter = require('./routers/groupComments');
 const questionPaperRouter = require('./routers/questionPaper');
+const catMarksRouter = require('./routers/catMarks');
 
 const errroHandlingMiddleware = require('./middleware/errorHandler');
 const { isAuthorized } = require('./middleware/isAuthorized');
@@ -80,6 +81,7 @@ app.use('/api/notification', isAuthorized, notificationRouter);
 app.use('/api/weeklyPlan', isAuthorized, weeklyPlanRouter);
 app.use('/api/groupComments', isAuthorized, groupCommentsRouter);
 app.use('/api/questionPaper', isAuthorized, questionPaperRouter);
+app.use('/api/catMarks', isAuthorized, catMarksRouter);
 
 /*
 *   Set handler for unknown routes and errorhandling middleware

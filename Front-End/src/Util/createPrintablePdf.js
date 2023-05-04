@@ -2,6 +2,17 @@ const printPdf = async function (payload, courseDetail) {
     
     console.log(courseDetail);
     let questionPaper = payload[0];
+    let style = `<style>table, th, td {
+        border:1px solid black;
+        border-collapse: collapse;
+      }
+      .align-center {
+        text-align: center;
+      }
+      </style>`
+    let topLog = window.environment == 'development' ?
+                    `<div class="align-center"><img src="src/assets/images/cresent_logo.jpeg"></img></div>`:
+                    `<div class="align-center"><img src="cresent_logo/cresent_logo.jpeg"></img></div>`
     let partA = `<h2 style="text-align: center; font-size: 20px;">PART A (${getTotalMarks(questionPaper.partA)} marks)</h2>` +
                 '<p style="text-align: center; font-size: 15px; font-weight: bold;">(ANSWER ALL QUESTIONS)</p>';
     let partB = `<h2 style="text-align: center; font-size: 20px;">PART B (${getTotalMarksBig(questionPaper.partB)} marks)</h2>`;
@@ -9,6 +20,25 @@ const printPdf = async function (payload, courseDetail) {
 
     let questionCount = 1;
     let heading = `<div><h1 style="text-align: center; font-size: 20px;">${questionPaper.examType},&nbsp;${formatDate(questionPaper.examDate)}</h1>`
+                + `<div style="display:block;">
+                        <table align="right">
+                        <tr>
+                            <th>&nbsp; RRN &nbsp;</th>
+                            <th>&nbsp; &nbsp;</th>
+                            <th>&nbsp; &nbsp;</th>
+                            <th>&nbsp; &nbsp;</th>
+                            <th>&nbsp; &nbsp;</th>
+                            <th>&nbsp; &nbsp;</th>
+                            <th>&nbsp; &nbsp;</th>
+                            <th>&nbsp; &nbsp;</th>
+                            <th>&nbsp; &nbsp;</th>
+                            <th>&nbsp; &nbsp;</th>
+                            <th>&nbsp; &nbsp;</th>
+                            <th>&nbsp; &nbsp;</th>
+                            <th>&nbsp; &nbsp;</th>
+                        </tr>
+                        </table>
+                    </div>`
                 + `<div><p><span style="font-weight: bold;">Semester:</span> ${questionPaper.semester}</p><p><span style="font-weight: bold;">Course Code & Name:</span> ${courseDetail.code} ${courseDetail.name}</p>`
                 +`<p><span style="font-weight: bold;">Session:</span> ${questionPaper.session}</p><p><span style="font-weight: bold;">Duration:</span> ${questionPaper.duration.hours}hours ${questionPaper.duration.mins}mins</p>`
                 +`<p><span style="font-weight: bold;">Maximum Marks:</span> ${questionPaper.totalMarks}</p>`
@@ -38,7 +68,7 @@ const printPdf = async function (payload, courseDetail) {
     });
 
     var mywindow = window.open("", "PRINT", "height=600,width=600");
-    mywindow.document.write(`${heading} ${partA} ${partB} ${partC}`);
+    mywindow.document.write(`${style} ${topLog} ${heading} ${partA} ${partB} ${partC}`);
     mywindow.document.close();
     mywindow.focus();
     mywindow.print();
