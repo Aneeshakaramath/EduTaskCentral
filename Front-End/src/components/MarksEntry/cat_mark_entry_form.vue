@@ -120,13 +120,13 @@ const courseName = computed(() => {
 })
 
 function catConverted(catMarks) {
-    if(catWeightage.value > 0)
-        return (catMarks/50)*catWeightage.value;
-    return 0;
+    if(catWeightage.value > 0 && catMarks)
+        return ((catMarks/50)*catWeightage.value).toFixed(2);
+    return "0";
 };
 
 function getTotal(catMarks, assignmentMarks) {
-    return catConverted(catMarks) + (parseFloat(assignmentMarks)||0);
+    return (parseFloat(catConverted(catMarks)) + (parseFloat(assignmentMarks)||0)).toFixed(2);
 }
 const assignmentWeightage = computed(() => {
     return 100 - catWeightage.value;
@@ -170,10 +170,10 @@ function getMarksPayload(marksArray) {
     marksArray.forEach((element)=> {
         marksPayload.push({
             name: element.name,
-            catMarks: element.catMarks,
-            catMarksCoverted: catConverted(element.catMarks),
-            assignmentMarks: element.assignmentMarks,
-            Total: getTotal(element.catMarks, element.assignmentMarks)
+            catMarks: parseFloat(element.catMarks),
+            catMarksCoverted: parseFloat(catConverted(element.catMarks)),
+            assignmentMarks: parseFloat(element.assignmentMarks),
+            Total: parseFloat(getTotal(element.catMarks, element.assignmentMarks))
         })
     })
     return marksPayload;
