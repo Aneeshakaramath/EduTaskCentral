@@ -39,9 +39,9 @@ const printPdf = async function (payload, courseDetail) {
 
     var mywindow = window.open("", "PRINT", "height=600,width=600");
     mywindow.document.write(`${heading} ${partA} ${partB} ${partC}`);
-   // mywindow.document.close();
-    //mywindow.focus();
-   // mywindow.print();
+    mywindow.document.close();
+    mywindow.focus();
+    mywindow.print();
     return true;
 
 };
