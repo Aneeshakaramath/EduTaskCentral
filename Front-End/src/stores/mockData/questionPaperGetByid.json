@@ -30,6 +30,25 @@
             "couseOutcome": "CO2",
             "marks": 12,
             "_id": "645270cea1c8520650ecd80c"
+          },
+          {
+            "question": "test question?",
+            "bt": "remember",
+            "couseOutcome": "CO2",
+            "marks": 12,
+            "_id": "645270cea1c8520650ecd80c"
+          }
+        ],
+        "_id": "645270cea1c8520650ecd80b"
+      },
+      {
+        "questions": [
+          {
+            "question": "test question?",
+            "bt": "remember",
+            "couseOutcome": "CO2",
+            "marks": 12,
+            "_id": "645270cea1c8520650ecd80c"
           }
         ],
         "_id": "645270cea1c8520650ecd80b"
@@ -38,6 +57,13 @@
     "partC": [
       {
         "questions": [
+          {
+            "question": "test question?",
+            "bt": "remember",
+            "couseOutcome": "CO2",
+            "marks": 12,
+            "_id": "645270cea1c8520650ecd80e"
+          },
           {
             "question": "test question?",
             "bt": "remember",

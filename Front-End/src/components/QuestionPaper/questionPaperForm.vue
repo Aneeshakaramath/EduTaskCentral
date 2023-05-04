@@ -367,6 +367,7 @@ async function addQuestionPaper() {
     const response = await questionPaperStore.addQuestionpaper(JSON.parse(JSON.stringify(questionPaperPayload)));
     if(response.courseId == questionPaperPayload.courseId || response.courseId!=null) {
         swal("Success!", "question paper added successfully", "success");
+        router.push({ name: 'questionPaperDetails'});
         // alert('task added successfully');
         /*let userDataRefresh = await store.fetchUserData();
         store.setUserData(userDataRefresh);*/

@@ -1,12 +1,19 @@
-const printPdf = async function (payload) {
+const printPdf = async function (payload, courseDetail) {
     
+    console.log(courseDetail);
     let questionPaper = payload[0];
-    let partA = '<h2>Part A </h2>';
-    let partB = '<h2>Part B </h2>';
-    let partC = '<h2>Part C </h2>';
+    let partA = `<h2 style="text-align: center; font-size: 20px;">PART A (${getTotalMarks(questionPaper.partA)} marks)</h2>` +
+                '<p style="text-align: center; font-size: 15px; font-weight: bold;">(ANSWER ALL QUESTIONS)</p>';
+    let partB = `<h2 style="text-align: center; font-size: 20px;">PART B (${getTotalMarksBig(questionPaper.partB)} marks)</h2>`;
+    let partC = `<h2 style="text-align: center; font-size: 20px;">PART C (${getTotalMarksBig(questionPaper.partC)} marks)</h2>`;
 
     let questionCount = 1;
-    let heading = `<h1>${questionPaper.examType}</h1>`
+    let heading = `<div><h1 style="text-align: center; font-size: 20px;">${questionPaper.examType},&nbsp;${formatDate(questionPaper.examDate)}</h1>`
+                + `<div><p><span style="font-weight: bold;">Semester:</span> ${questionPaper.semester}</p><p><span style="font-weight: bold;">Course Code & Name:</span> ${courseDetail.code} ${courseDetail.name}</p>`
+                +`<p><span style="font-weight: bold;">Session:</span> ${questionPaper.session}</p><p><span style="font-weight: bold;">Duration:</span> ${questionPaper.duration.hours}hours ${questionPaper.duration.mins}mins</p>`
+                +`<p><span style="font-weight: bold;">Maximum Marks:</span> ${questionPaper.totalMarks}</p>`
+                +`</div>`
+                + `</div>`;
 
     questionPaper.partA.forEach(element => {
         partA = `${partA} <div> ${questionCount}. ${element.question}</div>`;
@@ -15,28 +22,57 @@ const printPdf = async function (payload) {
 
 
     questionPaper.partB.forEach(subQuestions => {
-        partB = `${partB} <p>${questionCount}</p>`
         subQuestions.questions.forEach((element,index) => {
-            partB = `${partB} <div> ${(index + 10).toString(36)}. ${element.question} </div>`;
+            partB = `${partB} <div> ${index==0?questionCount:'&nbsp;'} ${(index + 10).toString(36)}. ${element.question} </div>`;
         });
+        partB =`${partB} <br>`
         questionCount++;
     });
     
     questionPaper.partC.forEach(subQuestions => {
-        partC = `${partC} <p>${questionCount}</p>`
         subQuestions.questions.forEach((element,index) => {
-            partC = `${partC} <div> ${(index + 10).toString(36)}. ${element.question} </div>`;
+            partC = `${partC} <div> ${index==0?questionCount:'&nbsp;'} ${(index + 10).toString(36)}. ${element.question} </div>`;
         });
+        partC =`${partC} <br>`
         questionCount++;
     });
 
     var mywindow = window.open("", "PRINT", "height=600,width=600");
     mywindow.document.write(`${heading} ${partA} ${partB} ${partC}`);
-    mywindow.document.close();
-    mywindow.focus();
-    mywindow.print();
+   // mywindow.document.close();
+    //mywindow.focus();
+   // mywindow.print();
     return true;
 
 };
 
+function formatDate(date) {
+    var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+    if (month.length < 2) 
+        month = '0' + month;
+    if (day.length < 2) 
+        day = '0' + day;
+
+    return [year, month, day].join('-');
+}
+
+function getTotalMarks(questionArray) {
+    let sum = 0;
+    questionArray.forEach((element)=> {
+        sum+=element.marks;
+    })
+    return sum;
+}
+
+function getTotalMarksBig(questionArray) {
+    let sum = 0;
+    questionArray.forEach((subQuestions)=> {
+        sum+=getTotalMarks(subQuestions.questions);
+    });
+    return sum;
+}
 export default printPdf;
