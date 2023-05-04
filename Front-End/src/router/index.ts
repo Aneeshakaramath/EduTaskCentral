@@ -20,10 +20,13 @@ import Notification from "../components/Notification/Notification.vue";
 import WeeklyPlan from "../components/CourseDelivery/weeklyPlan/weeklyPlan.vue";
 import WeeklyModuleDetails from "../components/CourseDelivery/weeklyPlan/weeklyModuleDetails.vue";
 import QuestionPaper from "../components/QuestionPaper/questionPaper.vue";
+import marksEntry from "../components/MarksEntry/marksEntry.vue";
 import Setting from "../components/QuestionPaper/setting.vue";
 import Audit from "../components/QuestionPaper/audit.vue";
 import QuestionPaperForm from "../components/QuestionPaper/questionPaperForm.vue";
 import QuestionPaperDetails from "../components/QuestionPaper/questionPaperDetails.vue";
+import CatMarkEntryForm from "../components/MarksEntry/cat_mark_entry_form.vue";
+import CatMarksDetails from "../components/MarksEntry/cat_mark_form_data.vue";
 
 import { useUserStore } from "../stores/User";
 
@@ -135,6 +138,21 @@ const router = createRouter({
               name: "audit",
             }
           ]
+        },
+        {
+          path: "marksEntry",
+          name: "marksEntry",
+          component: marksEntry,
+        },
+        {
+          path: "catMarkEntryForm",
+          name: "catMarkEntryForm",
+          component: CatMarkEntryForm,
+        },
+        {
+          path: "catMarksDetails",
+          name: "catMarksDetails",
+          component: CatMarksDetails,
         },
         {
           path: "questionPaperForm",

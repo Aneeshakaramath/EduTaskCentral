@@ -15,7 +15,8 @@ const API_URLS = {
     notification: 'http://localhost:5000/api/notification',
     weeklyPlan: 'http://localhost:5000/api/weeklyPlan',
     groupComments: 'http://localhost:5000/api/groupComments',
-    questionPaper: 'http://localhost:5000/api/questionPaper'
+    questionPaper: 'http://localhost:5000/api/questionPaper',
+    catMarks: 'http://localhost:5000/api/catMarks'
 };
 
 export default API_URLS;

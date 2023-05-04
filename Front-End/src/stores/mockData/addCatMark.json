@@ -1,0 +1,18 @@
+{
+  "courseId": "641ee031dd34c03d7f7aafbb",
+  "createdBy": "6401607f067c1d45ba3db495",
+  "examType": "CAT_1",
+  "catWeightage": 100,
+  "marks": [
+    {
+      "name": "Riyaz",
+      "catMarks": 25,
+      "catMarksCoverted": 25,
+      "assignmentMarks": 10,
+      "Total": 35,
+      "_id": "645359b692d9e550e90a17a3"
+    }
+  ],
+  "_id": "645359b692d9e550e90a17a2",
+  "__v": 0
+}
