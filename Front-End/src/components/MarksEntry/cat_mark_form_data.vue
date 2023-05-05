@@ -1,5 +1,8 @@
 <template>
     <div class="boldText mark-data-container" v-if="isLoaded">
+        <button type="button" class="btn btn-outline-primary op" @click="navigateToCatUpdateForm()">
+            Edit
+        </button>          
         <div class="row">
             <div class="col heading">
                 <div class="row">
@@ -116,6 +119,9 @@ onBeforeMount(async()=> {
   }
 });
 
+function navigateToCatUpdateForm() {
+    router.push({ name: 'cat_mark_update_form'});
+}
 </script>
 <style scoped>
 
@@ -124,6 +130,10 @@ onBeforeMount(async()=> {
     color: black
 }
 
+.edit-icon {
+    margin-left: 5px;
+    width: 15px;
+}
 .margin-top {
     margin-top: 20px;
 }

@@ -3,6 +3,7 @@ import addQuestionpaper from "./actions/addQuestionpaper";
 import addCatMarks from "./actions/addCatMarks";
 import fetchQuestionPaperByid from "./actions/fetchQuestionPaperByid";
 import fetchCatMarksById from "./actions/fetchCatMarksById";
+import updateCatMarks from "./actions/updateCatMarks";
 
 export const useQuestionPaperStore = defineStore("questionPaper", {
     state: () => ({
@@ -37,6 +38,11 @@ export const useQuestionPaperStore = defineStore("questionPaper", {
         },
         async fetchCatMarksById(courseId, examType) {
             const response = await fetchCatMarksById(courseId, examType);
+            console.log(response);
+            return response;
+        },
+        async updateCatMarks(payload) {
+            const response  = await updateCatMarks(payload);
             console.log(response);
             return response;
         }

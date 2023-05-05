@@ -27,6 +27,7 @@ import QuestionPaperForm from "../components/QuestionPaper/questionPaperForm.vue
 import QuestionPaperDetails from "../components/QuestionPaper/questionPaperDetails.vue";
 import CatMarkEntryForm from "../components/MarksEntry/cat_mark_entry_form.vue";
 import CatMarksDetails from "../components/MarksEntry/cat_mark_form_data.vue";
+import CatMarkUpdateForm from "../components/MarksEntry/cat_mark_update_form.vue";
 
 import { useUserStore } from "../stores/User";
 
@@ -148,6 +149,11 @@ const router = createRouter({
           path: "catMarkEntryForm",
           name: "catMarkEntryForm",
           component: CatMarkEntryForm,
+        },
+        {
+          path: "cat_mark_update_form",
+          name: "cat_mark_update_form",
+          component: CatMarkUpdateForm
         },
         {
           path: "catMarksDetails",
