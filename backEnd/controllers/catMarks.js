@@ -52,9 +52,9 @@ const addCatMarks = async (req, res, next) => {
 
 const getByCourseId = async (req, res, next) => {
     try {
-        let courseid = req.params.courseid;
+        let courseId = req.params.courseid;
         let examType = req.query.examType;
-        const catMarksById = await CatMarks.find({ courseId: courseid, examType: examType });
+        const catMarksById = await CatMarks.find({ courseId: courseId, examType: examType });
         res.json(catMarksById);
     } catch (err) {
         console.log(err);
@@ -64,6 +64,34 @@ const getByCourseId = async (req, res, next) => {
     }
 };
 
+
+const updateCatMarks = async (req, res, next) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return next(
+            new HttpError('Invalid inputs passed, please check your data.', 422)
+        );
+    }
+    try {
+        const catMarksById = await CatMarks.findById(req.body.catMarksId);
+        if(catMarksById == null || catMarksById.length == 0) {
+            return next(
+                new HttpError('Could not find', 400)
+            );
+        }
+        catMarksById.catWeightage = req.body.catWeightage
+        catMarksById.marks = req.body.marks
+        const updatedCatMarks = await catMarksById.save();
+        res.json(updatedCatMarks);
+    } catch (err) {
+        console.log(err.message);
+        return next(
+            new HttpError('task couldnt be updated', 400)
+        );
+    }
+};
+
 exports.getAllCatMarks = getAllCatMarks;
 exports.getByCourseId = getByCourseId;
 exports.addCatMarks = addCatMarks;
+exports.updateCatMarks = updateCatMarks;

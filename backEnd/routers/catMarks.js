@@ -18,6 +18,16 @@ router.post(
   catMarksController.addCatMarks
 );
 
+router.post(
+  "/update",
+  [
+    check("catMarksId").not().isEmpty(),
+    check("catWeightage").not().isEmpty(),
+    check("marks").not().isEmpty(),
+  ],
+  catMarksController.updateCatMarks
+)
+
 router.get('/course/:courseid', catMarksController.getByCourseId);
 
 module.exports = router;
