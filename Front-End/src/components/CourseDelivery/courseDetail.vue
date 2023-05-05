@@ -12,7 +12,6 @@
                         <button class="dropdown-item boldText" @click=showDetails(courseDetail)>View Details</button>
                         <button class="dropdown-item boldText" @click="routeChange('overallPlan', courseDetail)">Overall Plan</button>
                         <button class="dropdown-item boldText" @click="routeChange('weeklyPlan', courseDetail)">Weekly Plan</button>
-                        <button class="dropdown-item boldText">Daily Plan</button>
                     </div>
                 </div>
             </div>  

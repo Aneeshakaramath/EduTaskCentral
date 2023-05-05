@@ -28,7 +28,7 @@
                 <div class="col">
                     <div class="row">
                         <div class="col heading boldText">
-                            Semested
+                            Semester
                         </div>
                         <div class="col boldText">
                             {{ selectedCourseDetail.semester }}
