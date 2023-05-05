@@ -179,7 +179,7 @@ function getMarksPayload(marksArray) {
 
 onBeforeMount(async()=> {
     catWeightage.value = questionPaperStore?.catMarksById[0]?.catWeightage;
-    marksArray.value = questionPaperStore?.catMarksById[0]?.marks;
+    marksArray.value = JSON.parse(JSON.stringify(questionPaperStore?.catMarksById[0]?.marks));
 });
 </script>
 <style scoped>
