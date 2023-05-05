@@ -16,7 +16,8 @@ const API_URLS = {
     weeklyPlan: 'http://localhost:5000/api/weeklyPlan',
     groupComments: 'http://localhost:5000/api/groupComments',
     questionPaper: 'http://localhost:5000/api/questionPaper',
-    catMarks: 'http://localhost:5000/api/catMarks'
+    catMarks: 'http://localhost:5000/api/catMarks',
+    semMarks: 'http://localhost:5000/api/semMarks'
 };
 
 export default API_URLS;

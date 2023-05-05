@@ -1,0 +1,18 @@
+{
+  "courseId": "641ee031dd34c03d7f7aafbb",
+  "createdBy": "6401607f067c1d45ba3db495",
+  "examType": "SEM",
+  "marks": [
+    {
+      "name": "Riyaz",
+      "semMarks": 80,
+      "cat1Marks": 80,
+      "cat2Marks": 70,
+      "Total": 77.5,
+      "Grade": "A",
+      "_id": "6454ca7116ac2e08e5358670"
+    }
+  ],
+  "_id": "6454ca7116ac2e08e535866f",
+  "__v": 0
+}

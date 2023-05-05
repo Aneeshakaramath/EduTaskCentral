@@ -57,6 +57,9 @@ function routeChange(examType, courseDetail) {
     if(examType == 'CAT_1' || examType == 'CAT_2') {
         router.push({ name: 'catMarksDetails'});
     }
+    if(examType == 'SEM') {
+        router.push({ name: 'semMarksDetails'});
+    }
 }
 
 </script>

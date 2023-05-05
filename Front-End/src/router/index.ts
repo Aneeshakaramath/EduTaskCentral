@@ -28,6 +28,8 @@ import QuestionPaperDetails from "../components/QuestionPaper/questionPaperDetai
 import CatMarkEntryForm from "../components/MarksEntry/cat_mark_entry_form.vue";
 import CatMarksDetails from "../components/MarksEntry/cat_mark_form_data.vue";
 import CatMarkUpdateForm from "../components/MarksEntry/cat_mark_update_form.vue";
+import SemMarksDetails from "../components/MarksEntry/sem_mark_details.vue";
+import SemMarksEntryForm from "../components/MarksEntry/sem_mark_entry_form.vue";
 
 import { useUserStore } from "../stores/User";
 
@@ -159,6 +161,16 @@ const router = createRouter({
           path: "catMarksDetails",
           name: "catMarksDetails",
           component: CatMarksDetails,
+        },
+        {
+          path: "semMarksDetails",
+          name: "semMarksDetails",
+          component: SemMarksDetails
+        },
+        {
+          path: "semMarksEntryForm",
+          name: "semMarksEntryForm",
+          component: SemMarksEntryForm
         },
         {
           path: "questionPaperForm",
