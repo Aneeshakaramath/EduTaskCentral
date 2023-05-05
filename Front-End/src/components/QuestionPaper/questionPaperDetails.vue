@@ -34,7 +34,7 @@
                 <!-- exam date Input -->
                 <div class="form-group">
                     <label for="end-date" class="boldText">Exam Date</label>
-                    <input class="date-input boldText" type="date" id="end-date" name="end-date" v-model="examDate" disabled>
+                    <input class="date-input boldText" type="text" id="end-date" name="end-date" v-model="examDate" disabled>
                 </div>
 
                 <!-- Session Type -->
