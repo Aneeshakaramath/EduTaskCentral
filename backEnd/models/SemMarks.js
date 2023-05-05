@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const catMarksSchema = new mongoose.Schema({
+const semMarksSchema = new mongoose.Schema({
   courseId: {
     type: mongoose.Types.ObjectId,
     ref: "CourseSchema",
@@ -13,12 +13,7 @@ const catMarksSchema = new mongoose.Schema({
   },
   examType: {
     type: String,
-    enum: ["CAT_1", "CAT_2"],
-  },
-  catWeightage: {
-    type: Number,
-    required: true,
-    min: 0,
+    enum: ["SEM"],
   },
   marks: [
     {
@@ -26,28 +21,35 @@ const catMarksSchema = new mongoose.Schema({
         type: String,
         required: true,
       },
-      catMarks: {
+      semMarks: {
         type: Number,
         required: true,
         min: 0,
+        max: 100
       },
-      catMarksCoverted: {
+      cat1Marks: {
         type: Number,
         required: true,
         min: 0,
+        max: 100
       },
-      assignmentMarks: {
+      cat2Marks: {
         type: Number,
         required: true,
         min: 0,
+        max: 100
       },
       Total: {
         type: Number,
         required: true,
         min: 0,
       },
+      Grade: {
+        type: String,
+        enum: ["A"],
+      }
     },
   ],
 });
 
-module.exports = mongoose.model("CatMarks", catMarksSchema);
+module.exports = mongoose.model("SemMarks", semMarksSchema);
