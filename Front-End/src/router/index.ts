@@ -30,6 +30,7 @@ import CatMarksDetails from "../components/MarksEntry/cat_mark_form_data.vue";
 import CatMarkUpdateForm from "../components/MarksEntry/cat_mark_update_form.vue";
 import SemMarksDetails from "../components/MarksEntry/sem_mark_details.vue";
 import SemMarksEntryForm from "../components/MarksEntry/sem_mark_entry_form.vue";
+import SemMarksUpdateForm from "../components/MarksEntry/sem_marks_update_form.vue";
 
 import { useUserStore } from "../stores/User";
 
@@ -156,6 +157,11 @@ const router = createRouter({
           path: "cat_mark_update_form",
           name: "cat_mark_update_form",
           component: CatMarkUpdateForm
+        },
+        {
+          path: "sem_marks_update_form",
+          name: "sem_marks_update_form",
+          component: SemMarksUpdateForm
         },
         {
           path: "catMarksDetails",

@@ -71,7 +71,7 @@ const updateSemMarks = async (req, res, next) => {
         );
     }
     try {
-        const semMarksById = await CatMarks.findById(req.body.semMarksById);
+        const semMarksById = await SemMarks.findById(req.body.semMarksById);
         if(semMarksById == null) {
             return next(
                 new HttpError('Could not find', 400)

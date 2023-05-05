@@ -92,7 +92,7 @@ onBeforeMount(async()=> {
 });
 
 function navigateToSemUpdateForm() {
-    router.push({ name: 'cat_mark_update_form'});
+    router.push({ name: 'sem_marks_update_form'});
 }
 </script>
 <style scoped>

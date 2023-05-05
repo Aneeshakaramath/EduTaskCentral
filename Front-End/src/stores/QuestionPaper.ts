@@ -6,6 +6,7 @@ import fetchCatMarksById from "./actions/fetchCatMarksById";
 import updateCatMarks from "./actions/updateCatMarks";
 import fetchSemMarksById from "./actions/fetchSemMarksById";
 import addSemMarks from "./actions/addSemMarks";
+import updateSemMarks from "./actions/updateSemMarks";
 
 export const useQuestionPaperStore = defineStore("questionPaper", {
     state: () => ({
@@ -61,6 +62,11 @@ export const useQuestionPaperStore = defineStore("questionPaper", {
             const response  = await updateCatMarks(payload);
             console.log(response);
             return response;
-        }
+        },
+        async updateSemMarks(payload) {
+            const response  = await updateSemMarks(payload);
+            console.log(response);
+            return response;
+        },
     }
 });
