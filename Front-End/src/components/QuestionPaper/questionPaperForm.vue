@@ -1,5 +1,6 @@
 <template>
     <div class="question-paper-form-container boldText">
+        <button @click="preview" class="btn btn-default button-add-course boldText">Preview</button>
         <div class="row">
             <div class="col heading">
                 <div class="row">
@@ -271,6 +272,7 @@ import { useQuestionPaperStore } from '@/stores/QuestionPaper';
 import { onBeforeMount, ref, computed } from 'vue';
 import { useRouter } from 'vue-router';
 import swal from 'sweetalert';
+import printPdf from '@/Util/createPrintablePdf';
 
 const store = useUserStore();
 const courseDeliveryStore = useCourseDeliveryStore();
@@ -345,9 +347,25 @@ const totalMarks = computed(() => {
 })
 async function addQuestionPaper() {
 
+    let questionPaperPayload = buildPayloadForQuestion();
+
+    console.log(JSON.parse(JSON.stringify(questionPaperPayload)))
+    const response = await questionPaperStore.addQuestionpaper(JSON.parse(JSON.stringify(questionPaperPayload)));
+    if(response.courseId == questionPaperPayload.courseId || response.courseId!=null) {
+        swal("Success!", "question paper added successfully", "success");
+        router.push({ name: 'questionPaperDetails'});
+        // alert('task added successfully');
+        /*let userDataRefresh = await store.fetchUserData();
+        store.setUserData(userDataRefresh);*/
+    } else {
+        swal("Oops!", "question Paper Submission Failed", "error");
+    }
+}
+
+function buildPayloadForQuestion() {
     let examDateFromForm = new Date(examDate.value);
 
-    let questionPaperPayload = {
+    return {
         courseId : courseDeliveryStore.selectedCourseId,
         createdBy : store.userData?.userDetails.id,
         examType: questionPaperStore.examType,
@@ -363,19 +381,7 @@ async function addQuestionPaper() {
         partB: getPayload(partB.value),
         partC: getPayload(partC.value)
     }
-    console.log(JSON.parse(JSON.stringify(questionPaperPayload)))
-    const response = await questionPaperStore.addQuestionpaper(JSON.parse(JSON.stringify(questionPaperPayload)));
-    if(response.courseId == questionPaperPayload.courseId || response.courseId!=null) {
-        swal("Success!", "question paper added successfully", "success");
-        router.push({ name: 'questionPaperDetails'});
-        // alert('task added successfully');
-        /*let userDataRefresh = await store.fetchUserData();
-        store.setUserData(userDataRefresh);*/
-    } else {
-        swal("Oops!", "question Paper Submission Failed", "error");
-    }
 }
-
 function getPayload(questionsArray) {
     let payload = [];
 
@@ -399,6 +405,10 @@ function formatDate(date) {
         day = '0' + day;
 
     return [year, month, day].join('-');
+}
+
+function preview() {
+    printPdf(buildPayloadForQuestion(), courseDeliveryStore.courseDetail)
 }
 </script>
 <style scoped>

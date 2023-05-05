@@ -50,6 +50,7 @@ const courseDetails = computed(() => {
 })
 
 function routeChange(examType, courseDetail) {
+    courseDeliveryStore.setCourseDetail(courseDetail);
     courseDeliveryStore.setCourseName(courseDetail.name);
     courseDeliveryStore.setSelectedCourseId(courseDetail._id);
     courseDeliveryStore.setSelectedUserId(courseDetail.createdBy._id);

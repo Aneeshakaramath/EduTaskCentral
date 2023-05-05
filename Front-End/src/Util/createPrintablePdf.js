@@ -1,7 +1,6 @@
-const printPdf = async function (payload, courseDetail) {
+const printPdf = async function (questionPaper, courseDetail) {
     
     console.log(courseDetail);
-    let questionPaper = payload[0];
     let style = `<style>table, th, td {
         border:1px solid black;
         border-collapse: collapse;

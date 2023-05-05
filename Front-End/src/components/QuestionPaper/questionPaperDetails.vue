@@ -1,5 +1,17 @@
 <template>
     <div class="question-paper-form-container boldText" v-if="isLoaded">
+        <div class="send-notification-container boldText">
+            <div>
+                <label class="typo__label boldText">Select an user to send notification</label>
+                <VueMultiselect v-model="userValues" placeholder="Search an User" label="name" track-by="id"
+                    :options="userOptions" :multiple="false" :taggable="false">
+                </VueMultiselect>
+            </div>
+            <div class="align-center">
+                <button type="submit" class="btn btn-default button-add-course boldText"
+                    @click="sendNotification">Send</button>
+            </div>
+        </div>
         <div class="row">
             <div class="col heading">
                 <div class="row">
@@ -34,7 +46,8 @@
                 <!-- exam date Input -->
                 <div class="form-group">
                     <label for="end-date" class="boldText">Exam Date</label>
-                    <input class="date-input boldText" type="text" id="end-date" name="end-date" v-model="examDate" disabled>
+                    <input class="date-input boldText" type="text" id="end-date" name="end-date" v-model="examDate"
+                        disabled>
                 </div>
 
                 <!-- Session Type -->
@@ -77,8 +90,8 @@
                         <div class="form-row each-question-container">
                             <div class="col boldText">
                                 <!--<label class="form-label boldText" for="question">Question</label>-->
-                                <input type="text" class="form-control boldText"
-                                    v-model="questionA.question" id="question" disabled>
+                                <input type="text" class="form-control boldText" v-model="questionA.question" id="question"
+                                    disabled>
                             </div>
                             <div class="col boldText align-center">
                                 <!--<label class="form-label boldText" for="BT">BT</label>-->
@@ -104,8 +117,8 @@
                             </div>
                             <div class="col boldText">
                                 <!--<label class="form-label boldText" for="Marks">Marks</label>-->
-                                <input id="marks" type="number" class="form-control boldText"
-                                    v-model="questionA.marks" disabled />
+                                <input id="marks" type="number" class="form-control boldText" v-model="questionA.marks"
+                                    disabled />
                             </div>
                         </div>
                     </div>
@@ -123,8 +136,8 @@
                             <div class="form-row each-question-container">
                                 <div class="col boldText">
                                     <!--<label class="form-label boldText" for="question">Question</label>-->
-                                    <input type="text" class="form-control boldText" 
-                                        v-model="subQuestionB.question" id="question" disabled>
+                                    <input type="text" class="form-control boldText" v-model="subQuestionB.question"
+                                        id="question" disabled>
                                 </div>
                                 <div class="col boldText align-center">
                                     <!--<label class="form-label boldText" for="BT">BT</label>-->
@@ -172,8 +185,8 @@
                             <div class="form-row each-question-container">
                                 <div class="col boldText">
                                     <!--<label class="form-label boldText" for="question">Question</label>-->
-                                    <input type="text" class="form-control boldText"
-                                        v-model="subQuestionC.question" id="question" disabled>
+                                    <input type="text" class="form-control boldText" v-model="subQuestionC.question"
+                                        id="question" disabled>
                                 </div>
                                 <div class="col boldText align-center">
                                     <!--<label class="form-label boldText" for="BT">BT</label>-->
@@ -218,66 +231,101 @@ import { useUserStore } from '@/stores/User';
 import { useCourseDeliveryStore } from '@/stores/CourseDelivery';
 import { useQuestionPaperStore } from '@/stores/QuestionPaper';
 import { onBeforeMount, ref, computed } from 'vue';
+import VueMultiselect from 'vue-multiselect';
 import { useRouter } from 'vue-router';
+import swal from 'sweetalert';
 
 const store = useUserStore();
 const courseDeliveryStore = useCourseDeliveryStore();
 const questionPaperStore = useQuestionPaperStore();
 const router = useRouter();
 const isLoaded = ref(false);
+let userValues = ref([]);
+let userOptions = ref([]);
+
 
 const courseName = computed(() => {
     return courseDeliveryStore.courseName;
 })
 
-async function addQuestionPaper() {
 
-}
+onBeforeMount(async () => {
+    const response = await questionPaperStore.fetchQuestionPaperByid(courseDeliveryStore.selectedCourseId, questionPaperStore.examType);
+    if (response.length > 0) {
+        questionPaperStore.setQuestionPaperById(response);
+        isLoaded.value = true;
+    } else {
+        router.push({ name: 'questionPaperForm' });
+    }
 
-onBeforeMount(async()=> {
-  const response = await questionPaperStore.fetchQuestionPaperByid(courseDeliveryStore.selectedCourseId,questionPaperStore.examType);
-  if(response.length > 0) {
-    questionPaperStore.setQuestionPaperById(response);
-    isLoaded.value = true;
-  } else {
-    router.push({ name: 'questionPaperForm'});
-  }
+    const userReponse = await store.fetchUserDetails();
+    store.setUserList(userReponse);
+    setUserValues();
 });
 
-const semester = computed(()=> {
+function setUserValues() {
+    store.userList.forEach((value) => {
+        userOptions.value.push({name: value.name, id: value._id});
+        userOptions.value.push({name: value.rollNumber, id: value._id});
+    })
+}
+
+const semester = computed(() => {
     return questionPaperStore?.questionPaperById[0]?.semester;
 });
 
-const examDate = computed(()=> {
+const examDate = computed(() => {
     return questionPaperStore?.questionPaperById[0]?.examDate;
 });
 
-const session = computed(()=> {
+const session = computed(() => {
     return questionPaperStore?.questionPaperById[0]?.session;
 });
-const hours = computed(()=> {
+const hours = computed(() => {
     return questionPaperStore?.questionPaperById[0]?.duration.hours;
 });
-const mins = computed(()=> {
+const mins = computed(() => {
     return questionPaperStore?.questionPaperById[0]?.duration.mins;
 });
-const totalMarks = computed(()=> {
+const totalMarks = computed(() => {
     return questionPaperStore?.questionPaperById[0]?.totalMarks;
 });
-const partA = computed(()=> {
+const partA = computed(() => {
     return questionPaperStore?.questionPaperById[0]?.partA;
 });
 
-const partB = computed(()=> {
+const partB = computed(() => {
     return questionPaperStore?.questionPaperById[0]?.partB;
 });
 
-const partC = computed(()=> {
+const partC = computed(() => {
     return questionPaperStore?.questionPaperById[0]?.partC;
 });
 const examType = computed(() => {
     return questionPaperStore?.examType;
 })
+
+async function sendNotification() {
+    if(!userValues.value.id) {
+        swal("Oops!", "Select an user!", "error");
+        // alert('select an user');
+        return;
+    }
+    let descriptionNotificaiton = `${examType} question paper for the course ${courseDeliveryStore.courseName} was submitted by ${store.userData.userDetails.name}`;
+    let notificationCreatePayload = {
+        "userId" : userValues?.value?.id ,
+        "description" : descriptionNotificaiton
+    };
+    const response = await courseDeliveryStore.sendNotificaion(notificationCreatePayload);
+    if (response._id == notificationCreatePayload.userId || response.userId !== null) {
+        swal("Success!", "notification sent successfully", "success");
+        // alert('notification sent successfully');
+    }
+    else {
+        swal("Oops!", "notification failed!", "error");
+        // alert('notification failed');
+    }
+}
 </script>
 <style scoped>
 .question-paper-form-container {
@@ -312,5 +360,4 @@ const examType = computed(() => {
 .each-question-container {
     margin-top: 10px;
 }
-
 </style>

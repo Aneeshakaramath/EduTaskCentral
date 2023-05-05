@@ -14,6 +14,7 @@ export const useCourseDeliveryStore = defineStore("courseDelivery", {
         overALLPlanById: [],
         selectedModule: {},
         weeklyPlanByid: [],
+        courseDetail: {}
     }),
     actions: {
         setIsViewingMyCourse(payload) {
@@ -33,6 +34,9 @@ export const useCourseDeliveryStore = defineStore("courseDelivery", {
         },
         setSelectedModule(payload) {
             this.selectedModule = payload;
+        },
+        setCourseDetail(payload) {
+            this.courseDetail = payload;
         },
         async addOverAllPlan(payload) {
             const response  = await addOverAllPlan(payload);
