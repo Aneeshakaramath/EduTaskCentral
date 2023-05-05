@@ -46,7 +46,7 @@ const semMarksSchema = new mongoose.Schema({
       },
       Grade: {
         type: String,
-        enum: ["A"],
+        enum: ["S","A","B","C","D","E","U"],
       }
     },
   ],
