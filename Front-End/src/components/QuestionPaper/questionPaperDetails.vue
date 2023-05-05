@@ -311,7 +311,7 @@ async function sendNotification() {
         // alert('select an user');
         return;
     }
-    let descriptionNotificaiton = `${examType} question paper for the course ${courseDeliveryStore.courseName} was submitted by ${store.userData.userDetails.name}`;
+    let descriptionNotificaiton = `${examType.value} question paper for the course ${courseDeliveryStore.courseName} was submitted by ${store.userData.userDetails.name}`;
     let notificationCreatePayload = {
         "userId" : userValues?.value?.id ,
         "description" : descriptionNotificaiton

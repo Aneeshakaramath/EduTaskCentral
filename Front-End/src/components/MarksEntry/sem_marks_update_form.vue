@@ -47,16 +47,16 @@
                             <input type="text" class="form-control boldText" v-model="mark.name" required>
                         </td>
                         <td class="boldText">
-                            <input type="text" class="form-control boldText" v-model="mark.semMarks" min="0" required>
+                            <input type="number" class="form-control boldText" v-model="mark.semMarks" min="0" max="100" required>
                         </td>
                         <td class="boldText">
                             <input type="text" class="form-control boldText" :value="semMarksByTwo(mark.semMarks)" min="0" disabled>
                         </td>
                         <td class="boldText">
-                            <input type="text" class="form-control boldText" v-model="mark.cat1Marks" min="0" required>
+                            <input type="number" class="form-control boldText" v-model="mark.cat1Marks" min="0" max="100" required>
                         </td>
                         <td class="boldText">
-                            <input type="text" class="form-control boldText" v-model="mark.cat2Marks" min="0" required>
+                            <input type="number" class="form-control boldText" v-model="mark.cat2Marks" min="0" max="100" required>
                         </td>
                         <td class="boldText">
                             <input type="text" class="form-control boldText" :value="getTotal(mark.semMarks,mark.cat1Marks,mark.cat2Marks)" min="0" disabled>

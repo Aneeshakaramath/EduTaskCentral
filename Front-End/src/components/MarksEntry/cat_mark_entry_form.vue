@@ -30,7 +30,7 @@
                             CAT Weightage
                         </div>
                         <div class="col boldText">
-                            <input type="text" class="form-control boldText" v-model="catWeightage" id="question" required>
+                            <input type="number" class="form-control boldText" v-model="catWeightage" id="question" min="0" max="100" required>
                         </div>
                     </div>
                 </div>
@@ -68,16 +68,16 @@
                             <input type="text" class="form-control boldText" v-model="mark.name" required>
                         </td>
                         <td class="boldText">
-                            <input type="text" class="form-control boldText" v-model="mark.catMarks" min="0" required>
+                            <input type="number" class="form-control boldText" v-model="mark.catMarks" min="0"  max="50" required>
                         </td>
                         <td class="boldText">
-                            <input type="text" class="form-control boldText" :value="catConverted(mark.catMarks)" min="0" disabled>
+                            <input type="number" class="form-control boldText" :value="catConverted(mark.catMarks)" min="0" disabled>
                         </td>
                         <td class="boldText">
-                            <input type="text" class="form-control boldText" v-model="mark.assignmentMarks" min="0" required>
+                            <input type="number" class="form-control boldText" v-model="mark.assignmentMarks" min="0" :max="assignmentWeightage" required>
                         </td>
                         <td class="boldText">
-                            <input type="text" class="form-control boldText" :value="getTotal(mark.catMarks,mark.assignmentMarks)" min="0" disabled>
+                            <input type="number" class="form-control boldText" :value="getTotal(mark.catMarks,mark.assignmentMarks)" min="0" max="100" disabled>
                         </td>
                         <td class="boldText">
                             <button type="button" class="btn btn-outline-primary" @click="removeRow(marksArray, index)">

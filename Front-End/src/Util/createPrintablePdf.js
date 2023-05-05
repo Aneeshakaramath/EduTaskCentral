@@ -8,17 +8,20 @@ const printPdf = async function (questionPaper, courseDetail) {
       .align-center {
         text-align: center;
       }
+      .underline {
+        text-decoration: underline
+      }
       </style>`
     let topLog = window.environment == 'development' ?
                     `<div class="align-center"><img src="src/assets/images/cresent_logo.jpeg"></img></div>`:
                     `<div class="align-center"><img src="cresent_logo/cresent_logo.jpeg"></img></div>`
-    let partA = `<h2 style="text-align: center; font-size: 20px;">PART A (${getTotalMarks(questionPaper.partA)} marks)</h2>` +
+    let partA = `<h2 style="text-align: center; font-size: 20px;" class="underline">PART A (${getTotalMarks(questionPaper.partA)} marks)</h2>` +
                 '<p style="text-align: center; font-size: 15px; font-weight: bold;">(ANSWER ALL QUESTIONS)</p>';
-    let partB = `<h2 style="text-align: center; font-size: 20px;">PART B (${getTotalMarksBig(questionPaper.partB)} marks)</h2>`;
-    let partC = `<h2 style="text-align: center; font-size: 20px;">PART C (${getTotalMarksBig(questionPaper.partC)} marks)</h2>`;
+    let partB = `<h2 style="text-align: center; font-size: 20px;" class="underline">PART B (${getTotalMarksBig(questionPaper.partB)} marks)</h2>`;
+    let partC = `<h2 style="text-align: center; font-size: 20px;" class="underline">PART C (${getTotalMarksBig(questionPaper.partC)} marks)</h2>`;
 
     let questionCount = 1;
-    let heading = `<div><h1 style="text-align: center; font-size: 20px;">${questionPaper.examType},&nbsp;${formatDate(questionPaper.examDate)}</h1>`
+    let heading = `<div><h1 style="text-align: center; font-size: 20px;">${getExamTypeName(questionPaper.examType)},&nbsp;${formatDate(questionPaper.examDate)}</h1>`
                 + `<div style="display:block;">
                         <table align="right">
                         <tr>
@@ -45,14 +48,14 @@ const printPdf = async function (questionPaper, courseDetail) {
                 + `</div>`;
 
     questionPaper.partA.forEach(element => {
-        partA = `${partA} <div> ${questionCount}. ${element.question}</div>`;
+        partA = `${partA} <div> ${questionCount}. ${element.question} <span style="float:right;font-weight: bold;"> (${element.marks}) </span> </div>`;
         questionCount++;
     });
 
 
     questionPaper.partB.forEach(subQuestions => {
         subQuestions.questions.forEach((element,index) => {
-            partB = `${partB} <div> ${index==0?questionCount:'&nbsp;'} ${(index + 10).toString(36)}. ${element.question} </div>`;
+            partB = `${partB} <div> ${index==0?questionCount:'&nbsp;'} ${(index + 10).toString(36)}. ${element.question} <span style="float:right;font-weight: bold;"> (${element.marks}) </span></div>`;
         });
         partB =`${partB} <br>`
         questionCount++;
@@ -60,7 +63,7 @@ const printPdf = async function (questionPaper, courseDetail) {
     
     questionPaper.partC.forEach(subQuestions => {
         subQuestions.questions.forEach((element,index) => {
-            partC = `${partC} <div> ${index==0?questionCount:'&nbsp;'} ${(index + 10).toString(36)}. ${element.question} </div>`;
+            partC = `${partC} <div> ${index==0?questionCount:'&nbsp;'} ${(index + 10).toString(36)}. ${element.question} <span style="float:right;font-weight: bold;"> (${element.marks}) </span></div>`;
         });
         partC =`${partC} <br>`
         questionCount++;
@@ -103,5 +106,19 @@ function getTotalMarksBig(questionArray) {
         sum+=getTotalMarks(subQuestions.questions);
     });
     return sum;
+}
+
+function getExamTypeName(examType) {
+    if(examType == 'CAT_1') {
+        return 'CONTINUOUS ASSESSMENT TEST-1';
+    }
+    if(examType == 'CAT_2') {
+        return 'CONTINUOUS ASSESSMENT TEST-2'
+    }
+    if(examType == 'SEM')
+    {
+        return 'SEMESTER END EXAMINATIONS';
+    }
+    return ''
 }
 export default printPdf;
