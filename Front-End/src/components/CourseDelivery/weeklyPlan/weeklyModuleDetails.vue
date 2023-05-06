@@ -120,4 +120,8 @@ async function sendNotification() {
   margin: 30px;
   color: black
 }
+
+.send-notification-container {
+    margin-bottom: 10px;
+}
 </style>

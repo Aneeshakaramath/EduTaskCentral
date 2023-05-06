@@ -360,4 +360,8 @@ async function sendNotification() {
 .each-question-container {
     margin-top: 10px;
 }
+
+.send-notification-container {
+    margin-bottom: 10px;
+}
 </style>

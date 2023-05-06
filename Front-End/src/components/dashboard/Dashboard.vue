@@ -5,6 +5,7 @@
         <div class="col-sm">
           <OverDueTask></OverDueTask>
           <StatusDetails></StatusDetails>
+          <CourseWiseQuesChecklist></CourseWiseQuesChecklist>
         </div>
         <div class="col-sm">
           <DatePicker></DatePicker>
@@ -18,6 +19,7 @@ import StatusDetails from './StatusDetails.vue';
 import GroupDetails from './GroupDetails.vue';
 import OverDueTask from './OverDueTask.vue';
 import DatePicker from './DatePicker.vue';
+import CourseWiseQuesChecklist from "./CourseWiseQuesChecklist.vue";
 import { useUserStore } from '@/stores/User';
 
 const store = useUserStore();

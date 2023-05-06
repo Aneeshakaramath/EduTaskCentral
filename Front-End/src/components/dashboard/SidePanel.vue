@@ -12,6 +12,7 @@
         <RouterLink :to="{ name: 'group' }"><button type="button" class="btn btn-link boldText">Group</button></RouterLink>
         <RouterLink :to="{ name: 'questionPaper' }"><button type="button" class="btn btn-link boldText">Question Paper</button></RouterLink>
         <RouterLink :to="{ name: 'marksEntry' }"><button type="button" class="btn btn-link boldText">Marks Entry</button></RouterLink>
+        <RouterLink :to="{ name: 'memo' }"><button type="button" class="btn btn-link boldText">Memo</button></RouterLink>
       </div>
   </div>
 </template>
