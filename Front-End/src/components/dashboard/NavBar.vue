@@ -4,21 +4,38 @@
       Logout
       <img class="logout_icon" src="@/assets/images/logout.png"/>
     </RouterLink>
-    <div class="hello-message">
-      <span> Hello, {{ store?.userData?.userDetails?.userName }} </span>
+    <div class="user-name-container">
+      <span class="hello-message">
+        <span> Hello, {{ store?.userData?.userDetails?.userName }} </span>
+      </span>
+      <span class="user_icon"><img src="@/assets/images/user_icon.png"/></span>
     </div>
-    <div class="user_icon"><img src="@/assets/images/user_icon.png"/></div>
     <RouterLink :to="{ name: 'notification' }">
       <img class="bell-icon" src="@/assets/images/bell.jpg"/>
     </RouterLink>
+    <div class="current-date">
+      {{ currentDate }}
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import { RouterLink, } from "vue-router";
 import { useUserStore } from '@/stores/User';
+import { computed } from "vue";
 
 const store = useUserStore();
+
+
+const currentDate = computed(() => {
+      const monthNames = ["January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+      ];
+      const current = new Date();   monthNames[current.getMonth()]
+      const date = `${current.getDate()} ${monthNames[current.getMonth()]}, ${current.getFullYear()}`;
+      return date;
+});
+
 </script>
 
 <style scoped>
@@ -55,5 +72,19 @@ const store = useUserStore();
   height: 25px;
   width: 25px;
   margin-right: 10px;
+}
+
+.user-name-container {
+    padding: 10px;
+    border: black 1px solid;
+    border-radius: 8px;
+    margin-right: 10px;
+}
+
+.current-date {
+    padding: 10px;
+    border: 1px black solid;
+    border-radius: 8px;
+    margin-right: 10px;
 }
 </style>

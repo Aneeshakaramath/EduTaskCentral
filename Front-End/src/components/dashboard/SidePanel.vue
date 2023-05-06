@@ -2,7 +2,7 @@
   <div class="side-panel">
     <div class="project-name">
       <img class="logo" src="@/assets/favicon.png"/>
-      <div class="boldText">Edu Task Central</div>
+      <div class="project-name-title">Edu Task Central</div>
     </div>
     <div class="options">
         <RouterLink :to="{ name: 'dashboard' }"><button type="button" class="btn btn-link boldText">Dashboard</button></RouterLink>
@@ -23,21 +23,26 @@ import { RouterLink } from "vue-router";
 </script>
 
 <style scoped>
+
+.logo {
+  height: 45px;
+}
 .side-panel {
-    background-color: rgb(242, 238, 238);
     padding: 10px;
     border-radius: 10px;
     height: 100%;
-    background-color: black;
+    background-color: white;
 }
 .project-name{
-    display: block;
+    align-items: center;
     margin-bottom: 20px;
     padding: 20px;
     color: white;
-    border: white;
+    border: black;
     border-style: solid;
     text-align: center;
+    display: flex;
+    flex-direction: row;
 }
 
 
@@ -45,6 +50,12 @@ import { RouterLink } from "vue-router";
     /*font-size: 8px;*/
     text-align: left;
     display: block;
-    color: white;
+    color: grey;
+}
+
+.project-name-title {
+    color: black;
+    font-weight: bold;
+    margin-left: 10px;
 }
 </style>

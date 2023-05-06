@@ -132,7 +132,7 @@ const series = computed(() => {
 <style scoped>
 .over-due-details-container {
   padding: 10px;
-  background-color: #f3eff2;
+  background-color: white;
 }
 
 .task-status-label {

@@ -1,8 +1,13 @@
 <template>
   <div class="dashboard-container">
-    <h1 class="welcome-message boldText">Welcome back, {{ store?.userData?.userDetails?.name }}! </h1>
+    <h1 class="dashboard-label"> Dashboard </h1>
+    <!--
+      <h1 class="welcome-message boldText">Welcome back, {{ store?.userData?.userDetails?.name }}! </h1>
+      -->
+    <WelcomeMessage></WelcomeMessage>
     <div class="row">
         <div class="col-sm">
+          <TaskStatusTiles></TaskStatusTiles>
           <OverDueTask></OverDueTask>
           <StatusDetails></StatusDetails>
           <CourseWiseQuesChecklist></CourseWiseQuesChecklist>
@@ -22,6 +27,9 @@ import OverDueTask from './OverDueTask.vue';
 import DatePicker from './DatePicker.vue';
 import CourseWiseQuesChecklist from "./CourseWiseQuesChecklist.vue";
 import MarksGraphVue from './MarksGraph.vue';
+import WelcomeMessage from './WelcomeMessage.vue';
+import TaskStatusTiles from './TaskStatusTiles.vue';
+
 import { useUserStore } from '@/stores/User';
 
 const store = useUserStore();
@@ -35,6 +43,10 @@ const store = useUserStore();
   }
   .welcome-message{
     font-size: 20px;
+  }
+
+  .dashboard-label {
+    font-size: 21px;
   }
  </style>
   

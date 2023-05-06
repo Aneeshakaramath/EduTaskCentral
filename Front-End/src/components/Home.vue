@@ -1,9 +1,9 @@
 <template>
   <div class="dashboard flexcontainer" v-if="!store.apiCallBeingMade">
-    <div class="columns">
+    <div class="columns side-panel">
       <SidePanel></SidePanel>
     </div>
-    <div class="columns">
+    <div class="columns dashboard-container-radius">
       <NavBar></NavBar>
       <router-view></router-view>
     </div>
@@ -44,13 +44,22 @@ onBeforeMount(async()=> {
   display: flex;
   font-size:15px;
 }
+.side-panel {
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
 
+.dashboard-container-radius {
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
 .columns{
   flex: 1;
   background-color: white;
 }
 .columns:nth-of-type(even){
   flex: 5; 
+  background-color: #f3eff2;;
 }
 
 </style>
