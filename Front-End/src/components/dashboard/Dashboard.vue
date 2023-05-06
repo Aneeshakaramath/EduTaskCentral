@@ -10,6 +10,7 @@
         <div class="col-sm">
           <DatePicker></DatePicker>
           <GroupDetails></GroupDetails>
+          <MarksGraphVue></MarksGraphVue>
         </div>
     </div>
   </div>
@@ -20,6 +21,7 @@ import GroupDetails from './GroupDetails.vue';
 import OverDueTask from './OverDueTask.vue';
 import DatePicker from './DatePicker.vue';
 import CourseWiseQuesChecklist from "./CourseWiseQuesChecklist.vue";
+import MarksGraphVue from './MarksGraph.vue';
 import { useUserStore } from '@/stores/User';
 
 const store = useUserStore();

@@ -102,7 +102,7 @@ async function fetchCourseWiseQuestionDetails() {
 }
 
 .ques-heading {
-    font-size: 15px;
+    font-size: 20px;
     text-align: left;
     font-weight: bold;
 }
