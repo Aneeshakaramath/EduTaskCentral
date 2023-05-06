@@ -43,12 +43,14 @@ const isCourseAvailable = ref(false);
 const questionPaperChecklist = ref([]);
 
 watch(()=>store.userData?.userDetails.id, async (newValue, oldValue)=> {
-    await fetchCourseWiseQuestionDetails();
-    isApiCallMade.value = false;
+    if(store.userData?.userDetails?.id) {
+        await fetchCourseWiseQuestionDetails();
+        isApiCallMade.value = false;
+    }
 });
 
 onBeforeMount(async()=> {
-    if(store.userData?.userDetails?.id!=='') {
+    if(store.userData?.userDetails?.id) {
         await fetchCourseWiseQuestionDetails();
         isApiCallMade.value = false;
     }
