@@ -29,7 +29,7 @@
     </div>
 </template>
 <script setup>
-import { onBeforeMount, ref, computed } from 'vue';
+import { onBeforeMount, ref, watch } from 'vue';
 import { useUserStore } from '@/stores/User';
 import { useQuestionPaperStore } from '@/stores/QuestionPaper';
 
@@ -41,8 +41,8 @@ const isLoaded = ref(false);
 const isCourseAvailable = ref(false);
 const questionPaperChecklist = ref([]);
 
-onBeforeMount(async()=> {
-   const response = await store.getCourseByUserId(store.userData?.userDetails.id);
+watch(()=>store.userData?.userDetails.id, async (newValue, oldValue)=> {
+    const response = await store.getCourseByUserId(store.userData?.userDetails.id);
    store.setCourses(response);
    // isLoaded.value = true;
    if(response.length > 0) {
