@@ -37,44 +37,59 @@ const store = useUserStore();
 
 const questionPaperStore = useQuestionPaperStore();
 
+const isApiCallMade = ref(false);
 const isLoaded = ref(false);
 const isCourseAvailable = ref(false);
 const questionPaperChecklist = ref([]);
 
 watch(()=>store.userData?.userDetails.id, async (newValue, oldValue)=> {
-    const response = await store.getCourseByUserId(store.userData?.userDetails.id);
-   store.setCourses(response);
-   // isLoaded.value = true;
-   if(response.length > 0) {
-    isCourseAvailable.value = true;
-    let examType = ["CAT_1", "CAT_2", "SEM"];
-    response.forEach((course,index)=>{
-        questionPaperChecklist.value.push({
-            courseName: course.name,
-            questionPaperDetails: [],
-        })
-        examType.forEach(async (examType)=> {
-            // _id
-            const questionPaperResponse = await questionPaperStore.fetchQuestionPaperByid(course._id, examType);
-            if(questionPaperResponse.length > 0) {
-                questionPaperChecklist.value[index].questionPaperDetails.push({
-                    examType: examType,
-                    isAvailable: true});
-            } else {
-                questionPaperChecklist.value[index].questionPaperDetails.push({
-                    examType: examType,
-                    isAvailable: false});
-            }
-        });
-    });
-     isLoaded.value = true;
-    
-   } else {
-    isCourseAvailable.value = false;
-    isLoaded.value = true;
-   }
+    await fetchCourseWiseQuestionDetails();
+    isApiCallMade.value = false;
 });
 
+onBeforeMount(async()=> {
+    if(store.userData?.userDetails?.id!=='') {
+        await fetchCourseWiseQuestionDetails();
+        isApiCallMade.value = false;
+    }
+});
+
+async function fetchCourseWiseQuestionDetails() {
+    if(!isLoaded.value && !isApiCallMade.value) {
+        isApiCallMade.value = true;
+        const response = await store.getCourseByUserId(store.userData?.userDetails.id);
+        store.setCourses(response);
+        // isLoaded.value = true;
+        if(response.length > 0) {
+            isCourseAvailable.value = true;
+            let examType = ["CAT_1", "CAT_2", "SEM"];
+            response.forEach((course,index)=>{
+                questionPaperChecklist.value.push({
+                    courseName: course.name,
+                    questionPaperDetails: [],
+                })
+                examType.forEach(async (examType)=> {
+                    // _id
+                    const questionPaperResponse = await questionPaperStore.fetchQuestionPaperByid(course._id, examType);
+                    if(questionPaperResponse.length > 0) {
+                        questionPaperChecklist.value[index].questionPaperDetails.push({
+                            examType: examType,
+                            isAvailable: true});
+                    } else {
+                        questionPaperChecklist.value[index].questionPaperDetails.push({
+                            examType: examType,
+                            isAvailable: false});
+                    }
+                });
+            });
+            isLoaded.value = true;
+            
+        } else {
+            isCourseAvailable.value = false;
+            isLoaded.value = true;
+        }
+    }
+}
 </script>
 <style>
 
