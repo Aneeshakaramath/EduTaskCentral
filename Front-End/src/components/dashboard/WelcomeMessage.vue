@@ -3,9 +3,15 @@
         <div class="flex-box-row">
             <img class="dashboard-logo" src="@/assets/images/dashboard.jpeg"/>
             <div class="flex-box-column">
-                <h1 class="margin-auto">Welcome to you Dashboard!</h1>
-                <div class="margin-auto">
+                <h1 class="margin-auto">Welcome to your Dashboard!</h1>
+                <div class="margin-auto" v-if="pendingTask > 0">
                     You have {{ pendingTask }} number of tasks pending. You already completed {{  getPercentage }}% of task assigned to you
+                </div>
+                <div class="margin-auto" v-else-if="totalTask > 0">
+                    Congratulations you have completed all your task assigned to you.
+                </div>
+                <div class="margin-auto" v-else>
+                    You have no task assigned till now.
                 </div>
             </div>
         </div>
@@ -18,6 +24,10 @@
   const store = useUserStore();
   
   
+  const totalTask = computed(() => {
+    return store.userData?.taskAssignedToMe?.length || 0;
+  });
+
   const pendingTask = computed(()=> {
     let filteredArray = [];
     if (store.userData?.taskAssignedToMe) {
