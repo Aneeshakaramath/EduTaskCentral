@@ -79,8 +79,10 @@ const importantDates = computed(() => {
 <style>
 
 .date-picker-container {
+    background-color: white;
+    margin-top: 10px;
+    border-radius: 20px;
     padding: 10px;
-    background-color: #f3eff2;
 }
 
 </style>

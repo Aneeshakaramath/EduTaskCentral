@@ -68,6 +68,7 @@ const getMaxThreeStatus = computed(()=> {
     background-color: white;
     margin-top: 20px;
     padding: 5px;
+    border-radius: 20px;
   }
 
   .taks-status-label {

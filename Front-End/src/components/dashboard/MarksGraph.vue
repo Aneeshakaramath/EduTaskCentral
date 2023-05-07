@@ -56,7 +56,8 @@ const options = computed(() => {
             id: 'vuechart-example'
         },
         xaxis: {
-          categories: ["<40", "40-60", "60-80", "80-100"]
+          categories: ["<40", "40-60", "60-80", "80-100"],
+          
         }
     }
 });
@@ -70,7 +71,7 @@ const series = computed(()=> {
 
 function calulateSeries(marksArray) {
     let result = [{
-        name: 'series-1',
+        name: 'Students Count',
         data: [0, 0, 0, 0]
     }]
     marksArray.forEach((mark)=> {
@@ -162,7 +163,8 @@ async function showMarksChart(course,markDetails) {
 .mark-details-container {
     margin-top: 20px;
     padding: 10px;
-    background-color: #f3eff2;
+    background-color: white;
+    border-radius: 20px;
 }
 
 .margin-left {

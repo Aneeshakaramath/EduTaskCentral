@@ -98,7 +98,8 @@ async function fetchCourseWiseQuestionDetails() {
 .course-wise-ques-details-container {
     margin-top: 20px;
     padding: 10px;
-    background-color: #f3eff2;
+    background-color: white;
+    border-radius: 20px;
 }
 
 .ques-heading {

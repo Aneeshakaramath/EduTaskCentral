@@ -59,7 +59,8 @@ onBeforeMount(async()=> {
 .group-details-container {
     margin-top: 20px;
     padding: 10px;
-    background-color: #f3eff2;
+    background-color: white;
+    border-radius: 20px;
 }
 .group-details-label {
     font-size: 15px;

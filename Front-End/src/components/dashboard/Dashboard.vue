@@ -10,11 +10,11 @@
           <TaskStatusTiles></TaskStatusTiles>
           <OverDueTask></OverDueTask>
           <StatusDetails></StatusDetails>
-          <CourseWiseQuesChecklist></CourseWiseQuesChecklist>
+          <GroupDetails></GroupDetails>
         </div>
         <div class="col-sm">
           <DatePicker></DatePicker>
-          <GroupDetails></GroupDetails>
+          <CourseWiseQuesChecklist></CourseWiseQuesChecklist>
           <MarksGraphVue></MarksGraphVue>
         </div>
     </div>

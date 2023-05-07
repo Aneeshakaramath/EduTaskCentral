@@ -1,6 +1,6 @@
 <template>
   <div class="flex-container-nav">
-    <RouterLink to="/logout">
+    <RouterLink to="/logout" class="margin-align-center">
       Logout
       <img class="logout_icon" src="@/assets/images/logout.png"/>
     </RouterLink>
@@ -10,8 +10,8 @@
       </span>
       <span class="user_icon"><img src="@/assets/images/user_icon.png"/></span>
     </div>
-    <RouterLink :to="{ name: 'notification' }">
-      <img class="bell-icon" src="@/assets/images/bell.jpg"/>
+    <RouterLink :to="{ name: 'notification' }" class="margin-align-center">
+      <img class="bell-icon" src="@/assets/images/bell.png"/>
     </RouterLink>
     <div class="current-date">
       {{ currentDate }}
@@ -74,17 +74,21 @@ const currentDate = computed(() => {
   margin-right: 10px;
 }
 
+.margin-align-center {
+  margin-top: auto!important;
+  margin-bottom: auto!important;
+}
 .user-name-container {
     padding: 10px;
-    border: black 1px solid;
-    border-radius: 8px;
+    /* border: black 1px solid;
+    border-radius: 8px; */
     margin-right: 10px;
 }
 
 .current-date {
     padding: 10px;
-    border: 1px black solid;
-    border-radius: 8px;
+    /* border: 1px black solid;
+    border-radius: 8px; */
     margin-right: 10px;
 }
 </style>

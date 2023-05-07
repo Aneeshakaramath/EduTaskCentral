@@ -108,6 +108,7 @@ const totalTask = computed(() => {
     background-color: transparent;
     margin-top: 10px;
     margin-bottom: 10px;
+    border-radius: 20px;
 }
 
 .flex-box-row {

@@ -1,7 +1,7 @@
 <template>
   <div class="over-due-details-container align-center boldText">
     <h2 class="task-status-label boldText">
-      Task Status
+      Over Due
     </h2>
     <div v-if="!isAnyTaskDone && !isAnyTaskOverDue" class="align-center boldText">
       No Task is in done status or over due status
@@ -133,6 +133,7 @@ const series = computed(() => {
 .over-due-details-container {
   padding: 10px;
   background-color: white;
+  border-radius: 20px;
 }
 
 .task-status-label {
