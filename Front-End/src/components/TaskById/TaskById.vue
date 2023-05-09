@@ -125,10 +125,13 @@
 import { computed, onBeforeMount, ref } from 'vue';
 import { useRoute } from 'vue-router';
 import { useUserStore } from '../../stores/User';
+import { useCourseDeliveryStore } from '@/stores/CourseDelivery';
 import swal from 'sweetalert';
 
 const route = useRoute();
 const store = useUserStore();
+
+const courseDeliveryStore = useCourseDeliveryStore();
 
 const taskStatus = ['TO DO', 'IN PROGRESS', 'DONE'];
 let newComment = ref('');
@@ -171,11 +174,23 @@ async function addComment() {
     }
     console.log(commentPayload);
     const response = await store.addComments(commentPayload);
-    if(response.commentedBy == commentPayload.commentedBy) {
+    if(response.commentedBy == commentPayload.commentedBy || response) {
         swal("Success!", "comment Added", "success");
         // alert('comment Added');
         newComment.value = '';
         await store.getCommentsById(route.params.taskId);
+        let userId = ''
+        if(taskById?.value.assignedTo?.id == store?.userData?.userDetails?.id) {
+            userId = taskById?.value.assignedBy?.id;
+        } else {
+            userId = taskById?.value.assignedTo?.id;
+        }
+        let descriptionNotificaiton = `A comment was added by ${store?.userData?.userDetails?.name} for the task <a href='#/home/taskById/${taskById.value?.id}'>${taskById.value?.name}</a>`;
+        let notificationCreatePayload = {
+            "userId" : userId,
+            "description" : descriptionNotificaiton
+        };
+        const response = await courseDeliveryStore.sendNotificaion(notificationCreatePayload);
     }
 }
 

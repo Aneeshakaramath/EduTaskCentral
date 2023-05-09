@@ -10,6 +10,14 @@
   {
     "_id": "6429aee16e65ebde496cafd0",
     "user": "6401607f067c1d45ba3db495",
+    "description": "<a href='#/home/taskById/63df2e4f0b6c90138bd6bc90'> Some test notification</a>",
+    "isRead": false,
+    "createdTime": "2023-04-02T16:35:45.188Z",
+    "__v": 0
+  },
+  {
+    "_id": "6429aee16e65ebde496cafd0",
+    "user": "6401607f067c1d45ba3db495",
     "description": "Some test notification",
     "isRead": true,
     "createdTime": "2023-04-02T16:35:45.188Z",

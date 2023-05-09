@@ -24,7 +24,7 @@
                                 <th scope="row">
                                     {{ notification.createdTime }}
                                 </th>
-                                <td>{{ notification.description }}</td>
+                                <td  v-html="notification.description"></td>
                                 <td class="boldText"> <a v-on:click.prevent.stop="handleClick(notification)"
                                         class="boldText">markAsRead</a></td>
                             </tr>
