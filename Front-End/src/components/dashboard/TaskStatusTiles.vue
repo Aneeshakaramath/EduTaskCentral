@@ -71,7 +71,7 @@ const InProgress = computed(() => {
     let filteredArray = [];
     if (store.userData?.taskAssignedToMe) {
         filteredArray = store.userData.taskAssignedToMe.filter(function (task) {
-            return task != null && task.taskStatus !== 'IN PROGRESS';
+            return task != null && task.taskStatus == 'IN PROGRESS';
         })
     }
     return filteredArray.length;
@@ -81,7 +81,7 @@ const TODO = computed(()=> {
     let filteredArray = [];
     if (store.userData?.taskAssignedToMe) {
         filteredArray = store.userData.taskAssignedToMe.filter(function (task) {
-            return task != null && task.taskStatus !== 'TO DO';
+            return task != null && task.taskStatus == 'TO DO';
         })
     }
     return filteredArray.length;
@@ -91,7 +91,7 @@ const Done = computed(()=> {
     let filteredArray = [];
     if (store.userData?.taskAssignedToMe) {
         filteredArray = store.userData.taskAssignedToMe.filter(function (task) {
-            return task != null && task.taskStatus !== 'DONE';
+            return task != null && task.taskStatus == 'DONE';
         })
     }
     return filteredArray.length;

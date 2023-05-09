@@ -1,7 +1,7 @@
 <template>
     <div class="mark-details-container align-center boldText">
         <div v-if="isLoaded">
-            <h1 class="ques-heading">Question paper checklist for courses</h1>
+            <h1 class="ques-heading">Student Performance Chart for Courses</h1>
             <div v-if="isCourseAvailable">
                 <vaadin-accordion>
                     <vaadin-accordion-panel v-for="course in courseList" :summary="course.courseName">
