@@ -75,7 +75,7 @@ async function getQuestionPaperById(examType, courseDetail) {
   const response = await questionPaperStore.fetchQuestionPaperByid(courseDetail._id,examType);
   if(response.length > 0) {
     console.log(response);
-    printPdf(response[0], courseDetail)
+    printPdf(response[0], courseDetail, true)
   } else {
     swal("Oops!", "question Paper is Not Available", "error");
   }

@@ -1,5 +1,7 @@
 <template>
     <div class="question-paper-form-container boldText" v-if="isLoaded">
+        <button @click="downloadStudentQuestionPaper(false)" class="btn btn-default button-download boldText">download student question paper</button>
+        <button @click="downloadStudentQuestionPaper(true)" class="btn btn-default button-download boldText">download audit version</button>
         <div class="send-notification-container boldText">
             <div>
                 <label class="typo__label boldText">Select an user to send notification</label>
@@ -234,6 +236,7 @@ import { onBeforeMount, ref, computed } from 'vue';
 import VueMultiselect from 'vue-multiselect';
 import { useRouter } from 'vue-router';
 import swal from 'sweetalert';
+import printPdf from '@/Util/createPrintablePdf';
 
 const store = useUserStore();
 const courseDeliveryStore = useCourseDeliveryStore();
@@ -326,6 +329,11 @@ async function sendNotification() {
         // alert('notification failed');
     }
 }
+
+function downloadStudentQuestionPaper(isBTVersion) {
+    printPdf(questionPaperStore?.questionPaperById[0], courseDeliveryStore.courseDetail, isBTVersion)
+}
+
 </script>
 <style scoped>
 .question-paper-form-container {
@@ -363,5 +371,13 @@ async function sendNotification() {
 
 .send-notification-container {
     margin-bottom: 10px;
+}
+
+.button-download {
+    margin: 10px;
+    text-align: center;
+    display: inline-block;
+    background-color: #166df7;
+    color: white;
 }
 </style>

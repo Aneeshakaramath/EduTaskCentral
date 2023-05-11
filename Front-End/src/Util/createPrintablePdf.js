@@ -1,4 +1,4 @@
-const printPdf = async function (questionPaper, courseDetail) {
+const printPdf = async function (questionPaper, courseDetail, isBTVersion) {
     
     console.log(courseDetail);
     let style = `<style>table, th, td {
@@ -48,14 +48,14 @@ const printPdf = async function (questionPaper, courseDetail) {
                 + `</div>`;
 
     questionPaper.partA.forEach(element => {
-        partA = `${partA} <div> ${questionCount}. ${element.question} <span style="float:right;font-weight: bold;"> (${element.marks}) </span> </div>`;
+        partA = `${partA} <div> ${questionCount}. ${element.question} <span style="float:right;font-weight: bold;"> ${isBTVersion==true?element.bt + ' ' + element.couseOutcome + ' ': ''} (${element.marks}) </span> </div>`;
         questionCount++;
     });
 
 
     questionPaper.partB.forEach(subQuestions => {
         subQuestions.questions.forEach((element,index) => {
-            partB = `${partB} <div> ${index==0?questionCount:'&nbsp;'} ${(index + 10).toString(36)}. ${element.question} <span style="float:right;font-weight: bold;"> (${element.marks}) </span></div>`;
+            partB = `${partB} <div> ${index==0?questionCount:'&nbsp;'} ${(index + 10).toString(36)}. ${element.question} <span style="float:right;font-weight: bold;">  ${isBTVersion==true?element.bt + ' ' + element.couseOutcome + ' ': ''} (${element.marks}) </span></div>`;
         });
         partB =`${partB} <br>`
         questionCount++;
@@ -63,7 +63,7 @@ const printPdf = async function (questionPaper, courseDetail) {
     
     questionPaper.partC.forEach(subQuestions => {
         subQuestions.questions.forEach((element,index) => {
-            partC = `${partC} <div> ${index==0?questionCount:'&nbsp;'} ${(index + 10).toString(36)}. ${element.question} <span style="float:right;font-weight: bold;"> (${element.marks}) </span></div>`;
+            partC = `${partC} <div> ${index==0?questionCount:'&nbsp;'} ${(index + 10).toString(36)}. ${element.question} <span style="float:right;font-weight: bold;">  ${isBTVersion==true?element.bt + ' ' + element.couseOutcome + ' ': ''} (${element.marks}) </span></div>`;
         });
         partC =`${partC} <br>`
         questionCount++;

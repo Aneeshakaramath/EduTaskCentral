@@ -1,6 +1,7 @@
 <template>
     <div class="question-paper-form-container boldText">
-        <button @click="preview" class="btn btn-default button-add-course boldText">Preview</button>
+        <button @click="preview(false)" class="btn btn-default button-add-course boldText margin-button">Preview student version</button>
+        <button @click="preview(true)" class="btn btn-default button-add-course boldText margin-button">Preview audit version</button>
         <div class="row">
             <div class="col heading">
                 <div class="row">
@@ -407,8 +408,8 @@ function formatDate(date) {
     return [year, month, day].join('-');
 }
 
-function preview() {
-    printPdf(buildPayloadForQuestion(), courseDeliveryStore.courseDetail)
+function preview(isBTVersion) {
+    printPdf(buildPayloadForQuestion(), courseDeliveryStore.courseDetail, isBTVersion)
 }
 </script>
 <style scoped>
@@ -433,4 +434,9 @@ function preview() {
 
 .each-question-container {
     margin-top: 10px;
-}</style>
+}
+
+.margin-button {
+    margin: 10px;
+}
+</style>
