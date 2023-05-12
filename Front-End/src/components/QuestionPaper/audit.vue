@@ -37,10 +37,13 @@ import { useUserStore } from '@/stores/User';
 import { onBeforeMount, ref, computed } from 'vue';
 import VueMultiselect from 'vue-multiselect';
 import swal from 'sweetalert';
-import printPdf from '@/Util/createPrintablePdf';
+import { useCourseDeliveryStore } from '@/stores/CourseDelivery';
 import { useQuestionPaperStore } from '@/stores/QuestionPaper';
+import { useRouter } from 'vue-router';
 
 const store = useUserStore();
+const courseDeliveryStore = useCourseDeliveryStore();
+const router = useRouter();
 
 const isLoaded = ref(false);
 let userValues = ref([]);
@@ -74,8 +77,12 @@ function setUserValues() {
 async function getQuestionPaperById(examType, courseDetail) {
   const response = await questionPaperStore.fetchQuestionPaperByid(courseDetail._id,examType);
   if(response.length > 0) {
-    console.log(response);
-    printPdf(response[0], courseDetail, true)
+    courseDeliveryStore.setCourseDetail(courseDetail);
+    courseDeliveryStore.setCourseName(courseDetail.name);
+    courseDeliveryStore.setSelectedCourseId(courseDetail._id);
+    courseDeliveryStore.setSelectedUserId(courseDetail.createdBy._id);
+    questionPaperStore.setExamType(examType);
+    router.push({ name: 'questionPaperDetails'});
   } else {
     swal("Oops!", "question Paper is Not Available", "error");
   }

@@ -17,7 +17,8 @@ const API_URLS = {
     groupComments: 'http://localhost:5000/api/groupComments',
     questionPaper: 'http://localhost:5000/api/questionPaper',
     catMarks: 'http://localhost:5000/api/catMarks',
-    semMarks: 'http://localhost:5000/api/semMarks'
+    semMarks: 'http://localhost:5000/api/semMarks',
+    questionpaperComment: 'http://localhost:5000/api/questionPaperComments'
 };
 
 export default API_URLS;

@@ -7,6 +7,8 @@ import updateCatMarks from "./actions/updateCatMarks";
 import fetchSemMarksById from "./actions/fetchSemMarksById";
 import addSemMarks from "./actions/addSemMarks";
 import updateSemMarks from "./actions/updateSemMarks";
+import getQuestionPaperCommentById from "./actions/getQuestionpaperComemntById";
+import addCommentsForQuestionPaper from "./actions/addCommentsForQuestionPaper";
 
 export const useQuestionPaperStore = defineStore("questionPaper", {
     state: () => ({
@@ -14,6 +16,7 @@ export const useQuestionPaperStore = defineStore("questionPaper", {
         questionPaperById: [],
         catMarksById: [],
         semMarksById: [],
+        commentForSelectedQuestion: [],
     }),
     actions: {
         setExamType(payload) {
@@ -65,6 +68,16 @@ export const useQuestionPaperStore = defineStore("questionPaper", {
         },
         async updateSemMarks(payload) {
             const response  = await updateSemMarks(payload);
+            console.log(response);
+            return response;
+        },
+        async getCommentsById(questionpaperId,examType) {
+            const response  = await getQuestionPaperCommentById(questionpaperId,examType);
+            console.log(response);
+            this.commentForSelectedQuestion = response;
+        },
+        async addCommentsForQuestionPaper(payload) {
+            const response  = await addCommentsForQuestionPaper(payload);
             console.log(response);
             return response;
         },

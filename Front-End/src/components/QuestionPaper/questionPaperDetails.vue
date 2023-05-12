@@ -1,8 +1,10 @@
 <template>
     <div class="question-paper-form-container boldText" v-if="isLoaded">
-        <button @click="downloadStudentQuestionPaper(false)" class="btn btn-default button-download boldText">download student question paper</button>
-        <button @click="downloadStudentQuestionPaper(true)" class="btn btn-default button-download boldText">download audit version</button>
-        <div class="send-notification-container boldText">
+        <div >
+            <button @click="downloadStudentQuestionPaper(false)" class="btn btn-default button-download boldText">download student question paper</button>
+            <button @click="downloadStudentQuestionPaper(true)" class="btn btn-default button-download boldText">download audit version</button>
+        </div>
+        <div class="send-notification-container boldText" v-if="courseDeliveryStore.courseDetail.createdBy._id == store.userData?.userDetails?.id">
             <div>
                 <label class="typo__label boldText">Select an user to send notification</label>
                 <VueMultiselect v-model="userValues" placeholder="Search an User" label="name" track-by="id"
@@ -223,6 +225,7 @@
                 </div>
             </div>
         </div>
+        <QuestionPaperComments/>
     </div>
     <div class="spinner-border" v-else role="status">
         <span class="visually-hidden"></span>
@@ -237,6 +240,7 @@ import VueMultiselect from 'vue-multiselect';
 import { useRouter } from 'vue-router';
 import swal from 'sweetalert';
 import printPdf from '@/Util/createPrintablePdf';
+import QuestionPaperComments from './QuestionPaperComments.vue';
 
 const store = useUserStore();
 const courseDeliveryStore = useCourseDeliveryStore();

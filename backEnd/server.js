@@ -21,6 +21,7 @@ const groupCommentsRouter = require('./routers/groupComments');
 const questionPaperRouter = require('./routers/questionPaper');
 const catMarksRouter = require('./routers/catMarks');
 const semMarksRouter = require('./routers/semMarks');
+const questionPaperCommentsRouter = require('./routers/questionPaperComment');
 
 const errroHandlingMiddleware = require('./middleware/errorHandler');
 const { isAuthorized } = require('./middleware/isAuthorized');
@@ -84,6 +85,7 @@ app.use('/api/groupComments', isAuthorized, groupCommentsRouter);
 app.use('/api/questionPaper', isAuthorized, questionPaperRouter);
 app.use('/api/catMarks', isAuthorized, catMarksRouter);
 app.use('/api/semMarks', isAuthorized, semMarksRouter);
+app.use('/api/questionPaperComments', isAuthorized, questionPaperCommentsRouter);
 
 /*
 *   Set handler for unknown routes and errorhandling middleware
