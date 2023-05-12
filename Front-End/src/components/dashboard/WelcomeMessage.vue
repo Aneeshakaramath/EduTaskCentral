@@ -3,7 +3,7 @@
         <div class="flex-box-row">
             <img class="dashboard-logo" src="@/assets/images/dashboard.jpeg"/>
             <div class="flex-box-column">
-                <h1 class="margin-auto">Welcome to your Dashboard!</h1>
+                <h1 class="margin-auto">Welcome to your Dashboard, {{ store.userData?.userDetails?.name }}!</h1>
                 <div class="margin-auto" v-if="pendingTask > 0">
                     You have {{ pendingTask }} number of tasks pending. You already completed {{  getPercentage }}% of task assigned to you
                 </div>
