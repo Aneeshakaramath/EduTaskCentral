@@ -58,9 +58,14 @@ const isAnyTaskOverDue = computed(() => {
 
 const taskList = computed(()=> {
   let filteredArray = [];
+  let today = new Date()
   if (store.userData?.taskAssignedToMe) {
     filteredArray = store.userData.taskAssignedToMe.filter(function (task) {
-      return task != null && task.taskStatus == 'DONE';
+      var endDate = new Date(task.endDate);
+      if ( task!= null && today > endDate && task.taskStatus !== 'DONE') {
+        return true;
+      }
+      return false;
     })
   }
   return filteredArray;
